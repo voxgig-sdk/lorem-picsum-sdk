@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "list": {
+      "LIST00": {
+        "author": "s3c",
+        "download_url": "s3d",
+        "height": "s3e",
+        "id": "LIST00",
+        "url": "s40",
+        "width": "s41"
+      },
+      "LIST01": {
+        "author": "s78",
+        "download_url": "s79",
+        "height": "s7a",
+        "id": "LIST01",
+        "url": "s7c",
+        "width": "s7d"
+      },
+      "LIST02": {
+        "author": "sb4",
+        "download_url": "sb5",
+        "height": "sb6",
+        "id": "LIST02",
+        "url": "sb8",
+        "width": "sb9"
+      }
+    }
+  },
+  "new": {
+    "list": {
+      "list_ref01": {
+        "author": "sf0",
+        "download_url": "sf1",
+        "height": "sf2",
+        "url": "sf4",
+        "width": "sf5"
+      }
+    }
+  }
+}

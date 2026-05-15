@@ -1,0 +1,64 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 9
+  metrics: count: path: 9
+  metrics: count: method: 9
+
+  entity: get_random_image: {
+    path: "/{width}/{height}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_random_square_image: {
+    path: "/{size}": {
+      rename: param: "size": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: height: {
+    path: "/{width}/{height}.jpg": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: heightwebp: {
+    path: "/{width}/{height}.webp": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: id_info: {
+    path: "/id/{id}/info": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: idn: {
+    path: "/id/{id}/{width}/{height}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: list: {
+    path: "/v2/list": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: seed: {
+    path: "/seed/{seed}/{width}/{height}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: seed_info: {
+    path: "/seed/{seed}/info": {
+      rename: param: "seed": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

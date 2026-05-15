@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "id_info": {
+      "ID_INFO00": {
+        "author": "s3c",
+        "download_url": "s3d",
+        "height": "s3e",
+        "id": "ID_INFO00",
+        "url": "s40",
+        "width": "s41"
+      },
+      "ID_INFO01": {
+        "author": "s78",
+        "download_url": "s79",
+        "height": "s7a",
+        "id": "ID_INFO01",
+        "url": "s7c",
+        "width": "s7d"
+      },
+      "ID_INFO02": {
+        "author": "sb4",
+        "download_url": "sb5",
+        "height": "sb6",
+        "id": "ID_INFO02",
+        "url": "sb8",
+        "width": "sb9"
+      }
+    }
+  },
+  "new": {
+    "id_info": {
+      "id_info_ref01": {
+        "author": "sf0",
+        "download_url": "sf1",
+        "height": "sf2",
+        "url": "sf4",
+        "width": "sf5"
+      }
+    }
+  }
+}

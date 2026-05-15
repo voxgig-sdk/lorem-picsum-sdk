@@ -1,0 +1,33 @@
+# BasicHeightFlow
+
+main: kit: flow: BasicHeightFlow:
+{
+  entity: "height",
+  kind: "basic",
+  name: "BasicHeightFlow",
+  step: [
+    {
+      input: {
+        ref: "height_ref01",
+        srcdatavar: "height_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        height: "height01",
+        id: "height01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-height_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHeightFlow"
+}

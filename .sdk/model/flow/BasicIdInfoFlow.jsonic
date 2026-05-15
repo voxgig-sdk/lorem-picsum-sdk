@@ -1,0 +1,32 @@
+# BasicIdInfoFlow
+
+main: kit: flow: BasicIdInfoFlow:
+{
+  entity: "id_info",
+  kind: "basic",
+  name: "BasicIdInfoFlow",
+  step: [
+    {
+      input: {
+        ref: "id_info_ref01",
+        srcdatavar: "id_info_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "id_info01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-id_info_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIdInfoFlow"
+}

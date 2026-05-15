@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "seed_info": {
+      "SEED_INFO00": {
+        "author": "s3c",
+        "download_url": "s3d",
+        "height": "s3e",
+        "id": "SEED_INFO00",
+        "url": "s40",
+        "width": "s41"
+      },
+      "SEED_INFO01": {
+        "author": "s78",
+        "download_url": "s79",
+        "height": "s7a",
+        "id": "SEED_INFO01",
+        "url": "s7c",
+        "width": "s7d"
+      },
+      "SEED_INFO02": {
+        "author": "sb4",
+        "download_url": "sb5",
+        "height": "sb6",
+        "id": "SEED_INFO02",
+        "url": "sb8",
+        "width": "sb9"
+      }
+    }
+  },
+  "new": {
+    "seed_info": {
+      "seed_info_ref01": {
+        "author": "sf0",
+        "download_url": "sf1",
+        "height": "sf2",
+        "url": "sf4",
+        "width": "sf5"
+      }
+    }
+  }
+}

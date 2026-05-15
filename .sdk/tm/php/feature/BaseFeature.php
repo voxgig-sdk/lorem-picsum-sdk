@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// LoremPicsum SDK base feature
+
+class LoremPicsumBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(LoremPicsumContext $ctx, array $options): void {}
+    public function PostConstruct(LoremPicsumContext $ctx): void {}
+    public function PostConstructEntity(LoremPicsumContext $ctx): void {}
+    public function SetData(LoremPicsumContext $ctx): void {}
+    public function GetData(LoremPicsumContext $ctx): void {}
+    public function GetMatch(LoremPicsumContext $ctx): void {}
+    public function SetMatch(LoremPicsumContext $ctx): void {}
+    public function PrePoint(LoremPicsumContext $ctx): void {}
+    public function PreSpec(LoremPicsumContext $ctx): void {}
+    public function PreRequest(LoremPicsumContext $ctx): void {}
+    public function PreResponse(LoremPicsumContext $ctx): void {}
+    public function PreResult(LoremPicsumContext $ctx): void {}
+    public function PreDone(LoremPicsumContext $ctx): void {}
+    public function PreUnexpected(LoremPicsumContext $ctx): void {}
+}

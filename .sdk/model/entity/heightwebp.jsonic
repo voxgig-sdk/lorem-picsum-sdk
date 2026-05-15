@@ -1,0 +1,72 @@
+# Entity: heightwebp
+
+main: kit: entity: heightwebp: {
+
+  alias: field: {}
+
+  name: "heightwebp"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "height"
+                orig: "height"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "width"
+                orig: "width"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "blur"
+                orig: "blur"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "grayscale"
+                orig: "grayscale"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{width}/{height}.webp"
+          parts: [
+            "{width}"
+            "{height}.webp"
+          ]
+          select: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "width"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

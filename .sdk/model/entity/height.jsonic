@@ -1,0 +1,72 @@
+# Entity: height
+
+main: kit: entity: height: {
+
+  alias: field: {}
+
+  name: "height"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "height"
+                orig: "height"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "width"
+                orig: "width"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "blur"
+                orig: "blur"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "grayscale"
+                orig: "grayscale"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{width}/{height}.jpg"
+          parts: [
+            "{width}"
+            "{height}.jpg"
+          ]
+          select: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "width"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

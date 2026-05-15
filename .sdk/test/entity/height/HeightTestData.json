@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "height": {
+      "HEIGHT00": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "HEIGHT01": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "HEIGHT02": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      }
+    }
+  },
+  "new": {
+    "height": {
+      "height_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "get_random_image": {
+      "GET_RANDOM_IMAGE00": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "GET_RANDOM_IMAGE01": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "GET_RANDOM_IMAGE02": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      }
+    }
+  },
+  "new": {
+    "get_random_image": {
+      "get_random_image_ref01": {}
+    }
+  }
+}

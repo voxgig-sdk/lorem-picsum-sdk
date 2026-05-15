@@ -1,0 +1,32 @@
+# BasicSeedInfoFlow
+
+main: kit: flow: BasicSeedInfoFlow:
+{
+  entity: "seed_info",
+  kind: "basic",
+  name: "BasicSeedInfoFlow",
+  step: [
+    {
+      input: {
+        ref: "seed_info_ref01",
+        srcdatavar: "seed_info_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "seed_info01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-seed_info_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSeedInfoFlow"
+}

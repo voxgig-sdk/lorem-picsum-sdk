@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "idn": {
+      "IDN00": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "IDN01": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "IDN02": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      }
+    }
+  },
+  "new": {
+    "idn": {
+      "idn_ref01": {}
+    }
+  }
+}

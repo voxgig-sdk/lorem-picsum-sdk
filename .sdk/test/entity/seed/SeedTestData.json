@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "seed": {
+      "SEED00": {
+        "height": "HEIGHT01",
+        "seed": "SEED01",
+        "width": "WIDTH01"
+      },
+      "SEED01": {
+        "height": "HEIGHT01",
+        "seed": "SEED01",
+        "width": "WIDTH01"
+      },
+      "SEED02": {
+        "height": "HEIGHT01",
+        "seed": "SEED01",
+        "width": "WIDTH01"
+      }
+    }
+  },
+  "new": {
+    "seed": {
+      "seed_ref01": {}
+    }
+  }
+}

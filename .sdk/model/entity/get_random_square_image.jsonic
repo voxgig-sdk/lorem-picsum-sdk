@@ -1,0 +1,68 @@
+# Entity: get_random_square_image
+
+main: kit: entity: get_random_square_image: {
+
+  alias: field: {}
+
+  name: "get_random_square_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "size"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "blur"
+                orig: "blur"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "grayscale"
+                orig: "grayscale"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{size}"
+          parts: [
+            "{id}"
+          ]
+          rename: {
+            param: {
+              size: "id"
+            }
+          }
+          select: {
+            exist: [
+              "blur"
+              "grayscale"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

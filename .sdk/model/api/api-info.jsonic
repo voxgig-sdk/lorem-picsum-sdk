@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://picsum.photos/"
+      }
+      description: "The Lorem Ipsum for photos. Easy to use, stylish placeholders. Generate random, specific, grayscale, blurred, or advanced images."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://picsum.photos"
+        }
+      ]
+      title: "Lorem Picsum"
+      version: "2.0.0"
+    }
+  }
+}
+
+}

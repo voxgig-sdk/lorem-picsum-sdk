@@ -1,0 +1,80 @@
+# Entity: get_random_image
+
+main: kit: entity: get_random_image: {
+
+  alias: field: {}
+
+  name: "get_random_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "height"
+                orig: "height"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "param"
+                name: "width"
+                orig: "width"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "blur"
+                orig: "blur"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "grayscale"
+                orig: "grayscale"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "random"
+                orig: "random"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{width}/{height}"
+          parts: [
+            "{width}"
+            "{height}"
+          ]
+          select: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "random"
+              "width"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

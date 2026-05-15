@@ -1,0 +1,33 @@
+# BasicGetRandomImageFlow
+
+main: kit: flow: BasicGetRandomImageFlow:
+{
+  entity: "get_random_image",
+  kind: "basic",
+  name: "BasicGetRandomImageFlow",
+  step: [
+    {
+      input: {
+        ref: "get_random_image_ref01",
+        srcdatavar: "get_random_image_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "get_random_image01",
+        width: "width01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_random_image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetRandomImageFlow"
+}

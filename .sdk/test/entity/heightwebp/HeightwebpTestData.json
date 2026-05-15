@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "heightwebp": {
+      "HEIGHTWEBP00": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "HEIGHTWEBP01": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      },
+      "HEIGHTWEBP02": {
+        "height": "HEIGHT01",
+        "width": "WIDTH01"
+      }
+    }
+  },
+  "new": {
+    "heightwebp": {
+      "heightwebp_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Lorem Picsum",
+    "description": "The Lorem Ipsum for photos. Easy to use, stylish placeholders. Generate random, specific, grayscale, blurred, or advanced images.",
+    "version": "2.0.0",
+    "contact": {
+      "url": "https://picsum.photos/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://picsum.photos",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/{width}/{height}": {
+      "get": {
+        "summary": "Get random image",
+        "description": "Returns a random placeholder image with specified dimensions",
+        "operationId": "getRandomImage",
+        "parameters": [
+          {
+            "name": "width",
+            "in": "path",
+            "required": true,
+            "description": "Width of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "required": true,
+            "description": "Height of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          {
+            "name": "random",
+            "in": "query",
+            "required": false,
+            "description": "Random parameter to prevent caching",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "headers": {
+              "Picsum-ID": {
+                "description": "ID of the returned image",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{width}/{height}.jpg": {
+      "get": {
+        "summary": "Get random image (JPEG format)",
+        "description": "Returns a random placeholder image in JPEG format with specified dimensions",
+        "operationId": "getRandomImageJpeg",
+        "parameters": [
+          {
+            "name": "width",
+            "in": "path",
+            "required": true,
+            "description": "Width of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "required": true,
+            "description": "Height of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{width}/{height}.webp": {
+      "get": {
+        "summary": "Get random image (WebP format)",
+        "description": "Returns a random placeholder image in WebP format with specified dimensions",
+        "operationId": "getRandomImageWebp",
+        "parameters": [
+          {
+            "name": "width",
+            "in": "path",
+            "required": true,
+            "description": "Width of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "required": true,
+            "description": "Height of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "content": {
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{size}": {
+      "get": {
+        "summary": "Get random square image",
+        "description": "Returns a random square placeholder image with specified size",
+        "operationId": "getRandomSquareImage",
+        "parameters": [
+          {
+            "name": "size",
+            "in": "path",
+            "required": true,
+            "description": "Size of the square image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/id/{id}/{width}/{height}": {
+      "get": {
+        "summary": "Get specific image",
+        "description": "Returns a specific placeholder image by ID with specified dimensions",
+        "operationId": "getSpecificImage",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the specific image",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "width",
+            "in": "path",
+            "required": true,
+            "description": "Width of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "required": true,
+            "description": "Height of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/seed/{seed}/{width}/{height}": {
+      "get": {
+        "summary": "Get seeded random image",
+        "description": "Returns the same random image every time based on a seed value",
+        "operationId": "getSeededImage",
+        "parameters": [
+          {
+            "name": "seed",
+            "in": "path",
+            "required": true,
+            "description": "Seed value for deterministic random image selection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "width",
+            "in": "path",
+            "required": true,
+            "description": "Width of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "required": true,
+            "description": "Height of the image in pixels",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "grayscale",
+            "in": "query",
+            "required": false,
+            "description": "Convert image to grayscale",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "blur",
+            "in": "query",
+            "required": false,
+            "description": "Apply blur effect (1-10)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully retrieved",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/list": {
+      "get": {
+        "summary": "List all images",
+        "description": "Returns a paginated list of all available images with metadata",
+        "operationId": "listImages",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number for pagination",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of items per page",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of images retrieved successfully",
+            "headers": {
+              "Link": {
+                "description": "Pagination links for next/previous pages",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImageMetadata"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/id/{id}/info": {
+      "get": {
+        "summary": "Get image information by ID",
+        "description": "Returns detailed metadata about a specific image",
+        "operationId": "getImageInfoById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the image",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageMetadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/seed/{seed}/info": {
+      "get": {
+        "summary": "Get image information by seed",
+        "description": "Returns detailed metadata about an image selected by seed",
+        "operationId": "getImageInfoBySeed",
+        "parameters": [
+          {
+            "name": "seed",
+            "in": "path",
+            "required": true,
+            "description": "Seed value for deterministic image selection",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image information retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageMetadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ImageMetadata": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the image"
+          },
+          "author": {
+            "type": "string",
+            "description": "Name of the image author"
+          },
+          "width": {
+            "type": "integer",
+            "description": "Original width of the image in pixels"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Original height of the image in pixels"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the original image on Unsplash"
+          },
+          "download_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to download the image from Picsum"
+          }
+        },
+        "required": [
+          "id",
+          "author",
+          "width",
+          "height",
+          "url",
+          "download_url"
+        ]
+      }
+    }
+  }
+}

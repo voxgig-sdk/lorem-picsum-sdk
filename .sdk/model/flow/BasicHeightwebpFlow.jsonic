@@ -1,0 +1,33 @@
+# BasicHeightwebpFlow
+
+main: kit: flow: BasicHeightwebpFlow:
+{
+  entity: "heightwebp",
+  kind: "basic",
+  name: "BasicHeightwebpFlow",
+  step: [
+    {
+      input: {
+        ref: "heightwebp_ref01",
+        srcdatavar: "heightwebp_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        height: "height01",
+        id: "heightwebp01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-heightwebp_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHeightwebpFlow"
+}
