@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/lorem-picsum-sdk"
+	sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/lorem-picsum-sdk/go/utility/struct"
 )
 
 func TestPrimaryUtility(t *testing.T) {

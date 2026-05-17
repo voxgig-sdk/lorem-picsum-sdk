@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/lorem-picsum-sdk/core"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 )
 
 type LogFeature struct {

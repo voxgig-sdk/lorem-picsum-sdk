@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/lorem-picsum-sdk/core"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 )
 
 type BaseFeature struct {

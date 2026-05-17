@@ -1,9 +1,15 @@
 {
   "existing": {
     "get_random_square_image": {
-      "GET_RANDOM_SQUARE_IMAGE00": {},
-      "GET_RANDOM_SQUARE_IMAGE01": {},
-      "GET_RANDOM_SQUARE_IMAGE02": {}
+      "GET_RANDOM_SQUARE_IMAGE00": {
+        "id": "GET_RANDOM_SQUARE_IMAGE00"
+      },
+      "GET_RANDOM_SQUARE_IMAGE01": {
+        "id": "GET_RANDOM_SQUARE_IMAGE01"
+      },
+      "GET_RANDOM_SQUARE_IMAGE02": {
+        "id": "GET_RANDOM_SQUARE_IMAGE02"
+      }
     }
   },
   "new": {

@@ -2,7 +2,7 @@
 
 
 
-Available for [Golang](go/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+Available for [Golang](go/) and [Go CLI](go-cli/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
 
 
 ## Entities
@@ -67,7 +67,7 @@ and `body`.
 ### Golang
 
 ```go
-import sdk "github.com/voxgig-sdk/lorem-picsum-sdk"
+import sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
 
 client := sdk.NewLoremPicsumSDK(map[string]any{
     "apikey": os.Getenv("LOREM-PICSUM_APIKEY"),
@@ -277,6 +277,7 @@ console.log(result.data)
 ## Language-specific documentation
 
 - [Golang SDK](go/README.md)
+- [Go CLI SDK](go-cli/README.md)
 - [Lua SDK](lua/README.md)
 - [PHP SDK](php/README.md)
 - [Python SDK](py/README.md)

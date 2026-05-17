@@ -3,15 +3,18 @@
     "heightwebp": {
       "HEIGHTWEBP00": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "HEIGHTWEBP00"
       },
       "HEIGHTWEBP01": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "HEIGHTWEBP01"
       },
       "HEIGHTWEBP02": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "HEIGHTWEBP02"
       }
     }
   },

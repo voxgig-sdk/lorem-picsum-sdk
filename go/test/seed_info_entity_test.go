@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/lorem-picsum-sdk"
-	"github.com/voxgig-sdk/lorem-picsum-sdk/core"
+	sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/lorem-picsum-sdk/go/utility/struct"
 )
 
 func TestSeedInfoEntity(t *testing.T) {

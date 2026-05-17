@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/lorem-picsum-sdk/core"
+import "github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

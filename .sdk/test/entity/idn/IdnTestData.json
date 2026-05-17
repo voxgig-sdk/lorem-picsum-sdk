@@ -3,15 +3,18 @@
     "idn": {
       "IDN00": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "IDN00"
       },
       "IDN01": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "IDN01"
       },
       "IDN02": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "IDN02"
       }
     }
   },

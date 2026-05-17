@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/lorem-picsum-sdk"
+	sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

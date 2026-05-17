@@ -3,15 +3,18 @@
     "get_random_image": {
       "GET_RANDOM_IMAGE00": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "GET_RANDOM_IMAGE00"
       },
       "GET_RANDOM_IMAGE01": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "GET_RANDOM_IMAGE01"
       },
       "GET_RANDOM_IMAGE02": {
         "height": "HEIGHT01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "GET_RANDOM_IMAGE02"
       }
     }
   },

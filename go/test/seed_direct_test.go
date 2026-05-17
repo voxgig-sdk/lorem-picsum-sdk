@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/lorem-picsum-sdk"
-	"github.com/voxgig-sdk/lorem-picsum-sdk/core"
+	sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 )
 
 func TestSeedDirect(t *testing.T) {

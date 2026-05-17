@@ -1,10 +1,10 @@
 package voxgiglorempicsumsdk
 
 import (
-	"github.com/voxgig-sdk/lorem-picsum-sdk/core"
-	"github.com/voxgig-sdk/lorem-picsum-sdk/entity"
-	"github.com/voxgig-sdk/lorem-picsum-sdk/feature"
-	_ "github.com/voxgig-sdk/lorem-picsum-sdk/utility"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/entity"
+	"github.com/voxgig-sdk/lorem-picsum-sdk/go/feature"
+	_ "github.com/voxgig-sdk/lorem-picsum-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/lorem-picsum-sdk/core"
+import "github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name

@@ -4,17 +4,20 @@
       "SEED00": {
         "height": "HEIGHT01",
         "seed": "SEED01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "SEED00"
       },
       "SEED01": {
         "height": "HEIGHT01",
         "seed": "SEED01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "SEED01"
       },
       "SEED02": {
         "height": "HEIGHT01",
         "seed": "SEED01",
-        "width": "WIDTH01"
+        "width": "WIDTH01",
+        "id": "SEED02"
       }
     }
   },
