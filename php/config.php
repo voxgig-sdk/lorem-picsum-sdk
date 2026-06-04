@@ -20,9 +20,6 @@ class LoremPicsumConfig
             ],
             "options" => [
                 "base" => "https://picsum.photos",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

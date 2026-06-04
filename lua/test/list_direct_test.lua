@@ -63,14 +63,12 @@ function list_direct_setup(mockres)
   local env = runner.env_override({
     ["LOREMPICSUM_TEST_LIST_ENTID"] = {},
     ["LOREMPICSUM_TEST_LIVE"] = "FALSE",
-    ["LOREMPICSUM_APIKEY"] = "NONE",
   })
 
   local live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["LOREMPICSUM_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

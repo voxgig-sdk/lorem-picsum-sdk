@@ -89,7 +89,6 @@ function seed_info_basic_setup($extra)
         "LOREMPICSUM_TEST_SEED_INFO_ENTID" => $idmap,
         "LOREMPICSUM_TEST_LIVE" => "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-        "LOREMPICSUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -101,7 +100,6 @@ function seed_info_basic_setup($extra)
     if ($env["LOREMPICSUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["LOREMPICSUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

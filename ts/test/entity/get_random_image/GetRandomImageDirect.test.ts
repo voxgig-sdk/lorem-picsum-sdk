@@ -82,14 +82,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'LOREMPICSUM_TEST_GET_RANDOM_IMAGE_ENTID': {},
     'LOREMPICSUM_TEST_LIVE': 'FALSE',
-    'LOREMPICSUM_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.LOREMPICSUM_TEST_LIVE
 
   if (live) {
     const client = new LoremPicsumSDK({
-      apikey: env.LOREMPICSUM_APIKEY,
     })
 
     let idmap: any = env['LOREMPICSUM_TEST_GET_RANDOM_IMAGE_ENTID']

@@ -117,7 +117,6 @@ func seedBasicSetup(extra map[string]any) *entityTestSetup {
 		"LOREMPICSUM_TEST_SEED_ENTID": idmap,
 		"LOREMPICSUM_TEST_LIVE":      "FALSE",
 		"LOREMPICSUM_TEST_EXPLAIN":   "FALSE",
-		"LOREMPICSUM_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["LOREMPICSUM_TEST_SEED_ENTID"])
@@ -128,7 +127,6 @@ func seedBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["LOREMPICSUM_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["LOREMPICSUM_APIKEY"],
 			},
 			extra,
 		})

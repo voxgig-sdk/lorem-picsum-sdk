@@ -72,14 +72,12 @@ def get_random_image_direct_setup(mockres)
   env = Runner.env_override({
     "LOREMPICSUM_TEST_GET_RANDOM_IMAGE_ENTID" => {},
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["LOREMPICSUM_APIKEY"],
     }
     client = LoremPicsumSDK.new(merged_opts)
     return {
