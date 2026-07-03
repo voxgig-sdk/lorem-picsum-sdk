@@ -117,12 +117,14 @@ func heightwebpDirectSetup(mockres any) *heightwebpDirectSetupResult {
 	env := envOverride(map[string]any{
 		"LOREMPICSUM_TEST_HEIGHTWEBP_ENTID": map[string]any{},
 		"LOREMPICSUM_TEST_LIVE":    "FALSE",
+		"LOREMPICSUM_APIKEY":       "NONE",
 	})
 
 	live := env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["LOREMPICSUM_APIKEY"],
 		}
 		client := sdk.NewLoremPicsumSDK(mergedOpts)
 

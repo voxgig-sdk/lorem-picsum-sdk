@@ -1,24 +1,8 @@
 # LoremPicsum SDK
 
-Drop-in placeholder images via simple URL paths — random, seeded, grayscale, or blurred
+Lorem Picsum client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Lorem Picsum
-
-[Lorem Picsum](https://picsum.photos) is a placeholder-image service created by David Marby and Nijiko Yonskai. It serves random photos sourced from [Unsplash](https://unsplash.com) through a simple URL-based API, with infrastructure powered by Fastly.
-
-What you get from the API:
-
-- Random images at any size: `https://picsum.photos/{width}/{height}` or `https://picsum.photos/{size}` for squares.
-- Specific images by ID: `/id/{image_id}/{width}/{height}`.
-- Reproducible random images by seed: `/seed/{seed}/{width}/{height}`.
-- A paginated list of available images via `/v2/list` (supports `?page` and `?limit`).
-- Image metadata (author, dimensions, URLs) via `/id/{id}/info` or `/seed/{seed}/info`.
-- Visual effects through query parameters: `?grayscale`, `?blur={1-10}`, and `?random={n}` for cache busting. Effects can be combined.
-- Format selection by extension: `.jpg` or `.webp`.
-
-The service requires no authentication or API key. CORS is not enabled, so image requests are typically made from `<img>` tags or server-side rather than via browser `fetch`.
 
 ## Try it
 
@@ -52,27 +36,31 @@ gem install lorem-picsum-sdk
 luarocks install lorem-picsum-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { LoremPicsumSDK } from 'lorem-picsum'
 
-const client = new LoremPicsumSDK({})
+const client = new LoremPicsumSDK({
+  apikey: process.env.LOREM-PICSUM_APIKEY,
+})
 
+// Load getrandomimage data
+const getrandomimage = await client.GetRandomImage().load({})
+console.log(getrandomimage.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,15 +90,15 @@ The API exposes 9 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetRandomImage** | Fetch a random placeholder image at a given width and height — `GET /{width}/{height}`. | `/{width}/{height}` |
-| **GetRandomSquareImage** | Fetch a random square placeholder image at a given size — `GET /{size}`. | `/{size}` |
-| **Height** | Variant routes for requesting an image at a specific height (and width), returned as JPEG. | `/{width}/{height}.jpg` |
-| **Heightwebp** | Variant routes for requesting an image at a specific height (and width), returned as WebP via the `.webp` extension. | `/{width}/{height}.webp` |
-| **IdInfo** | Metadata for a specific image identified by `id` — `GET /id/{id}/info`, returning author, dimensions, and URLs. | `/id/{id}/info` |
-| **Idn** | Fetch a specific image by numeric `id` at a given width and height — `GET /id/{id}/{width}/{height}`. | `/id/{id}/{width}/{height}` |
-| **List** | Paginated list of available images with metadata — `GET /v2/list` (supports `?page` and `?limit`). | `/v2/list` |
-| **Seed** | Fetch a reproducible random image keyed by a `seed` string — `GET /seed/{seed}/{width}/{height}`. | `/seed/{seed}/{width}/{height}` |
-| **SeedInfo** | Metadata for the image that a given `seed` resolves to — `GET /seed/{seed}/info`. | `/seed/{seed}/info` |
+| **GetRandomImage** |  | `/{width}/{height}` |
+| **GetRandomSquareImage** |  | `/{size}` |
+| **Height** |  | `/{width}/{height}.jpg` |
+| **Heightwebp** |  | `/{width}/{height}.webp` |
+| **IdInfo** |  | `/id/{id}/info` |
+| **Idn** |  | `/id/{id}/{width}/{height}` |
+| **List** |  | `/v2/list` |
+| **Seed** |  | `/seed/{seed}/{width}/{height}` |
+| **SeedInfo** |  | `/seed/{seed}/info` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -120,15 +108,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from lorempicsum_sdk import LoremPicsumSDK
 
-client = LoremPicsumSDK({})
+client = LoremPicsumSDK({
+    "apikey": os.environ.get("LOREM-PICSUM_APIKEY"),
+})
 
 
 # Load a specific getrandomimage
-getrandomimage, err = client.GetRandomImage(None).load(
-    {"id": "example_id"}, None
-)
+getrandomimage, err = client.GetRandomImage().load({"id": "example_id"})
+print(getrandomimage)
 ```
 
 ### PHP
@@ -137,13 +127,14 @@ getrandomimage, err = client.GetRandomImage(None).load(
 <?php
 require_once 'lorempicsum_sdk.php';
 
-$client = new LoremPicsumSDK([]);
+$client = new LoremPicsumSDK([
+    "apikey" => getenv("LOREM-PICSUM_APIKEY"),
+]);
 
 
 // Load a specific getrandomimage
-[$getrandomimage, $err] = $client->GetRandomImage(null)->load(
-    ["id" => "example_id"], null
-);
+[$getrandomimage, $err] = $client->GetRandomImage()->load(["id" => "example_id"]);
+print_r($getrandomimage);
 ```
 
 ### Golang
@@ -151,8 +142,13 @@ $client = new LoremPicsumSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
 
-client := sdk.NewLoremPicsumSDK(map[string]any{})
+client := sdk.NewLoremPicsumSDK(map[string]any{
+    "apikey": os.Getenv("LOREM-PICSUM_APIKEY"),
+})
 
+// Load getrandomimage data
+getrandomimage, err := client.GetRandomImage(nil).Load(map[string]any{}, nil)
+fmt.Println(getrandomimage)
 ```
 
 ### Ruby
@@ -160,13 +156,14 @@ client := sdk.NewLoremPicsumSDK(map[string]any{})
 ```ruby
 require_relative "LoremPicsum_sdk"
 
-client = LoremPicsumSDK.new({})
+client = LoremPicsumSDK.new({
+  "apikey" => ENV["LOREM-PICSUM_APIKEY"],
+})
 
 
 # Load a specific getrandomimage
-getrandomimage, err = client.GetRandomImage(nil).load(
-  { "id" => "example_id" }, nil
-)
+getrandomimage, err = client.GetRandomImage().load({ "id" => "example_id" })
+puts getrandomimage
 ```
 
 ### Lua
@@ -174,13 +171,14 @@ getrandomimage, err = client.GetRandomImage(nil).load(
 ```lua
 local sdk = require("lorem-picsum_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("LOREM-PICSUM_APIKEY"),
+})
 
 
 -- Load a specific getrandomimage
-local getrandomimage, err = client:GetRandomImage(nil):load(
-  { id = "example_id" }, nil
-)
+local getrandomimage, err = client:GetRandomImage():load({ id = "example_id" })
+print(getrandomimage)
 ```
 
 ## Unit testing in offline mode
@@ -199,25 +197,21 @@ const result = await client.GetRandomImage().load({ id: 'test01' })
 ### Python
 
 ```python
-client = LoremPicsumSDK.test(None, None)
-result, err = client.GetRandomImage(None).load(
-    {"id": "test01"}, None
-)
+client = LoremPicsumSDK.test()
+result, err = client.GetRandomImage().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = LoremPicsumSDK::test(null, null);
-[$result, $err] = $client->GetRandomImage(null)->load(
-    ["id" => "test01"], null
-);
+$client = LoremPicsumSDK::test();
+[$result, $err] = $client->GetRandomImage()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetRandomImage(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -226,19 +220,15 @@ result, err := client.GetRandomImage(nil).Load(
 ### Ruby
 
 ```ruby
-client = LoremPicsumSDK.test(nil, nil)
-result, err = client.GetRandomImage(nil).load(
-  { "id" => "test01" }, nil
-)
+client = LoremPicsumSDK.test
+result, err = client.GetRandomImage().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetRandomImage(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetRandomImage():load({ id = "test01" })
 ```
 
 ## How it works
@@ -342,14 +332,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Lorem Picsum
-
-- Upstream: [https://picsum.photos](https://picsum.photos)
-
-- Images are sourced from [Unsplash](https://unsplash.com) and served via Picsum's CDN.
-- The Picsum service itself is free to use; the underlying [source code](https://github.com/DMarby/picsum-photos) is open source.
-- No attribution is required by Picsum, though the original photographers can be looked up via the `/id/{id}/info` endpoint.
 
 ---
 

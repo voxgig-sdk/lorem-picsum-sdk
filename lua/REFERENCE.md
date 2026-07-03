@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -126,7 +126,7 @@ local get_random_image = client:GetRandomImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRandomImage(nil):load({ id = "get_random_image_id" }, nil)
+local result, err = client:GetRandomImage():load({ id = "get_random_image_id" })
 ```
 
 ### Common Methods
@@ -172,7 +172,7 @@ local get_random_square_image = client:GetRandomSquareImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRandomSquareImage(nil):load({ id = "get_random_square_image_id" }, nil)
+local result, err = client:GetRandomSquareImage():load({ id = "get_random_square_image_id" })
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ local height = client:Height(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Height(nil):load({ id = "height_id" }, nil)
+local result, err = client:Height():load({ id = "height_id" })
 ```
 
 ### Common Methods
@@ -264,7 +264,7 @@ local heightwebp = client:Heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Heightwebp(nil):load({ id = "heightwebp_id" }, nil)
+local result, err = client:Heightwebp():load({ id = "heightwebp_id" })
 ```
 
 ### Common Methods
@@ -321,7 +321,7 @@ local id_info = client:IdInfo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IdInfo(nil):load({ id = "id_info_id" }, nil)
+local result, err = client:IdInfo():load({ id = "id_info_id" })
 ```
 
 ### Common Methods
@@ -367,7 +367,7 @@ local idn = client:Idn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Idn(nil):load({ id = "idn_id" }, nil)
+local result, err = client:Idn():load({ id = "idn_id" })
 ```
 
 ### Common Methods
@@ -424,7 +424,7 @@ local list = client:List(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:List(nil):list(nil, nil)
+local results, err = client:List():list()
 ```
 
 ### Common Methods
@@ -470,7 +470,7 @@ local seed = client:Seed(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Seed(nil):load({ id = "seed_id" }, nil)
+local result, err = client:Seed():load({ id = "seed_id" })
 ```
 
 ### Common Methods
@@ -527,7 +527,7 @@ local seed_info = client:SeedInfo(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:SeedInfo(nil):load({ id = "seed_info_id" }, nil)
+local result, err = client:SeedInfo():load({ id = "seed_info_id" })
 ```
 
 ### Common Methods

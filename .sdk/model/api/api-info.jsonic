@@ -16,38 +16,7 @@ main: {
       ]
       title: "Lorem Picsum"
       version: "2.0.0"
-      tagline: "Drop-in placeholder images via simple URL paths — random, seeded, grayscale, or blurred"
-      homepage: "https://picsum.photos"
-      docs_url: "https://picsum.photos"
-      license_short: "Images sourced from Unsplash; usage subject to the Unsplash license"
-      license_md: `- Images are sourced from [Unsplash](https://unsplash.com) and served via Picsum's CDN.
-- The Picsum service itself is free to use; the underlying [source code](https://github.com/DMarby/picsum-photos) is open source.
-- No attribution is required by Picsum, though the original photographers can be looked up via the \`/id/{id}/info\` endpoint.`
-      about_md: `[Lorem Picsum](https://picsum.photos) is a placeholder-image service created by David Marby and Nijiko Yonskai. It serves random photos sourced from [Unsplash](https://unsplash.com) through a simple URL-based API, with infrastructure powered by Fastly.
-
-What you get from the API:
-
-- Random images at any size: \`https://picsum.photos/{width}/{height}\` or \`https://picsum.photos/{size}\` for squares.
-- Specific images by ID: \`/id/{image_id}/{width}/{height}\`.
-- Reproducible random images by seed: \`/seed/{seed}/{width}/{height}\`.
-- A paginated list of available images via \`/v2/list\` (supports \`?page\` and \`?limit\`).
-- Image metadata (author, dimensions, URLs) via \`/id/{id}/info\` or \`/seed/{seed}/info\`.
-- Visual effects through query parameters: \`?grayscale\`, \`?blur={1-10}\`, and \`?random={n}\` for cache busting. Effects can be combined.
-- Format selection by extension: \`.jpg\` or \`.webp\`.
-
-The service requires no authentication or API key. CORS is not enabled, so image requests are typically made from \`<img>\` tags or server-side rather than via browser \`fetch\`.`
-      entity_desc: {
-        get_random_image: "Fetch a random placeholder image at a given width and height — `GET /{width}/{height}`."
-        get_random_square_image: "Fetch a random square placeholder image at a given size — `GET /{size}`."
-        height: "Variant routes for requesting an image at a specific height (and width), returned as JPEG."
-        heightwebp: "Variant routes for requesting an image at a specific height (and width), returned as WebP via the `.webp` extension."
-        id_info: "Metadata for a specific image identified by `id` — `GET /id/{id}/info`, returning author, dimensions, and URLs."
-        idn: "Fetch a specific image by numeric `id` at a given width and height — `GET /id/{id}/{width}/{height}`."
-        list: "Paginated list of available images with metadata — `GET /v2/list` (supports `?page` and `?limit`)."
-        seed: "Fetch a reproducible random image keyed by a `seed` string — `GET /seed/{seed}/{width}/{height}`."
-        seed_info: "Metadata for the image that a given `seed` resolves to — `GET /seed/{seed}/info`."
-      }
-      auth: false
     }
   }
 }
+

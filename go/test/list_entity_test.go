@@ -119,6 +119,7 @@ func listBasicSetup(extra map[string]any) *entityTestSetup {
 		"LOREMPICSUM_TEST_LIST_ENTID": idmap,
 		"LOREMPICSUM_TEST_LIVE":      "FALSE",
 		"LOREMPICSUM_TEST_EXPLAIN":   "FALSE",
+		"LOREMPICSUM_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["LOREMPICSUM_TEST_LIST_ENTID"])
@@ -129,6 +130,7 @@ func listBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["LOREMPICSUM_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["LOREMPICSUM_APIKEY"],
 			},
 			extra,
 		})

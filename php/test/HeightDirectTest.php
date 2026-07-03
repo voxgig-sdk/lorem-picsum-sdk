@@ -77,12 +77,14 @@ function height_direct_setup($mockres)
     $env = Runner::env_override([
         "LOREMPICSUM_TEST_HEIGHT_ENTID" => [],
         "LOREMPICSUM_TEST_LIVE" => "FALSE",
+        "LOREMPICSUM_APIKEY" => "NONE",
     ]);
 
     $live = $env["LOREMPICSUM_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["LOREMPICSUM_APIKEY"],
         ];
         $client = new LoremPicsumSDK($merged_opts);
         return [
