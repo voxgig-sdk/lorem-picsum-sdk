@@ -10,7 +10,7 @@ The Lua SDK for the LoremPicsum API — an entity-oriented client using Lua conv
 
 ## Install
 ```bash
-luarocks install lorem-picsum-sdk
+luarocks install voxgig-sdk-lorem-picsum
 ```
 
 If the module is not yet published, add the source directory to

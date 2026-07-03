@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/lorem-picsum",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Lorem Picsum public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "lorem-picsum"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/lorem-picsum-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/lorem-picsum-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/lorem-picsum-sdk/issues"
+  },
   "main": "dist/LoremPicsumSDK.js",
   "type": "commonjs",
   "types": "dist/LoremPicsumSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "LoremPicsum",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

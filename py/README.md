@@ -10,7 +10,7 @@ The Python SDK for the LoremPicsum API — an entity-oriented client following P
 
 ## Install
 ```bash
-pip install lorem-picsum-sdk
+pip install voxgig-sdk-lorem-picsum
 ```
 
 Or install from source:

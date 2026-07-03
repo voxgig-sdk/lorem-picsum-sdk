@@ -10,13 +10,13 @@ The Ruby SDK for the LoremPicsum API — an entity-oriented client using idiomat
 
 ## Install
 ```bash
-gem install lorem-picsum-sdk
+gem install voxgig-sdk-lorem-picsum
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "lorem-picsum-sdk"
+gem "voxgig-sdk-lorem-picsum"
 ```
 
 Then run:

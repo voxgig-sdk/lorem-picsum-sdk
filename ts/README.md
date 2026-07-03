@@ -10,7 +10,7 @@ The TypeScript SDK for the LoremPicsum API — a type-safe, entity-oriented clie
 
 ## Install
 ```bash
-npm install lorem-picsum
+npm install @voxgig-sdk/lorem-picsum
 ```
 ## Tutorial: your first API call
 
