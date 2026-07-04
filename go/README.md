@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/lorem-picsum-sdk/go=../lorem-picsum-s
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
-    "github.com/voxgig-sdk/lorem-picsum-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load a getrandomimage
-
-```go
-    result, err = client.GetRandomImage(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single getrandomimage — the value is the loaded record.
+    getrandomimage, err := client.GetRandomImage(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(getrandomimage)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.GetRandomImage(nil).Load(
+getrandomimage, err := client.GetRandomImage(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(getrandomimage) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -194,8 +191,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetRandomSquareImage` | `(data map[string]any) LoremPicsumEntity` | Create a GetRandomSquareImage entity instance. |
 | `Height` | `(data map[string]any) LoremPicsumEntity` | Create a Height entity instance. |
 | `Heightwebp` | `(data map[string]any) LoremPicsumEntity` | Create a Heightwebp entity instance. |
-| `IdInfo` | `(data map[string]any) LoremPicsumEntity` | Create a IdInfo entity instance. |
-| `Idn` | `(data map[string]any) LoremPicsumEntity` | Create a Idn entity instance. |
+| `IdInfo` | `(data map[string]any) LoremPicsumEntity` | Create an IdInfo entity instance. |
+| `Idn` | `(data map[string]any) LoremPicsumEntity` | Create an Idn entity instance. |
 | `List` | `(data map[string]any) LoremPicsumEntity` | Create a List entity instance. |
 | `Seed` | `(data map[string]any) LoremPicsumEntity` | Create a Seed entity instance. |
 | `SeedInfo` | `(data map[string]any) LoremPicsumEntity` | Create a SeedInfo entity instance. |
@@ -218,17 +215,24 @@ All entities implement the `LoremPicsumEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    getrandomimage, err := client.GetRandomImage(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // getrandomimage is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -349,7 +353,11 @@ Create an instance: `get_random_image := client.GetRandomImage(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GetRandomImage(nil).Load(map[string]any{"id": "get_random_image_id"}, nil)
+get_random_image, err := client.GetRandomImage(nil).Load(map[string]any{"id": "get_random_image_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(get_random_image) // the loaded record
 ```
 
 
@@ -366,7 +374,11 @@ Create an instance: `get_random_square_image := client.GetRandomSquareImage(nil)
 #### Example: Load
 
 ```go
-result, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": "get_random_square_image_id"}, nil)
+get_random_square_image, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": "get_random_square_image_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(get_random_square_image) // the loaded record
 ```
 
 
@@ -383,7 +395,11 @@ Create an instance: `height := client.Height(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Height(nil).Load(map[string]any{"id": "height_id"}, nil)
+height, err := client.Height(nil).Load(map[string]any{"id": "height_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(height) // the loaded record
 ```
 
 
@@ -400,7 +416,11 @@ Create an instance: `heightwebp := client.Heightwebp(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Heightwebp(nil).Load(map[string]any{"id": "heightwebp_id"}, nil)
+heightwebp, err := client.Heightwebp(nil).Load(map[string]any{"id": "heightwebp_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(heightwebp) // the loaded record
 ```
 
 
@@ -428,7 +448,11 @@ Create an instance: `id_info := client.IdInfo(nil)`
 #### Example: Load
 
 ```go
-result, err := client.IdInfo(nil).Load(map[string]any{"id": "id_info_id"}, nil)
+id_info, err := client.IdInfo(nil).Load(map[string]any{"id": "id_info_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(id_info) // the loaded record
 ```
 
 
@@ -445,7 +469,11 @@ Create an instance: `idn := client.Idn(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Idn(nil).Load(map[string]any{"id": "idn_id"}, nil)
+idn, err := client.Idn(nil).Load(map[string]any{"id": "idn_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(idn) // the loaded record
 ```
 
 
@@ -473,7 +501,11 @@ Create an instance: `list := client.List(nil)`
 #### Example: List
 
 ```go
-results, err := client.List(nil).List(nil, nil)
+lists, err := client.List(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(lists) // the array of records
 ```
 
 
@@ -490,7 +522,11 @@ Create an instance: `seed := client.Seed(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Seed(nil).Load(map[string]any{"id": "seed_id"}, nil)
+seed, err := client.Seed(nil).Load(map[string]any{"id": "seed_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(seed) // the loaded record
 ```
 
 
@@ -518,7 +554,11 @@ Create an instance: `seed_info := client.SeedInfo(nil)`
 #### Example: Load
 
 ```go
-result, err := client.SeedInfo(nil).Load(map[string]any{"id": "seed_info_id"}, nil)
+seed_info, err := client.SeedInfo(nil).Load(map[string]any{"id": "seed_info_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(seed_info) // the loaded record
 ```
 
 

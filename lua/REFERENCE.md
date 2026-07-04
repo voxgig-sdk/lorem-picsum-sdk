@@ -115,7 +115,7 @@ same parameters as `direct()`.
 ## GetRandomImageEntity
 
 ```lua
-local get_random_image = client:get_random_image(nil)
+local get_random_image = client:GetRandomImage(nil)
 ```
 
 ### Operations
@@ -125,7 +125,7 @@ local get_random_image = client:get_random_image(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_random_image():load({ id = "get_random_image_id" })
+local result, err = client:GetRandomImage():load({ id = "get_random_image_id" })
 ```
 
 ### Common Methods
@@ -161,7 +161,7 @@ Return the entity name.
 ## GetRandomSquareImageEntity
 
 ```lua
-local get_random_square_image = client:get_random_square_image(nil)
+local get_random_square_image = client:GetRandomSquareImage(nil)
 ```
 
 ### Operations
@@ -171,7 +171,7 @@ local get_random_square_image = client:get_random_square_image(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_random_square_image():load({ id = "get_random_square_image_id" })
+local result, err = client:GetRandomSquareImage():load({ id = "get_random_square_image_id" })
 ```
 
 ### Common Methods
@@ -207,7 +207,7 @@ Return the entity name.
 ## HeightEntity
 
 ```lua
-local height = client:height(nil)
+local height = client:Height(nil)
 ```
 
 ### Operations
@@ -217,7 +217,7 @@ local height = client:height(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:height():load({ id = "height_id" })
+local result, err = client:Height():load({ id = "height_id" })
 ```
 
 ### Common Methods
@@ -253,7 +253,7 @@ Return the entity name.
 ## HeightwebpEntity
 
 ```lua
-local heightwebp = client:heightwebp(nil)
+local heightwebp = client:Heightwebp(nil)
 ```
 
 ### Operations
@@ -263,7 +263,7 @@ local heightwebp = client:heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:heightwebp():load({ id = "heightwebp_id" })
+local result, err = client:Heightwebp():load({ id = "heightwebp_id" })
 ```
 
 ### Common Methods
@@ -299,7 +299,7 @@ Return the entity name.
 ## IdInfoEntity
 
 ```lua
-local id_info = client:id_info(nil)
+local id_info = client:IdInfo(nil)
 ```
 
 ### Fields
@@ -320,7 +320,7 @@ local id_info = client:id_info(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:id_info():load({ id = "id_info_id" })
+local result, err = client:IdInfo():load({ id = "id_info_id" })
 ```
 
 ### Common Methods
@@ -356,7 +356,7 @@ Return the entity name.
 ## IdnEntity
 
 ```lua
-local idn = client:idn(nil)
+local idn = client:Idn(nil)
 ```
 
 ### Operations
@@ -366,7 +366,7 @@ local idn = client:idn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:idn():load({ id = "idn_id" })
+local result, err = client:Idn():load({ id = "idn_id" })
 ```
 
 ### Common Methods
@@ -402,7 +402,7 @@ Return the entity name.
 ## ListEntity
 
 ```lua
-local list = client:list(nil)
+local list = client:List(nil)
 ```
 
 ### Fields
@@ -423,7 +423,7 @@ local list = client:list(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:list():list()
+local results, err = client:List():list()
 ```
 
 ### Common Methods
@@ -459,7 +459,7 @@ Return the entity name.
 ## SeedEntity
 
 ```lua
-local seed = client:seed(nil)
+local seed = client:Seed(nil)
 ```
 
 ### Operations
@@ -469,7 +469,7 @@ local seed = client:seed(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:seed():load({ id = "seed_id" })
+local result, err = client:Seed():load({ id = "seed_id" })
 ```
 
 ### Common Methods
@@ -505,7 +505,7 @@ Return the entity name.
 ## SeedInfoEntity
 
 ```lua
-local seed_info = client:seed_info(nil)
+local seed_info = client:SeedInfo(nil)
 ```
 
 ### Fields
@@ -526,7 +526,7 @@ local seed_info = client:seed_info(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:seed_info():load({ id = "seed_info_id" })
+local result, err = client:SeedInfo():load({ id = "seed_info_id" })
 ```
 
 ### Common Methods

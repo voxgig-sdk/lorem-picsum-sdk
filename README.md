@@ -26,9 +26,9 @@ import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
 
 const client = new LoremPicsumSDK()
 
-// Load getrandomimage data
-const getrandomimage = await client.getrandomimage.load({})
-console.log(getrandomimage.data)
+// Load getrandomimage data (returns a GetRandomImage)
+const getrandomimage = await client.GetRandomImage().load()
+console.log(getrandomimage)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -92,8 +92,8 @@ from lorempicsum_sdk import LoremPicsumSDK
 client = LoremPicsumSDK()
 
 
-# Load a specific getrandomimage
-getrandomimage = client.getrandomimage.load({"id": "example_id"})
+# Load a specific getrandomimage (returns the record, raises on error)
+getrandomimage = client.GetRandomImage().load({"id": "example_id"})
 print(getrandomimage)
 ```
 
@@ -106,8 +106,8 @@ require_once 'lorempicsum_sdk.php';
 $client = new LoremPicsumSDK();
 
 
-// Load a specific getrandomimage
-$getrandomimage = $client->getrandomimage()->load(["id" => "example_id"]);
+// Load a specific getrandomimage (returns the bare record; throws on error)
+$getrandomimage = $client->GetRandomImage()->load(["id" => "example_id"]);
 print_r($getrandomimage);
 ```
 
@@ -131,8 +131,8 @@ require_relative "LoremPicsum_sdk"
 client = LoremPicsumSDK.new
 
 
-# Load a specific getrandomimage
-getrandomimage = client.getrandomimage.load({ "id" => "example_id" })
+# Load a specific getrandomimage (returns the bare record; raises on error)
+getrandomimage = client.GetRandomImage.load({ "id" => "example_id" })
 puts getrandomimage
 ```
 
@@ -145,7 +145,7 @@ local client = sdk.new()
 
 
 -- Load a specific getrandomimage
-local getrandomimage, err = client:getrandomimage():load({ id = "example_id" })
+local getrandomimage, err = client:GetRandomImage():load({ id = "example_id" })
 print(getrandomimage)
 ```
 
@@ -158,22 +158,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = LoremPicsumSDK.test()
-const result = await client.getrandomimage.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getrandomimage = await client.GetRandomImage().load({ id: 'test01' })
+// getrandomimage is a bare GetRandomImage populated with mock data
+console.log(getrandomimage)
 ```
 
 ### Python
 
 ```python
 client = LoremPicsumSDK.test()
-result = client.getrandomimage.load({"id": "test01"})
+getrandomimage = client.GetRandomImage().load({"id": "test01"})
+print(getrandomimage)
 ```
 
 ### PHP
 
 ```php
-$client = LoremPicsumSDK::test();
-$result = $client->getrandomimage()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = LoremPicsumSDK::test([
+    "entity" => ["getrandomimage" => ["test01" => ["id" => "test01"]]],
+]);
+$getrandomimage = $client->GetRandomImage()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -188,15 +193,18 @@ result, err := client.GetRandomImage(nil).Load(
 ### Ruby
 
 ```ruby
-client = LoremPicsumSDK.test
-result = client.getrandomimage.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = LoremPicsumSDK.test({
+  "entity" => { "getrandomimage" => { "test01" => { "id" => "test01" } } },
+})
+getrandomimage = client.GetRandomImage.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getrandomimage():load({ id = "test01" })
+local result, err = client:GetRandomImage():load({ id = "test01" })
 ```
 
 ## How it works
@@ -244,6 +252,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

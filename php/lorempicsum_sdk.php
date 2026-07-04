@@ -233,10 +233,10 @@ class LoremPicsumSDK
 
     private $_get_random_image = null;
 
-    // Idiomatic facade: $client->get_random_image()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetRandomImage() (PHP method
-    // names are case-insensitive).
-    public function get_random_image($data = null)
+    // Canonical facade: $client->GetRandomImage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_random_image()
+    // resolves here too.
+    public function GetRandomImage($data = null)
     {
         require_once __DIR__ . '/entity/get_random_image_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class LoremPicsumSDK
 
     private $_get_random_square_image = null;
 
-    // Idiomatic facade: $client->get_random_square_image()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetRandomSquareImage() (PHP method
-    // names are case-insensitive).
-    public function get_random_square_image($data = null)
+    // Canonical facade: $client->GetRandomSquareImage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_random_square_image()
+    // resolves here too.
+    public function GetRandomSquareImage($data = null)
     {
         require_once __DIR__ . '/entity/get_random_square_image_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class LoremPicsumSDK
 
     private $_height = null;
 
-    // Idiomatic facade: $client->height()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Height() (PHP method
-    // names are case-insensitive).
-    public function height($data = null)
+    // Canonical facade: $client->Height()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->height()
+    // resolves here too.
+    public function Height($data = null)
     {
         require_once __DIR__ . '/entity/height_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class LoremPicsumSDK
 
     private $_heightwebp = null;
 
-    // Idiomatic facade: $client->heightwebp()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Heightwebp() (PHP method
-    // names are case-insensitive).
-    public function heightwebp($data = null)
+    // Canonical facade: $client->Heightwebp()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->heightwebp()
+    // resolves here too.
+    public function Heightwebp($data = null)
     {
         require_once __DIR__ . '/entity/heightwebp_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class LoremPicsumSDK
 
     private $_id_info = null;
 
-    // Idiomatic facade: $client->id_info()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias IdInfo() (PHP method
-    // names are case-insensitive).
-    public function id_info($data = null)
+    // Canonical facade: $client->IdInfo()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->id_info()
+    // resolves here too.
+    public function IdInfo($data = null)
     {
         require_once __DIR__ . '/entity/id_info_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class LoremPicsumSDK
 
     private $_idn = null;
 
-    // Idiomatic facade: $client->idn()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Idn() (PHP method
-    // names are case-insensitive).
-    public function idn($data = null)
+    // Canonical facade: $client->Idn()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->idn()
+    // resolves here too.
+    public function Idn($data = null)
     {
         require_once __DIR__ . '/entity/idn_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class LoremPicsumSDK
 
     private $_list = null;
 
-    // Idiomatic facade: $client->list()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias List() (PHP method
-    // names are case-insensitive).
-    public function list($data = null)
+    // Canonical facade: $client->List()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->list()
+    // resolves here too.
+    public function List($data = null)
     {
         require_once __DIR__ . '/entity/list_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class LoremPicsumSDK
 
     private $_seed = null;
 
-    // Idiomatic facade: $client->seed()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Seed() (PHP method
-    // names are case-insensitive).
-    public function seed($data = null)
+    // Canonical facade: $client->Seed()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->seed()
+    // resolves here too.
+    public function Seed($data = null)
     {
         require_once __DIR__ . '/entity/seed_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class LoremPicsumSDK
 
     private $_seed_info = null;
 
-    // Idiomatic facade: $client->seed_info()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SeedInfo() (PHP method
-    // names are case-insensitive).
-    public function seed_info($data = null)
+    // Canonical facade: $client->SeedInfo()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->seed_info()
+    // resolves here too.
+    public function SeedInfo($data = null)
     {
         require_once __DIR__ . '/entity/seed_info_entity.php';
         if ($data === null) {

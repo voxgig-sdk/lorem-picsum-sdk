@@ -212,126 +212,63 @@ class LoremPicsumSDK {
 
 
 
-  _get_random_image?: GetRandomImageEntity
-
-  // Idiomatic facade: `client.get_random_image.list()` / `client.get_random_image.load({ id })`.
-  get get_random_image(): GetRandomImageEntity {
-    return (this._get_random_image ??= new GetRandomImageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_random_image` instead. */
+  // Entity access: `client.GetRandomImage().list()` / `client.GetRandomImage().load({ id })`.
   GetRandomImage(data?: any) {
     const self = this
     return new GetRandomImageEntity(self,data)
   }
 
 
-  _get_random_square_image?: GetRandomSquareImageEntity
-
-  // Idiomatic facade: `client.get_random_square_image.list()` / `client.get_random_square_image.load({ id })`.
-  get get_random_square_image(): GetRandomSquareImageEntity {
-    return (this._get_random_square_image ??= new GetRandomSquareImageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_random_square_image` instead. */
+  // Entity access: `client.GetRandomSquareImage().list()` / `client.GetRandomSquareImage().load({ id })`.
   GetRandomSquareImage(data?: any) {
     const self = this
     return new GetRandomSquareImageEntity(self,data)
   }
 
 
-  _height?: HeightEntity
-
-  // Idiomatic facade: `client.height.list()` / `client.height.load({ id })`.
-  get height(): HeightEntity {
-    return (this._height ??= new HeightEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.height` instead. */
+  // Entity access: `client.Height().list()` / `client.Height().load({ id })`.
   Height(data?: any) {
     const self = this
     return new HeightEntity(self,data)
   }
 
 
-  _heightwebp?: HeightwebpEntity
-
-  // Idiomatic facade: `client.heightwebp.list()` / `client.heightwebp.load({ id })`.
-  get heightwebp(): HeightwebpEntity {
-    return (this._heightwebp ??= new HeightwebpEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.heightwebp` instead. */
+  // Entity access: `client.Heightwebp().list()` / `client.Heightwebp().load({ id })`.
   Heightwebp(data?: any) {
     const self = this
     return new HeightwebpEntity(self,data)
   }
 
 
-  _id_info?: IdInfoEntity
-
-  // Idiomatic facade: `client.id_info.list()` / `client.id_info.load({ id })`.
-  get id_info(): IdInfoEntity {
-    return (this._id_info ??= new IdInfoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.id_info` instead. */
+  // Entity access: `client.IdInfo().list()` / `client.IdInfo().load({ id })`.
   IdInfo(data?: any) {
     const self = this
     return new IdInfoEntity(self,data)
   }
 
 
-  _idn?: IdnEntity
-
-  // Idiomatic facade: `client.idn.list()` / `client.idn.load({ id })`.
-  get idn(): IdnEntity {
-    return (this._idn ??= new IdnEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.idn` instead. */
+  // Entity access: `client.Idn().list()` / `client.Idn().load({ id })`.
   Idn(data?: any) {
     const self = this
     return new IdnEntity(self,data)
   }
 
 
-  _list?: ListEntity
-
-  // Idiomatic facade: `client.list.list()` / `client.list.load({ id })`.
-  get list(): ListEntity {
-    return (this._list ??= new ListEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.list` instead. */
+  // Entity access: `client.List().list()` / `client.List().load({ id })`.
   List(data?: any) {
     const self = this
     return new ListEntity(self,data)
   }
 
 
-  _seed?: SeedEntity
-
-  // Idiomatic facade: `client.seed.list()` / `client.seed.load({ id })`.
-  get seed(): SeedEntity {
-    return (this._seed ??= new SeedEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.seed` instead. */
+  // Entity access: `client.Seed().list()` / `client.Seed().load({ id })`.
   Seed(data?: any) {
     const self = this
     return new SeedEntity(self,data)
   }
 
 
-  _seed_info?: SeedInfoEntity
-
-  // Idiomatic facade: `client.seed_info.list()` / `client.seed_info.load({ id })`.
-  get seed_info(): SeedInfoEntity {
-    return (this._seed_info ??= new SeedInfoEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.seed_info` instead. */
+  // Entity access: `client.SeedInfo().list()` / `client.SeedInfo().load({ id })`.
   SeedInfo(data?: any) {
     const self = this
     return new SeedInfoEntity(self,data)

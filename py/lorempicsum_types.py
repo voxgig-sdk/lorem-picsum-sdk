@@ -4,58 +4,54 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class GetRandomImage:
+class GetRandomImage(TypedDict):
     pass
 
 
-@dataclass
-class GetRandomImageLoadMatch:
+class GetRandomImageLoadMatch(TypedDict):
     height: int
     width: int
 
 
-@dataclass
-class GetRandomSquareImage:
+class GetRandomSquareImage(TypedDict):
     pass
 
 
-@dataclass
-class GetRandomSquareImageLoadMatch:
+class GetRandomSquareImageLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class Height:
+class Height(TypedDict):
     pass
 
 
-@dataclass
-class HeightLoadMatch:
+class HeightLoadMatch(TypedDict):
     height: int
     width: int
 
 
-@dataclass
-class Heightwebp:
+class Heightwebp(TypedDict):
     pass
 
 
-@dataclass
-class HeightwebpLoadMatch:
+class HeightwebpLoadMatch(TypedDict):
     height: int
     width: int
 
 
-@dataclass
-class IdInfo:
+class IdInfo(TypedDict):
     author: str
     download_url: str
     height: int
@@ -64,25 +60,21 @@ class IdInfo:
     width: int
 
 
-@dataclass
-class IdInfoLoadMatch:
+class IdInfoLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Idn:
+class Idn(TypedDict):
     pass
 
 
-@dataclass
-class IdnLoadMatch:
+class IdnLoadMatch(TypedDict):
     height: int
     id: str
     width: int
 
 
-@dataclass
-class List:
+class List(TypedDict):
     author: str
     download_url: str
     height: int
@@ -91,30 +83,26 @@ class List:
     width: int
 
 
-@dataclass
-class ListListMatch:
-    author: Optional[str] = None
-    download_url: Optional[str] = None
-    height: Optional[int] = None
-    id: Optional[str] = None
-    url: Optional[str] = None
-    width: Optional[int] = None
+class ListListMatch(TypedDict, total=False):
+    author: str
+    download_url: str
+    height: int
+    id: str
+    url: str
+    width: int
 
 
-@dataclass
-class Seed:
+class Seed(TypedDict):
     pass
 
 
-@dataclass
-class SeedLoadMatch:
+class SeedLoadMatch(TypedDict):
     height: int
     seed: str
     width: int
 
 
-@dataclass
-class SeedInfo:
+class SeedInfo(TypedDict):
     author: str
     download_url: str
     height: int
@@ -123,7 +111,5 @@ class SeedInfo:
     width: int
 
 
-@dataclass
-class SeedInfoLoadMatch:
+class SeedInfoLoadMatch(TypedDict):
     id: str
-

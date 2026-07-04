@@ -32,8 +32,9 @@ client = LoremPicsumSDK.new
 
 ```ruby
 begin
-  result = client.getrandomimage.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare GetRandomImage record (raises on error).
+  getrandomimage = client.GetRandomImage.load({ "id" => "example_id" })
+  puts getrandomimage
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = LoremPicsumSDK.test
+client = LoremPicsumSDK.test({
+  "entity" => { "getrandomimage" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.getrandomimage.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+getrandomimage = client.GetRandomImage.load({ "id" => "test01" })
+puts getrandomimage
 ```
 
 ### Use a custom fetch function
@@ -166,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetRandomSquareImage` | `(data) -> GetRandomSquareImageEntity` | Create a GetRandomSquareImage entity instance. |
 | `Height` | `(data) -> HeightEntity` | Create a Height entity instance. |
 | `Heightwebp` | `(data) -> HeightwebpEntity` | Create a Heightwebp entity instance. |
-| `IdInfo` | `(data) -> IdInfoEntity` | Create a IdInfo entity instance. |
-| `Idn` | `(data) -> IdnEntity` | Create a Idn entity instance. |
+| `IdInfo` | `(data) -> IdInfoEntity` | Create an IdInfo entity instance. |
+| `Idn` | `(data) -> IdnEntity` | Create an Idn entity instance. |
 | `List` | `(data) -> ListEntity` | Create a List entity instance. |
 | `Seed` | `(data) -> SeedEntity` | Create a Seed entity instance. |
 | `SeedInfo` | `(data) -> SeedInfoEntity` | Create a SeedInfo entity instance. |
@@ -315,7 +320,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `const get_random_image = client.get_random_image`
+Create an instance: `get_random_image = client.GetRandomImage`
 
 #### Operations
 
@@ -325,14 +330,15 @@ Create an instance: `const get_random_image = client.get_random_image`
 
 #### Example: Load
 
-```ts
-const get_random_image = await client.get_random_image.load({ id: 'get_random_image_id' })
+```ruby
+# load returns the bare GetRandomImage record (raises on error).
+get_random_image = client.GetRandomImage.load({ "id" => "get_random_image_id" })
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `const get_random_square_image = client.get_random_square_image`
+Create an instance: `get_random_square_image = client.GetRandomSquareImage`
 
 #### Operations
 
@@ -342,14 +348,15 @@ Create an instance: `const get_random_square_image = client.get_random_square_im
 
 #### Example: Load
 
-```ts
-const get_random_square_image = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
+```ruby
+# load returns the bare GetRandomSquareImage record (raises on error).
+get_random_square_image = client.GetRandomSquareImage.load({ "id" => "get_random_square_image_id" })
 ```
 
 
 ### Height
 
-Create an instance: `const height = client.height`
+Create an instance: `height = client.Height`
 
 #### Operations
 
@@ -359,14 +366,15 @@ Create an instance: `const height = client.height`
 
 #### Example: Load
 
-```ts
-const height = await client.height.load({ id: 'height_id' })
+```ruby
+# load returns the bare Height record (raises on error).
+height = client.Height.load({ "id" => "height_id" })
 ```
 
 
 ### Heightwebp
 
-Create an instance: `const heightwebp = client.heightwebp`
+Create an instance: `heightwebp = client.Heightwebp`
 
 #### Operations
 
@@ -376,14 +384,15 @@ Create an instance: `const heightwebp = client.heightwebp`
 
 #### Example: Load
 
-```ts
-const heightwebp = await client.heightwebp.load({ id: 'heightwebp_id' })
+```ruby
+# load returns the bare Heightwebp record (raises on error).
+heightwebp = client.Heightwebp.load({ "id" => "heightwebp_id" })
 ```
 
 
 ### IdInfo
 
-Create an instance: `const id_info = client.id_info`
+Create an instance: `id_info = client.IdInfo`
 
 #### Operations
 
@@ -404,14 +413,15 @@ Create an instance: `const id_info = client.id_info`
 
 #### Example: Load
 
-```ts
-const id_info = await client.id_info.load({ id: 'id_info_id' })
+```ruby
+# load returns the bare IdInfo record (raises on error).
+id_info = client.IdInfo.load({ "id" => "id_info_id" })
 ```
 
 
 ### Idn
 
-Create an instance: `const idn = client.idn`
+Create an instance: `idn = client.Idn`
 
 #### Operations
 
@@ -421,14 +431,15 @@ Create an instance: `const idn = client.idn`
 
 #### Example: Load
 
-```ts
-const idn = await client.idn.load({ id: 'idn_id' })
+```ruby
+# load returns the bare Idn record (raises on error).
+idn = client.Idn.load({ "id" => "idn_id" })
 ```
 
 
 ### List
 
-Create an instance: `const list = client.list`
+Create an instance: `list = client.List`
 
 #### Operations
 
@@ -449,14 +460,15 @@ Create an instance: `const list = client.list`
 
 #### Example: List
 
-```ts
-const lists = await client.list.list()
+```ruby
+# list returns an Array of List records (raises on error).
+lists = client.List.list
 ```
 
 
 ### Seed
 
-Create an instance: `const seed = client.seed`
+Create an instance: `seed = client.Seed`
 
 #### Operations
 
@@ -466,14 +478,15 @@ Create an instance: `const seed = client.seed`
 
 #### Example: Load
 
-```ts
-const seed = await client.seed.load({ id: 'seed_id' })
+```ruby
+# load returns the bare Seed record (raises on error).
+seed = client.Seed.load({ "id" => "seed_id" })
 ```
 
 
 ### SeedInfo
 
-Create an instance: `const seed_info = client.seed_info`
+Create an instance: `seed_info = client.SeedInfo`
 
 #### Operations
 
@@ -494,8 +507,9 @@ Create an instance: `const seed_info = client.seed_info`
 
 #### Example: Load
 
-```ts
-const seed_info = await client.seed_info.load({ id: 'seed_info_id' })
+```ruby
+# load returns the bare SeedInfo record (raises on error).
+seed_info = client.SeedInfo.load({ "id" => "seed_info_id" })
 ```
 
 
@@ -570,7 +584,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getrandomimage = client.getrandomimage
+getrandomimage = client.GetRandomImage
 getrandomimage.load({ "id" => "example_id" })
 
 # getrandomimage.data_get now returns the loaded getrandomimage data

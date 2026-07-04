@@ -30,11 +30,14 @@ const client = new LoremPicsumSDK()
 
 ### 3. Load a getrandomimage
 
-```ts
-const result = await client.getrandomimage.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const getrandomimage = await client.GetRandomImage().load({ id: 'example_id' })
+  console.log(getrandomimage)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -52,6 +55,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -80,9 +86,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoremPicsumSDK.test()
 
-const result = await client.getrandomimage.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const getrandomimage = await client.GetRandomImage().load({ id: 'test01' })
+// getrandomimage is a bare entity populated with mock response data
+console.log(getrandomimage)
 ```
 
 You can also use the instance method:
@@ -97,7 +103,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.getrandomimage
+const entity = client.GetRandomImage()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -179,8 +185,8 @@ new LoremPicsumSDK(options?: {
 | `GetRandomSquareImage(data?)` | `GetRandomSquareImageEntity` | Create a GetRandomSquareImage entity instance. |
 | `Height(data?)` | `HeightEntity` | Create a Height entity instance. |
 | `Heightwebp(data?)` | `HeightwebpEntity` | Create a Heightwebp entity instance. |
-| `IdInfo(data?)` | `IdInfoEntity` | Create a IdInfo entity instance. |
-| `Idn(data?)` | `IdnEntity` | Create a Idn entity instance. |
+| `IdInfo(data?)` | `IdInfoEntity` | Create an IdInfo entity instance. |
+| `Idn(data?)` | `IdnEntity` | Create an Idn entity instance. |
 | `List(data?)` | `ListEntity` | Create a List entity instance. |
 | `Seed(data?)` | `SeedEntity` | Create a Seed entity instance. |
 | `SeedInfo(data?)` | `SeedInfoEntity` | Create a SeedInfo entity instance. |
@@ -200,29 +206,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): LoremPicsumSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -360,7 +367,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `const get_random_image = client.get_random_image`
+Create an instance: `const get_random_image = client.GetRandomImage()`
 
 #### Operations
 
@@ -371,13 +378,13 @@ Create an instance: `const get_random_image = client.get_random_image`
 #### Example: Load
 
 ```ts
-const get_random_image = await client.get_random_image.load({ id: 'get_random_image_id' })
+const get_random_image = await client.GetRandomImage().load({ id: 'get_random_image_id' })
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `const get_random_square_image = client.get_random_square_image`
+Create an instance: `const get_random_square_image = client.GetRandomSquareImage()`
 
 #### Operations
 
@@ -388,13 +395,13 @@ Create an instance: `const get_random_square_image = client.get_random_square_im
 #### Example: Load
 
 ```ts
-const get_random_square_image = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
+const get_random_square_image = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
 ```
 
 
 ### Height
 
-Create an instance: `const height = client.height`
+Create an instance: `const height = client.Height()`
 
 #### Operations
 
@@ -405,13 +412,13 @@ Create an instance: `const height = client.height`
 #### Example: Load
 
 ```ts
-const height = await client.height.load({ id: 'height_id' })
+const height = await client.Height().load({ id: 'height_id' })
 ```
 
 
 ### Heightwebp
 
-Create an instance: `const heightwebp = client.heightwebp`
+Create an instance: `const heightwebp = client.Heightwebp()`
 
 #### Operations
 
@@ -422,13 +429,13 @@ Create an instance: `const heightwebp = client.heightwebp`
 #### Example: Load
 
 ```ts
-const heightwebp = await client.heightwebp.load({ id: 'heightwebp_id' })
+const heightwebp = await client.Heightwebp().load({ id: 'heightwebp_id' })
 ```
 
 
 ### IdInfo
 
-Create an instance: `const id_info = client.id_info`
+Create an instance: `const id_info = client.IdInfo()`
 
 #### Operations
 
@@ -450,13 +457,13 @@ Create an instance: `const id_info = client.id_info`
 #### Example: Load
 
 ```ts
-const id_info = await client.id_info.load({ id: 'id_info_id' })
+const id_info = await client.IdInfo().load({ id: 'id_info_id' })
 ```
 
 
 ### Idn
 
-Create an instance: `const idn = client.idn`
+Create an instance: `const idn = client.Idn()`
 
 #### Operations
 
@@ -467,13 +474,13 @@ Create an instance: `const idn = client.idn`
 #### Example: Load
 
 ```ts
-const idn = await client.idn.load({ id: 'idn_id' })
+const idn = await client.Idn().load({ id: 'idn_id' })
 ```
 
 
 ### List
 
-Create an instance: `const list = client.list`
+Create an instance: `const list = client.List()`
 
 #### Operations
 
@@ -495,13 +502,13 @@ Create an instance: `const list = client.list`
 #### Example: List
 
 ```ts
-const lists = await client.list.list()
+const lists = await client.List().list()
 ```
 
 
 ### Seed
 
-Create an instance: `const seed = client.seed`
+Create an instance: `const seed = client.Seed()`
 
 #### Operations
 
@@ -512,13 +519,13 @@ Create an instance: `const seed = client.seed`
 #### Example: Load
 
 ```ts
-const seed = await client.seed.load({ id: 'seed_id' })
+const seed = await client.Seed().load({ id: 'seed_id' })
 ```
 
 
 ### SeedInfo
 
-Create an instance: `const seed_info = client.seed_info`
+Create an instance: `const seed_info = client.SeedInfo()`
 
 #### Operations
 
@@ -540,7 +547,7 @@ Create an instance: `const seed_info = client.seed_info`
 #### Example: Load
 
 ```ts
-const seed_info = await client.seed_info.load({ id: 'seed_info_id' })
+const seed_info = await client.SeedInfo().load({ id: 'seed_info_id' })
 ```
 
 
@@ -611,7 +618,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const getrandomimage = client.getrandomimage
+const getrandomimage = client.GetRandomImage()
 await getrandomimage.load({ id: "example_id" })
 
 // getrandomimage.data() now returns the loaded getrandomimage data

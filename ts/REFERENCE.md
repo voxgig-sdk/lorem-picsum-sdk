@@ -205,7 +205,7 @@ Alias for `LoremPicsumSDK.test()`.
 ## GetRandomImageEntity
 
 ```ts
-const get_random_image = client.get_random_image
+const get_random_image = client.GetRandomImage()
 ```
 
 ### Operations
@@ -215,7 +215,7 @@ const get_random_image = client.get_random_image
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_random_image.load({ id: 'get_random_image_id' })
+const result = await client.GetRandomImage().load({ id: 'get_random_image_id' })
 ```
 
 ### Common Methods
@@ -249,7 +249,7 @@ Return a copy of the entity options.
 ## GetRandomSquareImageEntity
 
 ```ts
-const get_random_square_image = client.get_random_square_image
+const get_random_square_image = client.GetRandomSquareImage()
 ```
 
 ### Operations
@@ -259,7 +259,7 @@ const get_random_square_image = client.get_random_square_image
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
+const result = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
 ```
 
 ### Common Methods
@@ -293,7 +293,7 @@ Return a copy of the entity options.
 ## HeightEntity
 
 ```ts
-const height = client.height
+const height = client.Height()
 ```
 
 ### Operations
@@ -303,7 +303,7 @@ const height = client.height
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.height.load({ id: 'height_id' })
+const result = await client.Height().load({ id: 'height_id' })
 ```
 
 ### Common Methods
@@ -337,7 +337,7 @@ Return a copy of the entity options.
 ## HeightwebpEntity
 
 ```ts
-const heightwebp = client.heightwebp
+const heightwebp = client.Heightwebp()
 ```
 
 ### Operations
@@ -347,7 +347,7 @@ const heightwebp = client.heightwebp
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.heightwebp.load({ id: 'heightwebp_id' })
+const result = await client.Heightwebp().load({ id: 'heightwebp_id' })
 ```
 
 ### Common Methods
@@ -381,7 +381,7 @@ Return a copy of the entity options.
 ## IdInfoEntity
 
 ```ts
-const id_info = client.id_info
+const id_info = client.IdInfo()
 ```
 
 ### Fields
@@ -402,7 +402,7 @@ const id_info = client.id_info
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.id_info.load({ id: 'id_info_id' })
+const result = await client.IdInfo().load({ id: 'id_info_id' })
 ```
 
 ### Common Methods
@@ -436,7 +436,7 @@ Return a copy of the entity options.
 ## IdnEntity
 
 ```ts
-const idn = client.idn
+const idn = client.Idn()
 ```
 
 ### Operations
@@ -446,7 +446,7 @@ const idn = client.idn
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.idn.load({ id: 'idn_id' })
+const result = await client.Idn().load({ id: 'idn_id' })
 ```
 
 ### Common Methods
@@ -480,7 +480,7 @@ Return a copy of the entity options.
 ## ListEntity
 
 ```ts
-const list = client.list
+const list = client.List()
 ```
 
 ### Fields
@@ -501,7 +501,7 @@ const list = client.list
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.list.list()
+const results = await client.List().list()
 ```
 
 ### Common Methods
@@ -535,7 +535,7 @@ Return a copy of the entity options.
 ## SeedEntity
 
 ```ts
-const seed = client.seed
+const seed = client.Seed()
 ```
 
 ### Operations
@@ -545,7 +545,7 @@ const seed = client.seed
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.seed.load({ id: 'seed_id' })
+const result = await client.Seed().load({ id: 'seed_id' })
 ```
 
 ### Common Methods
@@ -579,7 +579,7 @@ Return a copy of the entity options.
 ## SeedInfoEntity
 
 ```ts
-const seed_info = client.seed_info
+const seed_info = client.SeedInfo()
 ```
 
 ### Fields
@@ -600,7 +600,7 @@ const seed_info = client.seed_info
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.seed_info.load({ id: 'seed_info_id' })
+const result = await client.SeedInfo().load({ id: 'seed_info_id' })
 ```
 
 ### Common Methods

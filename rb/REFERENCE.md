@@ -118,7 +118,7 @@ same parameters as `direct()`. Raises on error.
 ## GetRandomImageEntity
 
 ```ruby
-get_random_image = client.get_random_image
+get_random_image = client.GetRandomImage
 ```
 
 ### Operations
@@ -128,7 +128,7 @@ get_random_image = client.get_random_image
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_random_image.load({ "id" => "get_random_image_id" })
+result = client.GetRandomImage.load({ "id" => "get_random_image_id" })
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ Return the entity name.
 ## GetRandomSquareImageEntity
 
 ```ruby
-get_random_square_image = client.get_random_square_image
+get_random_square_image = client.GetRandomSquareImage
 ```
 
 ### Operations
@@ -174,7 +174,7 @@ get_random_square_image = client.get_random_square_image
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_random_square_image.load({ "id" => "get_random_square_image_id" })
+result = client.GetRandomSquareImage.load({ "id" => "get_random_square_image_id" })
 ```
 
 ### Common Methods
@@ -210,7 +210,7 @@ Return the entity name.
 ## HeightEntity
 
 ```ruby
-height = client.height
+height = client.Height
 ```
 
 ### Operations
@@ -220,7 +220,7 @@ height = client.height
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.height.load({ "id" => "height_id" })
+result = client.Height.load({ "id" => "height_id" })
 ```
 
 ### Common Methods
@@ -256,7 +256,7 @@ Return the entity name.
 ## HeightwebpEntity
 
 ```ruby
-heightwebp = client.heightwebp
+heightwebp = client.Heightwebp
 ```
 
 ### Operations
@@ -266,7 +266,7 @@ heightwebp = client.heightwebp
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.heightwebp.load({ "id" => "heightwebp_id" })
+result = client.Heightwebp.load({ "id" => "heightwebp_id" })
 ```
 
 ### Common Methods
@@ -302,7 +302,7 @@ Return the entity name.
 ## IdInfoEntity
 
 ```ruby
-id_info = client.id_info
+id_info = client.IdInfo
 ```
 
 ### Fields
@@ -323,7 +323,7 @@ id_info = client.id_info
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.id_info.load({ "id" => "id_info_id" })
+result = client.IdInfo.load({ "id" => "id_info_id" })
 ```
 
 ### Common Methods
@@ -359,7 +359,7 @@ Return the entity name.
 ## IdnEntity
 
 ```ruby
-idn = client.idn
+idn = client.Idn
 ```
 
 ### Operations
@@ -369,7 +369,7 @@ idn = client.idn
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.idn.load({ "id" => "idn_id" })
+result = client.Idn.load({ "id" => "idn_id" })
 ```
 
 ### Common Methods
@@ -405,7 +405,7 @@ Return the entity name.
 ## ListEntity
 
 ```ruby
-list = client.list
+list = client.List
 ```
 
 ### Fields
@@ -426,7 +426,7 @@ list = client.list
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.list.list(nil)
+results = client.List.list(nil)
 ```
 
 ### Common Methods
@@ -462,7 +462,7 @@ Return the entity name.
 ## SeedEntity
 
 ```ruby
-seed = client.seed
+seed = client.Seed
 ```
 
 ### Operations
@@ -472,7 +472,7 @@ seed = client.seed
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.seed.load({ "id" => "seed_id" })
+result = client.Seed.load({ "id" => "seed_id" })
 ```
 
 ### Common Methods
@@ -508,7 +508,7 @@ Return the entity name.
 ## SeedInfoEntity
 
 ```ruby
-seed_info = client.seed_info
+seed_info = client.SeedInfo
 ```
 
 ### Fields
@@ -529,7 +529,7 @@ seed_info = client.seed_info
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.seed_info.load({ "id" => "seed_info_id" })
+result = client.SeedInfo.load({ "id" => "seed_info_id" })
 ```
 
 ### Common Methods

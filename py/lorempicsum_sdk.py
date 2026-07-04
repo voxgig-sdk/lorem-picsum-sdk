@@ -220,153 +220,63 @@ class LoremPicsumSDK:
         }
 
 
-    @property
-    def get_random_image(self):
-        """Idiomatic facade: client.get_random_image.list() / client.get_random_image.load({"id": ...})."""
-        from entity.get_random_image_entity import GetRandomImageEntity
-        cached = getattr(self, "_get_random_image", None)
-        if cached is None:
-            cached = GetRandomImageEntity(self, None)
-            self._get_random_image = cached
-        return cached
-
-    def GetRandomImage(self, data=None):
-        # Deprecated: use client.get_random_image instead.
+    def GetRandomImage(self, data=None) -> "GetRandomImageEntity":
+        """Entity factory: client.GetRandomImage().list({}) / client.GetRandomImage().load({"id": ...})."""
         from entity.get_random_image_entity import GetRandomImageEntity
         return GetRandomImageEntity(self, data)
 
 
-    @property
-    def get_random_square_image(self):
-        """Idiomatic facade: client.get_random_square_image.list() / client.get_random_square_image.load({"id": ...})."""
-        from entity.get_random_square_image_entity import GetRandomSquareImageEntity
-        cached = getattr(self, "_get_random_square_image", None)
-        if cached is None:
-            cached = GetRandomSquareImageEntity(self, None)
-            self._get_random_square_image = cached
-        return cached
-
-    def GetRandomSquareImage(self, data=None):
-        # Deprecated: use client.get_random_square_image instead.
+    def GetRandomSquareImage(self, data=None) -> "GetRandomSquareImageEntity":
+        """Entity factory: client.GetRandomSquareImage().list({}) / client.GetRandomSquareImage().load({"id": ...})."""
         from entity.get_random_square_image_entity import GetRandomSquareImageEntity
         return GetRandomSquareImageEntity(self, data)
 
 
-    @property
-    def height(self):
-        """Idiomatic facade: client.height.list() / client.height.load({"id": ...})."""
-        from entity.height_entity import HeightEntity
-        cached = getattr(self, "_height", None)
-        if cached is None:
-            cached = HeightEntity(self, None)
-            self._height = cached
-        return cached
-
-    def Height(self, data=None):
-        # Deprecated: use client.height instead.
+    def Height(self, data=None) -> "HeightEntity":
+        """Entity factory: client.Height().list({}) / client.Height().load({"id": ...})."""
         from entity.height_entity import HeightEntity
         return HeightEntity(self, data)
 
 
-    @property
-    def heightwebp(self):
-        """Idiomatic facade: client.heightwebp.list() / client.heightwebp.load({"id": ...})."""
-        from entity.heightwebp_entity import HeightwebpEntity
-        cached = getattr(self, "_heightwebp", None)
-        if cached is None:
-            cached = HeightwebpEntity(self, None)
-            self._heightwebp = cached
-        return cached
-
-    def Heightwebp(self, data=None):
-        # Deprecated: use client.heightwebp instead.
+    def Heightwebp(self, data=None) -> "HeightwebpEntity":
+        """Entity factory: client.Heightwebp().list({}) / client.Heightwebp().load({"id": ...})."""
         from entity.heightwebp_entity import HeightwebpEntity
         return HeightwebpEntity(self, data)
 
 
-    @property
-    def id_info(self):
-        """Idiomatic facade: client.id_info.list() / client.id_info.load({"id": ...})."""
-        from entity.id_info_entity import IdInfoEntity
-        cached = getattr(self, "_id_info", None)
-        if cached is None:
-            cached = IdInfoEntity(self, None)
-            self._id_info = cached
-        return cached
-
-    def IdInfo(self, data=None):
-        # Deprecated: use client.id_info instead.
+    def IdInfo(self, data=None) -> "IdInfoEntity":
+        """Entity factory: client.IdInfo().list({}) / client.IdInfo().load({"id": ...})."""
         from entity.id_info_entity import IdInfoEntity
         return IdInfoEntity(self, data)
 
 
-    @property
-    def idn(self):
-        """Idiomatic facade: client.idn.list() / client.idn.load({"id": ...})."""
-        from entity.idn_entity import IdnEntity
-        cached = getattr(self, "_idn", None)
-        if cached is None:
-            cached = IdnEntity(self, None)
-            self._idn = cached
-        return cached
-
-    def Idn(self, data=None):
-        # Deprecated: use client.idn instead.
+    def Idn(self, data=None) -> "IdnEntity":
+        """Entity factory: client.Idn().list({}) / client.Idn().load({"id": ...})."""
         from entity.idn_entity import IdnEntity
         return IdnEntity(self, data)
 
 
-    @property
-    def list(self):
-        """Idiomatic facade: client.list.list() / client.list.load({"id": ...})."""
-        from entity.list_entity import ListEntity
-        cached = getattr(self, "_list", None)
-        if cached is None:
-            cached = ListEntity(self, None)
-            self._list = cached
-        return cached
-
-    def List(self, data=None):
-        # Deprecated: use client.list instead.
+    def List(self, data=None) -> "ListEntity":
+        """Entity factory: client.List().list({}) / client.List().load({"id": ...})."""
         from entity.list_entity import ListEntity
         return ListEntity(self, data)
 
 
-    @property
-    def seed(self):
-        """Idiomatic facade: client.seed.list() / client.seed.load({"id": ...})."""
-        from entity.seed_entity import SeedEntity
-        cached = getattr(self, "_seed", None)
-        if cached is None:
-            cached = SeedEntity(self, None)
-            self._seed = cached
-        return cached
-
-    def Seed(self, data=None):
-        # Deprecated: use client.seed instead.
+    def Seed(self, data=None) -> "SeedEntity":
+        """Entity factory: client.Seed().list({}) / client.Seed().load({"id": ...})."""
         from entity.seed_entity import SeedEntity
         return SeedEntity(self, data)
 
 
-    @property
-    def seed_info(self):
-        """Idiomatic facade: client.seed_info.list() / client.seed_info.load({"id": ...})."""
-        from entity.seed_info_entity import SeedInfoEntity
-        cached = getattr(self, "_seed_info", None)
-        if cached is None:
-            cached = SeedInfoEntity(self, None)
-            self._seed_info = cached
-        return cached
-
-    def SeedInfo(self, data=None):
-        # Deprecated: use client.seed_info instead.
+    def SeedInfo(self, data=None) -> "SeedInfoEntity":
+        """Entity factory: client.SeedInfo().list({}) / client.SeedInfo().load({"id": ...})."""
         from entity.seed_info_entity import SeedInfoEntity
         return SeedInfoEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "LoremPicsumSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -386,3 +296,17 @@ class LoremPicsumSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_random_image_entity import GetRandomImageEntity
+    from entity.get_random_square_image_entity import GetRandomSquareImageEntity
+    from entity.height_entity import HeightEntity
+    from entity.heightwebp_entity import HeightwebpEntity
+    from entity.id_info_entity import IdInfoEntity
+    from entity.idn_entity import IdnEntity
+    from entity.list_entity import ListEntity
+    from entity.seed_entity import SeedEntity
+    from entity.seed_info_entity import SeedInfoEntity

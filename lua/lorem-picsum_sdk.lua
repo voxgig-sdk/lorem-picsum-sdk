@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:get_random_image():list() / client:get_random_image():load({ id = ... })
-function LoremPicsumSDK:get_random_image(data)
+-- Idiomatic facade: client:GetRandomImage():list() / client:GetRandomImage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:GetRandomImage(data)
   local EntityMod = require("entity.get_random_image_entity")
   if data == nil then
     if self._get_random_image == nil then
@@ -256,15 +257,10 @@ function LoremPicsumSDK:get_random_image(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_random_image() instead.
-function LoremPicsumSDK:GetRandomImage(data)
-  local EntityMod = require("entity.get_random_image_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_random_square_image():list() / client:get_random_square_image():load({ id = ... })
-function LoremPicsumSDK:get_random_square_image(data)
+-- Idiomatic facade: client:GetRandomSquareImage():list() / client:GetRandomSquareImage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:GetRandomSquareImage(data)
   local EntityMod = require("entity.get_random_square_image_entity")
   if data == nil then
     if self._get_random_square_image == nil then
@@ -275,15 +271,10 @@ function LoremPicsumSDK:get_random_square_image(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_random_square_image() instead.
-function LoremPicsumSDK:GetRandomSquareImage(data)
-  local EntityMod = require("entity.get_random_square_image_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:height():list() / client:height():load({ id = ... })
-function LoremPicsumSDK:height(data)
+-- Idiomatic facade: client:Height():list() / client:Height():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:Height(data)
   local EntityMod = require("entity.height_entity")
   if data == nil then
     if self._height == nil then
@@ -294,15 +285,10 @@ function LoremPicsumSDK:height(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:height() instead.
-function LoremPicsumSDK:Height(data)
-  local EntityMod = require("entity.height_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:heightwebp():list() / client:heightwebp():load({ id = ... })
-function LoremPicsumSDK:heightwebp(data)
+-- Idiomatic facade: client:Heightwebp():list() / client:Heightwebp():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:Heightwebp(data)
   local EntityMod = require("entity.heightwebp_entity")
   if data == nil then
     if self._heightwebp == nil then
@@ -313,15 +299,10 @@ function LoremPicsumSDK:heightwebp(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:heightwebp() instead.
-function LoremPicsumSDK:Heightwebp(data)
-  local EntityMod = require("entity.heightwebp_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:id_info():list() / client:id_info():load({ id = ... })
-function LoremPicsumSDK:id_info(data)
+-- Idiomatic facade: client:IdInfo():list() / client:IdInfo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:IdInfo(data)
   local EntityMod = require("entity.id_info_entity")
   if data == nil then
     if self._id_info == nil then
@@ -332,15 +313,10 @@ function LoremPicsumSDK:id_info(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:id_info() instead.
-function LoremPicsumSDK:IdInfo(data)
-  local EntityMod = require("entity.id_info_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:idn():list() / client:idn():load({ id = ... })
-function LoremPicsumSDK:idn(data)
+-- Idiomatic facade: client:Idn():list() / client:Idn():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:Idn(data)
   local EntityMod = require("entity.idn_entity")
   if data == nil then
     if self._idn == nil then
@@ -351,15 +327,10 @@ function LoremPicsumSDK:idn(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:idn() instead.
-function LoremPicsumSDK:Idn(data)
-  local EntityMod = require("entity.idn_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:list():list() / client:list():load({ id = ... })
-function LoremPicsumSDK:list(data)
+-- Idiomatic facade: client:List():list() / client:List():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:List(data)
   local EntityMod = require("entity.list_entity")
   if data == nil then
     if self._list == nil then
@@ -370,15 +341,10 @@ function LoremPicsumSDK:list(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:list() instead.
-function LoremPicsumSDK:List(data)
-  local EntityMod = require("entity.list_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:seed():list() / client:seed():load({ id = ... })
-function LoremPicsumSDK:seed(data)
+-- Idiomatic facade: client:Seed():list() / client:Seed():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:Seed(data)
   local EntityMod = require("entity.seed_entity")
   if data == nil then
     if self._seed == nil then
@@ -389,15 +355,10 @@ function LoremPicsumSDK:seed(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:seed() instead.
-function LoremPicsumSDK:Seed(data)
-  local EntityMod = require("entity.seed_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:seed_info():list() / client:seed_info():load({ id = ... })
-function LoremPicsumSDK:seed_info(data)
+-- Idiomatic facade: client:SeedInfo():list() / client:SeedInfo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function LoremPicsumSDK:SeedInfo(data)
   local EntityMod = require("entity.seed_info_entity")
   if data == nil then
     if self._seed_info == nil then
@@ -405,12 +366,6 @@ function LoremPicsumSDK:seed_info(data)
     end
     return self._seed_info
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:seed_info() instead.
-function LoremPicsumSDK:SeedInfo(data)
-  local EntityMod = require("entity.seed_info_entity")
   return EntityMod.new(self, data)
 end
 

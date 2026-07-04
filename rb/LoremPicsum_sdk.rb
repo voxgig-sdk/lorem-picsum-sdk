@@ -208,117 +208,63 @@ class LoremPicsumSDK
   end
 
 
-  # Idiomatic facade: client.get_random_image.list / client.get_random_image.load({ "id" => ... })
-  def get_random_image
-    require_relative 'entity/get_random_image_entity'
-    @get_random_image ||= GetRandomImageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_random_image instead.
+  # Canonical facade: client.GetRandomImage.list / client.GetRandomImage.load({ "id" => ... })
   def GetRandomImage(data = nil)
     require_relative 'entity/get_random_image_entity'
     GetRandomImageEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_random_square_image.list / client.get_random_square_image.load({ "id" => ... })
-  def get_random_square_image
-    require_relative 'entity/get_random_square_image_entity'
-    @get_random_square_image ||= GetRandomSquareImageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_random_square_image instead.
+  # Canonical facade: client.GetRandomSquareImage.list / client.GetRandomSquareImage.load({ "id" => ... })
   def GetRandomSquareImage(data = nil)
     require_relative 'entity/get_random_square_image_entity'
     GetRandomSquareImageEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.height.list / client.height.load({ "id" => ... })
-  def height
-    require_relative 'entity/height_entity'
-    @height ||= HeightEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.height instead.
+  # Canonical facade: client.Height.list / client.Height.load({ "id" => ... })
   def Height(data = nil)
     require_relative 'entity/height_entity'
     HeightEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.heightwebp.list / client.heightwebp.load({ "id" => ... })
-  def heightwebp
-    require_relative 'entity/heightwebp_entity'
-    @heightwebp ||= HeightwebpEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.heightwebp instead.
+  # Canonical facade: client.Heightwebp.list / client.Heightwebp.load({ "id" => ... })
   def Heightwebp(data = nil)
     require_relative 'entity/heightwebp_entity'
     HeightwebpEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.id_info.list / client.id_info.load({ "id" => ... })
-  def id_info
-    require_relative 'entity/id_info_entity'
-    @id_info ||= IdInfoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.id_info instead.
+  # Canonical facade: client.IdInfo.list / client.IdInfo.load({ "id" => ... })
   def IdInfo(data = nil)
     require_relative 'entity/id_info_entity'
     IdInfoEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.idn.list / client.idn.load({ "id" => ... })
-  def idn
-    require_relative 'entity/idn_entity'
-    @idn ||= IdnEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.idn instead.
+  # Canonical facade: client.Idn.list / client.Idn.load({ "id" => ... })
   def Idn(data = nil)
     require_relative 'entity/idn_entity'
     IdnEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.list.list / client.list.load({ "id" => ... })
-  def list
-    require_relative 'entity/list_entity'
-    @list ||= ListEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.list instead.
+  # Canonical facade: client.List.list / client.List.load({ "id" => ... })
   def List(data = nil)
     require_relative 'entity/list_entity'
     ListEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.seed.list / client.seed.load({ "id" => ... })
-  def seed
-    require_relative 'entity/seed_entity'
-    @seed ||= SeedEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.seed instead.
+  # Canonical facade: client.Seed.list / client.Seed.load({ "id" => ... })
   def Seed(data = nil)
     require_relative 'entity/seed_entity'
     SeedEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.seed_info.list / client.seed_info.load({ "id" => ... })
-  def seed_info
-    require_relative 'entity/seed_info_entity'
-    @seed_info ||= SeedInfoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.seed_info instead.
+  # Canonical facade: client.SeedInfo.list / client.SeedInfo.load({ "id" => ... })
   def SeedInfo(data = nil)
     require_relative 'entity/seed_info_entity'
     SeedInfoEntity.new(self, data)

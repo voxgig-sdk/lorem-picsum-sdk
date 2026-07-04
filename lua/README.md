@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a getrandomimage
 
 ```lua
-local result, err = client:getrandomimage():load({ id = "example_id" })
+local getrandomimage, err = client:GetRandomImage():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(getrandomimage)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:getrandomimage():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:GetRandomImage():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -165,8 +165,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetRandomSquareImage` | `(data) -> GetRandomSquareImageEntity` | Create a GetRandomSquareImage entity instance. |
 | `Height` | `(data) -> HeightEntity` | Create a Height entity instance. |
 | `Heightwebp` | `(data) -> HeightwebpEntity` | Create a Heightwebp entity instance. |
-| `IdInfo` | `(data) -> IdInfoEntity` | Create a IdInfo entity instance. |
-| `Idn` | `(data) -> IdnEntity` | Create a Idn entity instance. |
+| `IdInfo` | `(data) -> IdInfoEntity` | Create an IdInfo entity instance. |
+| `Idn` | `(data) -> IdnEntity` | Create an Idn entity instance. |
 | `List` | `(data) -> ListEntity` | Create a List entity instance. |
 | `Seed` | `(data) -> SeedEntity` | Create a Seed entity instance. |
 | `SeedInfo` | `(data) -> SeedInfoEntity` | Create a SeedInfo entity instance. |
@@ -191,17 +191,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local get_random_image, err = client:GetRandomImage():load({ id = "example_id" })
+    if err then error(err) end
+    -- get_random_image is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -311,7 +316,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `const get_random_image = client.get_random_image`
+Create an instance: `local get_random_image = client:GetRandomImage(nil)`
 
 #### Operations
 
@@ -321,14 +326,14 @@ Create an instance: `const get_random_image = client.get_random_image`
 
 #### Example: Load
 
-```ts
-const get_random_image = await client.get_random_image.load({ id: 'get_random_image_id' })
+```lua
+local get_random_image, err = client:GetRandomImage():load({ id = "get_random_image_id" })
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `const get_random_square_image = client.get_random_square_image`
+Create an instance: `local get_random_square_image = client:GetRandomSquareImage(nil)`
 
 #### Operations
 
@@ -338,14 +343,14 @@ Create an instance: `const get_random_square_image = client.get_random_square_im
 
 #### Example: Load
 
-```ts
-const get_random_square_image = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
+```lua
+local get_random_square_image, err = client:GetRandomSquareImage():load({ id = "get_random_square_image_id" })
 ```
 
 
 ### Height
 
-Create an instance: `const height = client.height`
+Create an instance: `local height = client:Height(nil)`
 
 #### Operations
 
@@ -355,14 +360,14 @@ Create an instance: `const height = client.height`
 
 #### Example: Load
 
-```ts
-const height = await client.height.load({ id: 'height_id' })
+```lua
+local height, err = client:Height():load({ id = "height_id" })
 ```
 
 
 ### Heightwebp
 
-Create an instance: `const heightwebp = client.heightwebp`
+Create an instance: `local heightwebp = client:Heightwebp(nil)`
 
 #### Operations
 
@@ -372,14 +377,14 @@ Create an instance: `const heightwebp = client.heightwebp`
 
 #### Example: Load
 
-```ts
-const heightwebp = await client.heightwebp.load({ id: 'heightwebp_id' })
+```lua
+local heightwebp, err = client:Heightwebp():load({ id = "heightwebp_id" })
 ```
 
 
 ### IdInfo
 
-Create an instance: `const id_info = client.id_info`
+Create an instance: `local id_info = client:IdInfo(nil)`
 
 #### Operations
 
@@ -400,14 +405,14 @@ Create an instance: `const id_info = client.id_info`
 
 #### Example: Load
 
-```ts
-const id_info = await client.id_info.load({ id: 'id_info_id' })
+```lua
+local id_info, err = client:IdInfo():load({ id = "id_info_id" })
 ```
 
 
 ### Idn
 
-Create an instance: `const idn = client.idn`
+Create an instance: `local idn = client:Idn(nil)`
 
 #### Operations
 
@@ -417,14 +422,14 @@ Create an instance: `const idn = client.idn`
 
 #### Example: Load
 
-```ts
-const idn = await client.idn.load({ id: 'idn_id' })
+```lua
+local idn, err = client:Idn():load({ id = "idn_id" })
 ```
 
 
 ### List
 
-Create an instance: `const list = client.list`
+Create an instance: `local list = client:List(nil)`
 
 #### Operations
 
@@ -445,14 +450,14 @@ Create an instance: `const list = client.list`
 
 #### Example: List
 
-```ts
-const lists = await client.list.list()
+```lua
+local lists, err = client:List():list()
 ```
 
 
 ### Seed
 
-Create an instance: `const seed = client.seed`
+Create an instance: `local seed = client:Seed(nil)`
 
 #### Operations
 
@@ -462,14 +467,14 @@ Create an instance: `const seed = client.seed`
 
 #### Example: Load
 
-```ts
-const seed = await client.seed.load({ id: 'seed_id' })
+```lua
+local seed, err = client:Seed():load({ id = "seed_id" })
 ```
 
 
 ### SeedInfo
 
-Create an instance: `const seed_info = client.seed_info`
+Create an instance: `local seed_info = client:SeedInfo(nil)`
 
 #### Operations
 
@@ -490,8 +495,8 @@ Create an instance: `const seed_info = client.seed_info`
 
 #### Example: Load
 
-```ts
-const seed_info = await client.seed_info.load({ id: 'seed_info_id' })
+```lua
+local seed_info, err = client:SeedInfo():load({ id = "seed_info_id" })
 ```
 
 
@@ -566,7 +571,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local getrandomimage = client:getrandomimage()
+local getrandomimage = client:GetRandomImage()
 getrandomimage:load({ id = "example_id" })
 
 -- getrandomimage:data_get() now returns the loaded getrandomimage data
