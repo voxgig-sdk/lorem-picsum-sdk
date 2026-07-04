@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://picsum.photos',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -98,7 +94,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -106,7 +103,8 @@ class Config {
                     "name": "width",
                     "orig": "width",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -183,7 +181,8 @@ class Config {
                     "name": "id",
                     "orig": "size",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -254,7 +253,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -262,7 +262,8 @@ class Config {
                     "name": "width",
                     "orig": "width",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -330,7 +331,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -338,7 +340,8 @@ class Config {
                     "name": "width",
                     "orig": "width",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   }
                 ],
                 "query": [
@@ -449,7 +452,8 @@ class Config {
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -497,7 +501,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -505,7 +510,8 @@ class Config {
                     "name": "id",
                     "orig": "id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   },
                   {
                     "active": true,
@@ -513,7 +519,8 @@ class Config {
                     "name": "width",
                     "orig": "width",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 2
                   }
                 ],
                 "query": [
@@ -685,7 +692,8 @@ class Config {
                     "name": "height",
                     "orig": "height",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -693,7 +701,8 @@ class Config {
                     "name": "seed",
                     "orig": "seed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   },
                   {
                     "active": true,
@@ -701,7 +710,8 @@ class Config {
                     "name": "width",
                     "orig": "width",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 2
                   }
                 ],
                 "query": [
@@ -819,7 +829,8 @@ class Config {
                     "name": "id",
                     "orig": "seed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

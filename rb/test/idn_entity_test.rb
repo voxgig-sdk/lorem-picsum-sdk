@@ -42,8 +42,7 @@ class IdnEntityTest < Minitest::Test
     # LOAD
     idn_ref01_ent = client.Idn(nil)
     idn_ref01_match_dt0 = {}
-    idn_ref01_data_dt0_loaded, err = idn_ref01_ent.load(idn_ref01_match_dt0, nil)
-    assert_nil err
+    idn_ref01_data_dt0_loaded = idn_ref01_ent.load(idn_ref01_match_dt0, nil)
     assert !idn_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def idn_basic_setup(extra)
     "LOREMPICSUM_TEST_IDN_ENTID" => idmap,
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
     "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def idn_basic_setup(extra)
   if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["LOREMPICSUM_APIKEY"],
       },
       extra || {},
     ])

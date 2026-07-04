@@ -15,9 +15,6 @@ module LoremPicsumConfig
       },
       "options" => {
         "base" => "https://picsum.photos",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -53,6 +50,7 @@ module LoremPicsumConfig
                         "orig" => "height",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -61,6 +59,7 @@ module LoremPicsumConfig
                         "orig" => "width",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -138,6 +137,7 @@ module LoremPicsumConfig
                         "orig" => "size",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -209,6 +209,7 @@ module LoremPicsumConfig
                         "orig" => "height",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -217,6 +218,7 @@ module LoremPicsumConfig
                         "orig" => "width",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -285,6 +287,7 @@ module LoremPicsumConfig
                         "orig" => "height",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -293,6 +296,7 @@ module LoremPicsumConfig
                         "orig" => "width",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 1,
                       },
                     ],
                     "query" => [
@@ -404,6 +408,7 @@ module LoremPicsumConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -452,6 +457,7 @@ module LoremPicsumConfig
                         "orig" => "height",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -460,6 +466,7 @@ module LoremPicsumConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                       {
                         "active" => true,
@@ -468,6 +475,7 @@ module LoremPicsumConfig
                         "orig" => "width",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 2,
                       },
                     ],
                     "query" => [
@@ -640,6 +648,7 @@ module LoremPicsumConfig
                         "orig" => "height",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -648,6 +657,7 @@ module LoremPicsumConfig
                         "orig" => "seed",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                       {
                         "active" => true,
@@ -656,6 +666,7 @@ module LoremPicsumConfig
                         "orig" => "width",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 2,
                       },
                     ],
                     "query" => [
@@ -774,6 +785,7 @@ module LoremPicsumConfig
                         "orig" => "seed",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

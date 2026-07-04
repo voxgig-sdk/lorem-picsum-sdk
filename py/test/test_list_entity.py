@@ -50,8 +50,7 @@ class TestListEntity:
         list_ref01_ent = client.List(None)
         list_ref01_match = {}
 
-        list_ref01_list_result, err = list_ref01_ent.list(list_ref01_match, None)
-        assert err is None
+        list_ref01_list_result = list_ref01_ent.list(list_ref01_match, None)
         assert isinstance(list_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _list_basic_setup(extra):
         "LOREMPICSUM_TEST_LIST_ENTID": idmap,
         "LOREMPICSUM_TEST_LIVE": "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN": "FALSE",
-        "LOREMPICSUM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _list_basic_setup(extra):
     if env.get("LOREMPICSUM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("LOREMPICSUM_APIKEY"),
             },
             extra or {},
         ])

@@ -42,8 +42,7 @@ class SeedEntityTest < Minitest::Test
     # LOAD
     seed_ref01_ent = client.Seed(nil)
     seed_ref01_match_dt0 = {}
-    seed_ref01_data_dt0_loaded, err = seed_ref01_ent.load(seed_ref01_match_dt0, nil)
-    assert_nil err
+    seed_ref01_data_dt0_loaded = seed_ref01_ent.load(seed_ref01_match_dt0, nil)
     assert !seed_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def seed_basic_setup(extra)
     "LOREMPICSUM_TEST_SEED_ENTID" => idmap,
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
     "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def seed_basic_setup(extra)
   if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["LOREMPICSUM_APIKEY"],
       },
       extra || {},
     ])

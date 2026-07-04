@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SeedInfoLoadMatch
+---@param ctrl? table
+---@return SeedInfo
+---@return string? err
 function SeedInfoEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

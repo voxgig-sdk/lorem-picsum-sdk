@@ -49,8 +49,7 @@ class GetRandomImageEntityTest extends TestCase
         // LOAD
         $get_random_image_ref01_ent = $client->GetRandomImage(null);
         $get_random_image_ref01_match_dt0 = [];
-        [$get_random_image_ref01_data_dt0_loaded, $err] = $get_random_image_ref01_ent->load($get_random_image_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $get_random_image_ref01_data_dt0_loaded = $get_random_image_ref01_ent->load($get_random_image_ref01_match_dt0, null);
         $this->assertNotNull($get_random_image_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function get_random_image_basic_setup($extra)
         "LOREMPICSUM_TEST_GET_RANDOM_IMAGE_ENTID" => $idmap,
         "LOREMPICSUM_TEST_LIVE" => "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-        "LOREMPICSUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function get_random_image_basic_setup($extra)
     if ($env["LOREMPICSUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["LOREMPICSUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

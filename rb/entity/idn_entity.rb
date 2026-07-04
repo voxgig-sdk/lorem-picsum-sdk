@@ -45,6 +45,7 @@ class IdnEntity
     end
   end
 
+  # @return [Idn, Hash] the current Idn data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class IdnEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Idn fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Idn.
+  #
+  # @param reqmatch [IdnLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Idn, Hash] the loaded Idn; raises LoremPicsumError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

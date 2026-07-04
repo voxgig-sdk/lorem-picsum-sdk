@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -86,9 +85,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -101,11 +100,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -113,17 +112,17 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## GetRandomImageEntity
 
 ```python
-get_random_image = client.GetRandomImage()
+get_random_image = client.get_random_image
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetRandomImage().load({"id": "get_random_image_id"})
+result = client.get_random_image.load({"id": "get_random_image_id"})
 ```
 
 ### Common Methods
@@ -158,17 +157,17 @@ Return the entity name.
 ## GetRandomSquareImageEntity
 
 ```python
-get_random_square_image = client.GetRandomSquareImage()
+get_random_square_image = client.get_random_square_image
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetRandomSquareImage().load({"id": "get_random_square_image_id"})
+result = client.get_random_square_image.load({"id": "get_random_square_image_id"})
 ```
 
 ### Common Methods
@@ -203,17 +202,17 @@ Return the entity name.
 ## HeightEntity
 
 ```python
-height = client.Height()
+height = client.height
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Height().load({"id": "height_id"})
+result = client.height.load({"id": "height_id"})
 ```
 
 ### Common Methods
@@ -248,17 +247,17 @@ Return the entity name.
 ## HeightwebpEntity
 
 ```python
-heightwebp = client.Heightwebp()
+heightwebp = client.heightwebp
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Heightwebp().load({"id": "heightwebp_id"})
+result = client.heightwebp.load({"id": "heightwebp_id"})
 ```
 
 ### Common Methods
@@ -293,7 +292,7 @@ Return the entity name.
 ## IdInfoEntity
 
 ```python
-id_info = client.IdInfo()
+id_info = client.id_info
 ```
 
 ### Fields
@@ -309,12 +308,12 @@ id_info = client.IdInfo()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.IdInfo().load({"id": "id_info_id"})
+result = client.id_info.load({"id": "id_info_id"})
 ```
 
 ### Common Methods
@@ -349,17 +348,17 @@ Return the entity name.
 ## IdnEntity
 
 ```python
-idn = client.Idn()
+idn = client.idn
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Idn().load({"id": "idn_id"})
+result = client.idn.load({"id": "idn_id"})
 ```
 
 ### Common Methods
@@ -394,7 +393,7 @@ Return the entity name.
 ## ListEntity
 
 ```python
-list = client.List()
+list = client.list
 ```
 
 ### Fields
@@ -410,12 +409,12 @@ list = client.List()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.List().list({})
+results = client.list.list({})
 ```
 
 ### Common Methods
@@ -450,17 +449,17 @@ Return the entity name.
 ## SeedEntity
 
 ```python
-seed = client.Seed()
+seed = client.seed
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Seed().load({"id": "seed_id"})
+result = client.seed.load({"id": "seed_id"})
 ```
 
 ### Common Methods
@@ -495,7 +494,7 @@ Return the entity name.
 ## SeedInfoEntity
 
 ```python
-seed_info = client.SeedInfo()
+seed_info = client.seed_info
 ```
 
 ### Fields
@@ -511,12 +510,12 @@ seed_info = client.SeedInfo()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.SeedInfo().load({"id": "seed_info_id"})
+result = client.seed_info.load({"id": "seed_info_id"})
 ```
 
 ### Common Methods

@@ -245,46 +245,73 @@ func (sdk *LoremPicsumSDK) Direct(fetchargs map[string]any) (map[string]any, err
 }
 
 
+// GetRandomImage returns a GetRandomImage entity bound to this client.
+// Idiomatic usage: client.GetRandomImage(nil).List(nil, nil) or
+// client.GetRandomImage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) GetRandomImage(data map[string]any) LoremPicsumEntity {
 	return NewGetRandomImageEntityFunc(sdk, data)
 }
 
 
+// GetRandomSquareImage returns a GetRandomSquareImage entity bound to this client.
+// Idiomatic usage: client.GetRandomSquareImage(nil).List(nil, nil) or
+// client.GetRandomSquareImage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) GetRandomSquareImage(data map[string]any) LoremPicsumEntity {
 	return NewGetRandomSquareImageEntityFunc(sdk, data)
 }
 
 
+// Height returns a Height entity bound to this client.
+// Idiomatic usage: client.Height(nil).List(nil, nil) or
+// client.Height(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) Height(data map[string]any) LoremPicsumEntity {
 	return NewHeightEntityFunc(sdk, data)
 }
 
 
+// Heightwebp returns a Heightwebp entity bound to this client.
+// Idiomatic usage: client.Heightwebp(nil).List(nil, nil) or
+// client.Heightwebp(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) Heightwebp(data map[string]any) LoremPicsumEntity {
 	return NewHeightwebpEntityFunc(sdk, data)
 }
 
 
+// IdInfo returns a IdInfo entity bound to this client.
+// Idiomatic usage: client.IdInfo(nil).List(nil, nil) or
+// client.IdInfo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) IdInfo(data map[string]any) LoremPicsumEntity {
 	return NewIdInfoEntityFunc(sdk, data)
 }
 
 
+// Idn returns a Idn entity bound to this client.
+// Idiomatic usage: client.Idn(nil).List(nil, nil) or
+// client.Idn(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) Idn(data map[string]any) LoremPicsumEntity {
 	return NewIdnEntityFunc(sdk, data)
 }
 
 
+// List returns a List entity bound to this client.
+// Idiomatic usage: client.List(nil).List(nil, nil) or
+// client.List(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) List(data map[string]any) LoremPicsumEntity {
 	return NewListEntityFunc(sdk, data)
 }
 
 
+// Seed returns a Seed entity bound to this client.
+// Idiomatic usage: client.Seed(nil).List(nil, nil) or
+// client.Seed(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) Seed(data map[string]any) LoremPicsumEntity {
 	return NewSeedEntityFunc(sdk, data)
 }
 
 
+// SeedInfo returns a SeedInfo entity bound to this client.
+// Idiomatic usage: client.SeedInfo(nil).List(nil, nil) or
+// client.SeedInfo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *LoremPicsumSDK) SeedInfo(data map[string]any) LoremPicsumEntity {
 	return NewSeedInfoEntityFunc(sdk, data)
 }

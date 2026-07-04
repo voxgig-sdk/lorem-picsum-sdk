@@ -49,8 +49,7 @@ class TestGetRandomImageEntity:
         # LOAD
         get_random_image_ref01_ent = client.GetRandomImage(None)
         get_random_image_ref01_match_dt0 = {}
-        get_random_image_ref01_data_dt0_loaded, err = get_random_image_ref01_ent.load(get_random_image_ref01_match_dt0, None)
-        assert err is None
+        get_random_image_ref01_data_dt0_loaded = get_random_image_ref01_ent.load(get_random_image_ref01_match_dt0, None)
         assert get_random_image_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _get_random_image_basic_setup(extra):
         "LOREMPICSUM_TEST_GET_RANDOM_IMAGE_ENTID": idmap,
         "LOREMPICSUM_TEST_LIVE": "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN": "FALSE",
-        "LOREMPICSUM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _get_random_image_basic_setup(extra):
     if env.get("LOREMPICSUM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("LOREMPICSUM_APIKEY"),
             },
             extra or {},
         ])

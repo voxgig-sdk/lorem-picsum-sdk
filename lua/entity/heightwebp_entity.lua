@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HeightwebpLoadMatch
+---@param ctrl? table
+---@return Heightwebp
+---@return string? err
 function HeightwebpEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

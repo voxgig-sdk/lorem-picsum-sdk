@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://picsum.photos",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -53,6 +50,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -61,6 +59,7 @@ def make_config():
                       "orig": "width",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -138,6 +137,7 @@ def make_config():
                       "orig": "size",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -209,6 +209,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -217,6 +218,7 @@ def make_config():
                       "orig": "width",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -285,6 +287,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -293,6 +296,7 @@ def make_config():
                       "orig": "width",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 1,
                     },
                   ],
                   "query": [
@@ -404,6 +408,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -452,6 +457,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -460,6 +466,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                     {
                       "active": True,
@@ -468,6 +475,7 @@ def make_config():
                       "orig": "width",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 2,
                     },
                   ],
                   "query": [
@@ -640,6 +648,7 @@ def make_config():
                       "orig": "height",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -648,6 +657,7 @@ def make_config():
                       "orig": "seed",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                     {
                       "active": True,
@@ -656,6 +666,7 @@ def make_config():
                       "orig": "width",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 2,
                     },
                   ],
                   "query": [
@@ -774,6 +785,7 @@ def make_config():
                       "orig": "seed",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

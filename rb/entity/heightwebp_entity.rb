@@ -45,6 +45,7 @@ class HeightwebpEntity
     end
   end
 
+  # @return [Heightwebp, Hash] the current Heightwebp data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class HeightwebpEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Heightwebp fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Heightwebp.
+  #
+  # @param reqmatch [HeightwebpLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Heightwebp, Hash] the loaded Heightwebp; raises LoremPicsumError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetRandomImage,
+  GetRandomImageLoadMatch,
+} from '../LoremPicsumTypes'
 
 // TODO: needs Entity superclass
-class GetRandomImageEntity extends LoremPicsumEntityBase {
+class GetRandomImageEntity extends LoremPicsumEntityBase<GetRandomImage> {
 
   constructor(client: LoremPicsumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetRandomImageEntity extends LoremPicsumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetRandomImageLoadMatch, ctrl?: Control): Promise<GetRandomImage> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetRandomImageEntity extends LoremPicsumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetRandomImage> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -42,8 +42,7 @@ class GetRandomSquareImageEntityTest < Minitest::Test
     # LOAD
     get_random_square_image_ref01_ent = client.GetRandomSquareImage(nil)
     get_random_square_image_ref01_match_dt0 = {}
-    get_random_square_image_ref01_data_dt0_loaded, err = get_random_square_image_ref01_ent.load(get_random_square_image_ref01_match_dt0, nil)
-    assert_nil err
+    get_random_square_image_ref01_data_dt0_loaded = get_random_square_image_ref01_ent.load(get_random_square_image_ref01_match_dt0, nil)
     assert !get_random_square_image_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def get_random_square_image_basic_setup(extra)
     "LOREMPICSUM_TEST_GET_RANDOM_SQUARE_IMAGE_ENTID" => idmap,
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
     "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def get_random_square_image_basic_setup(extra)
   if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["LOREMPICSUM_APIKEY"],
       },
       extra || {},
     ])

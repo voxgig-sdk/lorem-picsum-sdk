@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Height,
+  HeightLoadMatch,
+} from '../LoremPicsumTypes'
 
 // TODO: needs Entity superclass
-class HeightEntity extends LoremPicsumEntityBase {
+class HeightEntity extends LoremPicsumEntityBase<Height> {
 
   constructor(client: LoremPicsumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class HeightEntity extends LoremPicsumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HeightLoadMatch, ctrl?: Control): Promise<Height> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class HeightEntity extends LoremPicsumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Height> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

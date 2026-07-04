@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -206,7 +205,7 @@ Alias for `LoremPicsumSDK.test()`.
 ## GetRandomImageEntity
 
 ```ts
-const get_random_image = client.GetRandomImage()
+const get_random_image = client.get_random_image
 ```
 
 ### Operations
@@ -216,7 +215,7 @@ const get_random_image = client.GetRandomImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRandomImage().load({ id: 'get_random_image_id' })
+const result = await client.get_random_image.load({ id: 'get_random_image_id' })
 ```
 
 ### Common Methods
@@ -250,7 +249,7 @@ Return a copy of the entity options.
 ## GetRandomSquareImageEntity
 
 ```ts
-const get_random_square_image = client.GetRandomSquareImage()
+const get_random_square_image = client.get_random_square_image
 ```
 
 ### Operations
@@ -260,7 +259,7 @@ const get_random_square_image = client.GetRandomSquareImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
+const result = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
 ```
 
 ### Common Methods
@@ -294,7 +293,7 @@ Return a copy of the entity options.
 ## HeightEntity
 
 ```ts
-const height = client.Height()
+const height = client.height
 ```
 
 ### Operations
@@ -304,7 +303,7 @@ const height = client.Height()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Height().load({ id: 'height_id' })
+const result = await client.height.load({ id: 'height_id' })
 ```
 
 ### Common Methods
@@ -338,7 +337,7 @@ Return a copy of the entity options.
 ## HeightwebpEntity
 
 ```ts
-const heightwebp = client.Heightwebp()
+const heightwebp = client.heightwebp
 ```
 
 ### Operations
@@ -348,7 +347,7 @@ const heightwebp = client.Heightwebp()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Heightwebp().load({ id: 'heightwebp_id' })
+const result = await client.heightwebp.load({ id: 'heightwebp_id' })
 ```
 
 ### Common Methods
@@ -382,7 +381,7 @@ Return a copy of the entity options.
 ## IdInfoEntity
 
 ```ts
-const id_info = client.IdInfo()
+const id_info = client.id_info
 ```
 
 ### Fields
@@ -403,7 +402,7 @@ const id_info = client.IdInfo()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IdInfo().load({ id: 'id_info_id' })
+const result = await client.id_info.load({ id: 'id_info_id' })
 ```
 
 ### Common Methods
@@ -437,7 +436,7 @@ Return a copy of the entity options.
 ## IdnEntity
 
 ```ts
-const idn = client.Idn()
+const idn = client.idn
 ```
 
 ### Operations
@@ -447,7 +446,7 @@ const idn = client.Idn()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Idn().load({ id: 'idn_id' })
+const result = await client.idn.load({ id: 'idn_id' })
 ```
 
 ### Common Methods
@@ -481,7 +480,7 @@ Return a copy of the entity options.
 ## ListEntity
 
 ```ts
-const list = client.List()
+const list = client.list
 ```
 
 ### Fields
@@ -502,7 +501,7 @@ const list = client.List()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.List().list()
+const results = await client.list.list()
 ```
 
 ### Common Methods
@@ -536,7 +535,7 @@ Return a copy of the entity options.
 ## SeedEntity
 
 ```ts
-const seed = client.Seed()
+const seed = client.seed
 ```
 
 ### Operations
@@ -546,7 +545,7 @@ const seed = client.Seed()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Seed().load({ id: 'seed_id' })
+const result = await client.seed.load({ id: 'seed_id' })
 ```
 
 ### Common Methods
@@ -580,7 +579,7 @@ Return a copy of the entity options.
 ## SeedInfoEntity
 
 ```ts
-const seed_info = client.SeedInfo()
+const seed_info = client.seed_info
 ```
 
 ### Fields
@@ -601,7 +600,7 @@ const seed_info = client.SeedInfo()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SeedInfo().load({ id: 'seed_info_id' })
+const result = await client.seed_info.load({ id: 'seed_info_id' })
 ```
 
 ### Common Methods

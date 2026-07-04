@@ -85,6 +85,27 @@ func (e *SeedEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Seed; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *SeedEntity) DataTyped(data ...Seed) Seed {
+	if len(data) > 0 {
+		return typedFrom[Seed](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Seed](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Seed (all fields
+// optional at the wire level).
+func (e *SeedEntity) MatchTyped(match ...Seed) Seed {
+	if len(match) > 0 {
+		return typedFrom[Seed](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Seed](e.Match())
+}
+
 
 func (e *SeedEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *SeedEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// SeedLoadMatch and returns an Seed. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *SeedEntity) LoadTyped(reqmatch SeedLoadMatch, ctrl map[string]any) (Seed, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Seed{}, err
+	}
+	return typedFrom[Seed](res), nil
 }
 
 

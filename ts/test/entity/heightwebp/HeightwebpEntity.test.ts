@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'LOREM_PICSUM_TEST_HEIGHTWEBP_ENTID': idmap,
     'LOREM_PICSUM_TEST_LIVE': 'FALSE',
     'LOREM_PICSUM_TEST_EXPLAIN': 'FALSE',
-    'LOREM_PICSUM_APIKEY': 'NONE',
   })
 
   idmap = env['LOREM_PICSUM_TEST_HEIGHTWEBP_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new LoremPicsumSDK(merge([
       {
-        apikey: env.LOREM_PICSUM_APIKEY,
       },
       extra
     ]))

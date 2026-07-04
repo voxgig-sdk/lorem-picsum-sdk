@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  SeedInfo,
+  SeedInfoLoadMatch,
+} from '../LoremPicsumTypes'
 
 // TODO: needs Entity superclass
-class SeedInfoEntity extends LoremPicsumEntityBase {
+class SeedInfoEntity extends LoremPicsumEntityBase<SeedInfo> {
 
   constructor(client: LoremPicsumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class SeedInfoEntity extends LoremPicsumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: SeedInfoLoadMatch, ctrl?: Control): Promise<SeedInfo> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class SeedInfoEntity extends LoremPicsumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<SeedInfo> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

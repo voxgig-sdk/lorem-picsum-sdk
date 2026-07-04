@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -86,9 +85,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -102,14 +103,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -117,17 +118,17 @@ same parameters as `direct()`.
 ## GetRandomImageEntity
 
 ```ruby
-get_random_image = client.GetRandomImage
+get_random_image = client.get_random_image
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GetRandomImage.load({ "id" => "get_random_image_id" })
+result = client.get_random_image.load({ "id" => "get_random_image_id" })
 ```
 
 ### Common Methods
@@ -163,17 +164,17 @@ Return the entity name.
 ## GetRandomSquareImageEntity
 
 ```ruby
-get_random_square_image = client.GetRandomSquareImage
+get_random_square_image = client.get_random_square_image
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GetRandomSquareImage.load({ "id" => "get_random_square_image_id" })
+result = client.get_random_square_image.load({ "id" => "get_random_square_image_id" })
 ```
 
 ### Common Methods
@@ -209,17 +210,17 @@ Return the entity name.
 ## HeightEntity
 
 ```ruby
-height = client.Height
+height = client.height
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Height.load({ "id" => "height_id" })
+result = client.height.load({ "id" => "height_id" })
 ```
 
 ### Common Methods
@@ -255,17 +256,17 @@ Return the entity name.
 ## HeightwebpEntity
 
 ```ruby
-heightwebp = client.Heightwebp
+heightwebp = client.heightwebp
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Heightwebp.load({ "id" => "heightwebp_id" })
+result = client.heightwebp.load({ "id" => "heightwebp_id" })
 ```
 
 ### Common Methods
@@ -301,7 +302,7 @@ Return the entity name.
 ## IdInfoEntity
 
 ```ruby
-id_info = client.IdInfo
+id_info = client.id_info
 ```
 
 ### Fields
@@ -317,12 +318,12 @@ id_info = client.IdInfo
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.IdInfo.load({ "id" => "id_info_id" })
+result = client.id_info.load({ "id" => "id_info_id" })
 ```
 
 ### Common Methods
@@ -358,17 +359,17 @@ Return the entity name.
 ## IdnEntity
 
 ```ruby
-idn = client.Idn
+idn = client.idn
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Idn.load({ "id" => "idn_id" })
+result = client.idn.load({ "id" => "idn_id" })
 ```
 
 ### Common Methods
@@ -404,7 +405,7 @@ Return the entity name.
 ## ListEntity
 
 ```ruby
-list = client.List
+list = client.list
 ```
 
 ### Fields
@@ -420,12 +421,12 @@ list = client.List
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.List.list(nil)
+results = client.list.list(nil)
 ```
 
 ### Common Methods
@@ -461,17 +462,17 @@ Return the entity name.
 ## SeedEntity
 
 ```ruby
-seed = client.Seed
+seed = client.seed
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Seed.load({ "id" => "seed_id" })
+result = client.seed.load({ "id" => "seed_id" })
 ```
 
 ### Common Methods
@@ -507,7 +508,7 @@ Return the entity name.
 ## SeedInfoEntity
 
 ```ruby
-seed_info = client.SeedInfo
+seed_info = client.seed_info
 ```
 
 ### Fields
@@ -523,12 +524,12 @@ seed_info = client.SeedInfo
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.SeedInfo.load({ "id" => "seed_info_id" })
+result = client.seed_info.load({ "id" => "seed_info_id" })
 ```
 
 ### Common Methods

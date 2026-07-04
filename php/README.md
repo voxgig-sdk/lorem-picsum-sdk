@@ -9,9 +9,10 @@ The PHP SDK for the LoremPicsum API — an entity-oriented client using PHP conv
 
 
 ## Install
-```bash
-composer require voxgig-sdk/lorem-picsum
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/lorem-picsum-sdk/releases](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,17 +26,18 @@ loading a specific record.
 <?php
 require_once 'lorempicsum_sdk.php';
 
-$client = new LoremPicsumSDK([
-    "apikey" => getenv("LOREM-PICSUM_APIKEY"),
-]);
+$client = new LoremPicsumSDK();
 ```
 
 ### 3. Load a getrandomimage
 
 ```php
-[$result, $err] = $client->GetRandomImage()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->getrandomimage()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +48,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +86,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = LoremPicsumSDK::test();
 
-[$result, $err] = $client->LoremPicsum()->load(["id" => "test01"]);
+$result = $client->getrandomimage()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +120,7 @@ $client = new LoremPicsumSDK([
 Create a `.env.local` file at the project root:
 
 ```
-LOREM-PICSUM_TEST_LIVE=TRUE
-LOREM-PICSUM_APIKEY=<your-key>
+LOREM_PICSUM_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -139,7 +143,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -193,8 +196,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -313,7 +320,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `const get_random_image = client.GetRandomImage()`
+Create an instance: `const get_random_image = client.get_random_image`
 
 #### Operations
 
@@ -324,13 +331,13 @@ Create an instance: `const get_random_image = client.GetRandomImage()`
 #### Example: Load
 
 ```ts
-const get_random_image = await client.GetRandomImage().load({ id: 'get_random_image_id' })
+const get_random_image = await client.get_random_image.load({ id: 'get_random_image_id' })
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `const get_random_square_image = client.GetRandomSquareImage()`
+Create an instance: `const get_random_square_image = client.get_random_square_image`
 
 #### Operations
 
@@ -341,13 +348,13 @@ Create an instance: `const get_random_square_image = client.GetRandomSquareImage
 #### Example: Load
 
 ```ts
-const get_random_square_image = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
+const get_random_square_image = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
 ```
 
 
 ### Height
 
-Create an instance: `const height = client.Height()`
+Create an instance: `const height = client.height`
 
 #### Operations
 
@@ -358,13 +365,13 @@ Create an instance: `const height = client.Height()`
 #### Example: Load
 
 ```ts
-const height = await client.Height().load({ id: 'height_id' })
+const height = await client.height.load({ id: 'height_id' })
 ```
 
 
 ### Heightwebp
 
-Create an instance: `const heightwebp = client.Heightwebp()`
+Create an instance: `const heightwebp = client.heightwebp`
 
 #### Operations
 
@@ -375,13 +382,13 @@ Create an instance: `const heightwebp = client.Heightwebp()`
 #### Example: Load
 
 ```ts
-const heightwebp = await client.Heightwebp().load({ id: 'heightwebp_id' })
+const heightwebp = await client.heightwebp.load({ id: 'heightwebp_id' })
 ```
 
 
 ### IdInfo
 
-Create an instance: `const id_info = client.IdInfo()`
+Create an instance: `const id_info = client.id_info`
 
 #### Operations
 
@@ -403,13 +410,13 @@ Create an instance: `const id_info = client.IdInfo()`
 #### Example: Load
 
 ```ts
-const id_info = await client.IdInfo().load({ id: 'id_info_id' })
+const id_info = await client.id_info.load({ id: 'id_info_id' })
 ```
 
 
 ### Idn
 
-Create an instance: `const idn = client.Idn()`
+Create an instance: `const idn = client.idn`
 
 #### Operations
 
@@ -420,13 +427,13 @@ Create an instance: `const idn = client.Idn()`
 #### Example: Load
 
 ```ts
-const idn = await client.Idn().load({ id: 'idn_id' })
+const idn = await client.idn.load({ id: 'idn_id' })
 ```
 
 
 ### List
 
-Create an instance: `const list = client.List()`
+Create an instance: `const list = client.list`
 
 #### Operations
 
@@ -448,13 +455,13 @@ Create an instance: `const list = client.List()`
 #### Example: List
 
 ```ts
-const lists = await client.List().list()
+const lists = await client.list.list()
 ```
 
 
 ### Seed
 
-Create an instance: `const seed = client.Seed()`
+Create an instance: `const seed = client.seed`
 
 #### Operations
 
@@ -465,13 +472,13 @@ Create an instance: `const seed = client.Seed()`
 #### Example: Load
 
 ```ts
-const seed = await client.Seed().load({ id: 'seed_id' })
+const seed = await client.seed.load({ id: 'seed_id' })
 ```
 
 
 ### SeedInfo
 
-Create an instance: `const seed_info = client.SeedInfo()`
+Create an instance: `const seed_info = client.seed_info`
 
 #### Operations
 
@@ -493,7 +500,7 @@ Create an instance: `const seed_info = client.SeedInfo()`
 #### Example: Load
 
 ```ts
-const seed_info = await client.SeedInfo().load({ id: 'seed_info_id' })
+const seed_info = await client.seed_info.load({ id: 'seed_info_id' })
 ```
 
 
@@ -568,11 +575,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$getrandomimage = $client->getrandomimage();
+$getrandomimage->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $getrandomimage->dataGet() now returns the loaded getrandomimage data
+// $getrandomimage->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

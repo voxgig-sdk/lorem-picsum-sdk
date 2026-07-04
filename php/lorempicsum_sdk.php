@@ -103,7 +103,7 @@ class LoremPicsumSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class LoremPicsumSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class LoremPicsumSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,80 +216,179 @@ class LoremPicsumSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function GetRandomImage($data = null)
+    private $_get_random_image = null;
+
+    // Idiomatic facade: $client->get_random_image()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetRandomImage() (PHP method
+    // names are case-insensitive).
+    public function get_random_image($data = null)
     {
         require_once __DIR__ . '/entity/get_random_image_entity.php';
+        if ($data === null) {
+            if ($this->_get_random_image === null) {
+                $this->_get_random_image = new GetRandomImageEntity($this, null);
+            }
+            return $this->_get_random_image;
+        }
         return new GetRandomImageEntity($this, $data);
     }
 
 
-    public function GetRandomSquareImage($data = null)
+    private $_get_random_square_image = null;
+
+    // Idiomatic facade: $client->get_random_square_image()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GetRandomSquareImage() (PHP method
+    // names are case-insensitive).
+    public function get_random_square_image($data = null)
     {
         require_once __DIR__ . '/entity/get_random_square_image_entity.php';
+        if ($data === null) {
+            if ($this->_get_random_square_image === null) {
+                $this->_get_random_square_image = new GetRandomSquareImageEntity($this, null);
+            }
+            return $this->_get_random_square_image;
+        }
         return new GetRandomSquareImageEntity($this, $data);
     }
 
 
-    public function Height($data = null)
+    private $_height = null;
+
+    // Idiomatic facade: $client->height()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Height() (PHP method
+    // names are case-insensitive).
+    public function height($data = null)
     {
         require_once __DIR__ . '/entity/height_entity.php';
+        if ($data === null) {
+            if ($this->_height === null) {
+                $this->_height = new HeightEntity($this, null);
+            }
+            return $this->_height;
+        }
         return new HeightEntity($this, $data);
     }
 
 
-    public function Heightwebp($data = null)
+    private $_heightwebp = null;
+
+    // Idiomatic facade: $client->heightwebp()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Heightwebp() (PHP method
+    // names are case-insensitive).
+    public function heightwebp($data = null)
     {
         require_once __DIR__ . '/entity/heightwebp_entity.php';
+        if ($data === null) {
+            if ($this->_heightwebp === null) {
+                $this->_heightwebp = new HeightwebpEntity($this, null);
+            }
+            return $this->_heightwebp;
+        }
         return new HeightwebpEntity($this, $data);
     }
 
 
-    public function IdInfo($data = null)
+    private $_id_info = null;
+
+    // Idiomatic facade: $client->id_info()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias IdInfo() (PHP method
+    // names are case-insensitive).
+    public function id_info($data = null)
     {
         require_once __DIR__ . '/entity/id_info_entity.php';
+        if ($data === null) {
+            if ($this->_id_info === null) {
+                $this->_id_info = new IdInfoEntity($this, null);
+            }
+            return $this->_id_info;
+        }
         return new IdInfoEntity($this, $data);
     }
 
 
-    public function Idn($data = null)
+    private $_idn = null;
+
+    // Idiomatic facade: $client->idn()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Idn() (PHP method
+    // names are case-insensitive).
+    public function idn($data = null)
     {
         require_once __DIR__ . '/entity/idn_entity.php';
+        if ($data === null) {
+            if ($this->_idn === null) {
+                $this->_idn = new IdnEntity($this, null);
+            }
+            return $this->_idn;
+        }
         return new IdnEntity($this, $data);
     }
 
 
-    public function List($data = null)
+    private $_list = null;
+
+    // Idiomatic facade: $client->list()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias List() (PHP method
+    // names are case-insensitive).
+    public function list($data = null)
     {
         require_once __DIR__ . '/entity/list_entity.php';
+        if ($data === null) {
+            if ($this->_list === null) {
+                $this->_list = new ListEntity($this, null);
+            }
+            return $this->_list;
+        }
         return new ListEntity($this, $data);
     }
 
 
-    public function Seed($data = null)
+    private $_seed = null;
+
+    // Idiomatic facade: $client->seed()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Seed() (PHP method
+    // names are case-insensitive).
+    public function seed($data = null)
     {
         require_once __DIR__ . '/entity/seed_entity.php';
+        if ($data === null) {
+            if ($this->_seed === null) {
+                $this->_seed = new SeedEntity($this, null);
+            }
+            return $this->_seed;
+        }
         return new SeedEntity($this, $data);
     }
 
 
-    public function SeedInfo($data = null)
+    private $_seed_info = null;
+
+    // Idiomatic facade: $client->seed_info()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias SeedInfo() (PHP method
+    // names are case-insensitive).
+    public function seed_info($data = null)
     {
         require_once __DIR__ . '/entity/seed_info_entity.php';
+        if ($data === null) {
+            if ($this->_seed_info === null) {
+                $this->_seed_info = new SeedInfoEntity($this, null);
+            }
+            return $this->_seed_info;
+        }
         return new SeedInfoEntity($this, $data);
     }
 

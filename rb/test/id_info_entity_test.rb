@@ -44,8 +44,7 @@ class IdInfoEntityTest < Minitest::Test
     id_info_ref01_match_dt0 = {
       "id" => id_info_ref01_data["id"],
     }
-    id_info_ref01_data_dt0_loaded, err = id_info_ref01_ent.load(id_info_ref01_match_dt0, nil)
-    assert_nil err
+    id_info_ref01_data_dt0_loaded = id_info_ref01_ent.load(id_info_ref01_match_dt0, nil)
     id_info_ref01_data_dt0_load_result = Helpers.to_map(id_info_ref01_data_dt0_loaded)
     assert !id_info_ref01_data_dt0_load_result.nil?
     assert_equal id_info_ref01_data_dt0_load_result["id"], id_info_ref01_data["id"]
@@ -86,7 +85,6 @@ def id_info_basic_setup(extra)
     "LOREMPICSUM_TEST_ID_INFO_ENTID" => idmap,
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
     "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -98,7 +96,6 @@ def id_info_basic_setup(extra)
   if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["LOREMPICSUM_APIKEY"],
       },
       extra || {},
     ])

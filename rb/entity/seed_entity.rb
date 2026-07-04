@@ -45,6 +45,7 @@ class SeedEntity
     end
   end
 
+  # @return [Seed, Hash] the current Seed data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class SeedEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Seed fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Seed.
+  #
+  # @param reqmatch [SeedLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Seed, Hash] the loaded Seed; raises LoremPicsumError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

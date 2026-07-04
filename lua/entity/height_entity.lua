@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HeightLoadMatch
+---@param ctrl? table
+---@return Height
+---@return string? err
 function HeightEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

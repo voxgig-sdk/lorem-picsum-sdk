@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch IdInfoLoadMatch
+---@param ctrl? table
+---@return IdInfo
+---@return string? err
 function IdInfoEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

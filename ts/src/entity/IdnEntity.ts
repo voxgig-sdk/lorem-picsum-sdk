@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Idn,
+  IdnLoadMatch,
+} from '../LoremPicsumTypes'
 
 // TODO: needs Entity superclass
-class IdnEntity extends LoremPicsumEntityBase {
+class IdnEntity extends LoremPicsumEntityBase<Idn> {
 
   constructor(client: LoremPicsumSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class IdnEntity extends LoremPicsumEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: IdnLoadMatch, ctrl?: Control): Promise<Idn> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class IdnEntity extends LoremPicsumEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Idn> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

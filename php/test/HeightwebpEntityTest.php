@@ -49,8 +49,7 @@ class HeightwebpEntityTest extends TestCase
         // LOAD
         $heightwebp_ref01_ent = $client->Heightwebp(null);
         $heightwebp_ref01_match_dt0 = [];
-        [$heightwebp_ref01_data_dt0_loaded, $err] = $heightwebp_ref01_ent->load($heightwebp_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $heightwebp_ref01_data_dt0_loaded = $heightwebp_ref01_ent->load($heightwebp_ref01_match_dt0, null);
         $this->assertNotNull($heightwebp_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function heightwebp_basic_setup($extra)
         "LOREMPICSUM_TEST_HEIGHTWEBP_ENTID" => $idmap,
         "LOREMPICSUM_TEST_LIVE" => "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-        "LOREMPICSUM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function heightwebp_basic_setup($extra)
     if ($env["LOREMPICSUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["LOREMPICSUM_APIKEY"],
             ],
             $extra ?? [],
         ]);

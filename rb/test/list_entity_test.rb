@@ -43,8 +43,7 @@ class ListEntityTest < Minitest::Test
     list_ref01_ent = client.List(nil)
     list_ref01_match = {}
 
-    list_ref01_list_result, err = list_ref01_ent.list(list_ref01_match, nil)
-    assert_nil err
+    list_ref01_list_result = list_ref01_ent.list(list_ref01_match, nil)
     assert list_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def list_basic_setup(extra)
     "LOREMPICSUM_TEST_LIST_ENTID" => idmap,
     "LOREMPICSUM_TEST_LIVE" => "FALSE",
     "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
-    "LOREMPICSUM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def list_basic_setup(extra)
   if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["LOREMPICSUM_APIKEY"],
       },
       extra || {},
     ])

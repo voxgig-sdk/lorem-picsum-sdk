@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetRandomSquareImageLoadMatch
+---@param ctrl? table
+---@return GetRandomSquareImage
+---@return string? err
 function GetRandomSquareImageEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

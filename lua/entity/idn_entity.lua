@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch IdnLoadMatch
+---@param ctrl? table
+---@return Idn
+---@return string? err
 function IdnEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

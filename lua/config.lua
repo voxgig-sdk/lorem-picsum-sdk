@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://picsum.photos",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -52,6 +49,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -60,6 +58,7 @@ local function make_config()
                       ["orig"] = "width",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -137,6 +136,7 @@ local function make_config()
                       ["orig"] = "size",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -208,6 +208,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -216,6 +217,7 @@ local function make_config()
                       ["orig"] = "width",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -284,6 +286,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -292,6 +295,7 @@ local function make_config()
                       ["orig"] = "width",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 1,
                     },
                   },
                   ["query"] = {
@@ -403,6 +407,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -451,6 +456,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -459,6 +465,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                     {
                       ["active"] = true,
@@ -467,6 +474,7 @@ local function make_config()
                       ["orig"] = "width",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 2,
                     },
                   },
                   ["query"] = {
@@ -639,6 +647,7 @@ local function make_config()
                       ["orig"] = "height",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -647,6 +656,7 @@ local function make_config()
                       ["orig"] = "seed",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                     {
                       ["active"] = true,
@@ -655,6 +665,7 @@ local function make_config()
                       ["orig"] = "width",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 2,
                     },
                   },
                   ["query"] = {
@@ -773,6 +784,7 @@ local function make_config()
                       ["orig"] = "seed",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },

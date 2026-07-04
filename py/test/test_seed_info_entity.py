@@ -51,8 +51,7 @@ class TestSeedInfoEntity:
         seed_info_ref01_match_dt0 = {
             "id": seed_info_ref01_data["id"],
         }
-        seed_info_ref01_data_dt0_loaded, err = seed_info_ref01_ent.load(seed_info_ref01_match_dt0, None)
-        assert err is None
+        seed_info_ref01_data_dt0_loaded = seed_info_ref01_ent.load(seed_info_ref01_match_dt0, None)
         seed_info_ref01_data_dt0_load_result = helpers.to_map(seed_info_ref01_data_dt0_loaded)
         assert seed_info_ref01_data_dt0_load_result is not None
         assert seed_info_ref01_data_dt0_load_result["id"] == seed_info_ref01_data["id"]
@@ -95,7 +94,6 @@ def _seed_info_basic_setup(extra):
         "LOREMPICSUM_TEST_SEED_INFO_ENTID": idmap,
         "LOREMPICSUM_TEST_LIVE": "FALSE",
         "LOREMPICSUM_TEST_EXPLAIN": "FALSE",
-        "LOREMPICSUM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -106,7 +104,6 @@ def _seed_info_basic_setup(extra):
     if env.get("LOREMPICSUM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("LOREMPICSUM_APIKEY"),
             },
             extra or {},
         ])

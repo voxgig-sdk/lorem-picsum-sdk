@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'LoremPicsum_types'
+
 
 class LoremPicsumSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class LoremPicsumSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class LoremPicsumSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue LoremPicsumError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = LoremPicsumHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class LoremPicsumSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,64 +198,127 @@ class LoremPicsumSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.get_random_image.list / client.get_random_image.load({ "id" => ... })
+  def get_random_image
+    require_relative 'entity/get_random_image_entity'
+    @get_random_image ||= GetRandomImageEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_random_image instead.
   def GetRandomImage(data = nil)
     require_relative 'entity/get_random_image_entity'
     GetRandomImageEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.get_random_square_image.list / client.get_random_square_image.load({ "id" => ... })
+  def get_random_square_image
+    require_relative 'entity/get_random_square_image_entity'
+    @get_random_square_image ||= GetRandomSquareImageEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_random_square_image instead.
   def GetRandomSquareImage(data = nil)
     require_relative 'entity/get_random_square_image_entity'
     GetRandomSquareImageEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.height.list / client.height.load({ "id" => ... })
+  def height
+    require_relative 'entity/height_entity'
+    @height ||= HeightEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.height instead.
   def Height(data = nil)
     require_relative 'entity/height_entity'
     HeightEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.heightwebp.list / client.heightwebp.load({ "id" => ... })
+  def heightwebp
+    require_relative 'entity/heightwebp_entity'
+    @heightwebp ||= HeightwebpEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.heightwebp instead.
   def Heightwebp(data = nil)
     require_relative 'entity/heightwebp_entity'
     HeightwebpEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.id_info.list / client.id_info.load({ "id" => ... })
+  def id_info
+    require_relative 'entity/id_info_entity'
+    @id_info ||= IdInfoEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.id_info instead.
   def IdInfo(data = nil)
     require_relative 'entity/id_info_entity'
     IdInfoEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.idn.list / client.idn.load({ "id" => ... })
+  def idn
+    require_relative 'entity/idn_entity'
+    @idn ||= IdnEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.idn instead.
   def Idn(data = nil)
     require_relative 'entity/idn_entity'
     IdnEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.list.list / client.list.load({ "id" => ... })
+  def list
+    require_relative 'entity/list_entity'
+    @list ||= ListEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.list instead.
   def List(data = nil)
     require_relative 'entity/list_entity'
     ListEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.seed.list / client.seed.load({ "id" => ... })
+  def seed
+    require_relative 'entity/seed_entity'
+    @seed ||= SeedEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.seed instead.
   def Seed(data = nil)
     require_relative 'entity/seed_entity'
     SeedEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.seed_info.list / client.seed_info.load({ "id" => ... })
+  def seed_info
+    require_relative 'entity/seed_info_entity'
+    @seed_info ||= SeedInfoEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.seed_info instead.
   def SeedInfo(data = nil)
     require_relative 'entity/seed_info_entity'
     SeedInfoEntity.new(self, data)

@@ -9,9 +9,12 @@ The TypeScript SDK for the LoremPicsum API — a type-safe, entity-oriented clie
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/lorem-picsum
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/lorem-picsum-sdk/releases](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { LoremPicsumSDK } from 'lorem-picsum'
+import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
 
-const client = new LoremPicsumSDK({
-  apikey: process.env.LOREM-PICSUM_APIKEY,
-})
+const client = new LoremPicsumSDK()
 ```
 
 ### 3. Load a getrandomimage
 
 ```ts
-const result = await client.GetRandomImage().load({ id: 'example_id' })
+const result = await client.getrandomimage.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoremPicsumSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.getrandomimage.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new LoremPicsumSDK({ apikey: '...' })
+const client = new LoremPicsumSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.getrandomimage
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new LoremPicsumSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new LoremPicsumSDK({
 Create a `.env.local` file at the project root:
 
 ```
-LOREM-PICSUM_TEST_LIVE=TRUE
-LOREM-PICSUM_APIKEY=<your-key>
+LOREM_PICSUM_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new LoremPicsumSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new LoremPicsumSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -363,7 +360,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `const get_random_image = client.GetRandomImage()`
+Create an instance: `const get_random_image = client.get_random_image`
 
 #### Operations
 
@@ -374,13 +371,13 @@ Create an instance: `const get_random_image = client.GetRandomImage()`
 #### Example: Load
 
 ```ts
-const get_random_image = await client.GetRandomImage().load({ id: 'get_random_image_id' })
+const get_random_image = await client.get_random_image.load({ id: 'get_random_image_id' })
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `const get_random_square_image = client.GetRandomSquareImage()`
+Create an instance: `const get_random_square_image = client.get_random_square_image`
 
 #### Operations
 
@@ -391,13 +388,13 @@ Create an instance: `const get_random_square_image = client.GetRandomSquareImage
 #### Example: Load
 
 ```ts
-const get_random_square_image = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
+const get_random_square_image = await client.get_random_square_image.load({ id: 'get_random_square_image_id' })
 ```
 
 
 ### Height
 
-Create an instance: `const height = client.Height()`
+Create an instance: `const height = client.height`
 
 #### Operations
 
@@ -408,13 +405,13 @@ Create an instance: `const height = client.Height()`
 #### Example: Load
 
 ```ts
-const height = await client.Height().load({ id: 'height_id' })
+const height = await client.height.load({ id: 'height_id' })
 ```
 
 
 ### Heightwebp
 
-Create an instance: `const heightwebp = client.Heightwebp()`
+Create an instance: `const heightwebp = client.heightwebp`
 
 #### Operations
 
@@ -425,13 +422,13 @@ Create an instance: `const heightwebp = client.Heightwebp()`
 #### Example: Load
 
 ```ts
-const heightwebp = await client.Heightwebp().load({ id: 'heightwebp_id' })
+const heightwebp = await client.heightwebp.load({ id: 'heightwebp_id' })
 ```
 
 
 ### IdInfo
 
-Create an instance: `const id_info = client.IdInfo()`
+Create an instance: `const id_info = client.id_info`
 
 #### Operations
 
@@ -453,13 +450,13 @@ Create an instance: `const id_info = client.IdInfo()`
 #### Example: Load
 
 ```ts
-const id_info = await client.IdInfo().load({ id: 'id_info_id' })
+const id_info = await client.id_info.load({ id: 'id_info_id' })
 ```
 
 
 ### Idn
 
-Create an instance: `const idn = client.Idn()`
+Create an instance: `const idn = client.idn`
 
 #### Operations
 
@@ -470,13 +467,13 @@ Create an instance: `const idn = client.Idn()`
 #### Example: Load
 
 ```ts
-const idn = await client.Idn().load({ id: 'idn_id' })
+const idn = await client.idn.load({ id: 'idn_id' })
 ```
 
 
 ### List
 
-Create an instance: `const list = client.List()`
+Create an instance: `const list = client.list`
 
 #### Operations
 
@@ -498,13 +495,13 @@ Create an instance: `const list = client.List()`
 #### Example: List
 
 ```ts
-const lists = await client.List().list()
+const lists = await client.list.list()
 ```
 
 
 ### Seed
 
-Create an instance: `const seed = client.Seed()`
+Create an instance: `const seed = client.seed`
 
 #### Operations
 
@@ -515,13 +512,13 @@ Create an instance: `const seed = client.Seed()`
 #### Example: Load
 
 ```ts
-const seed = await client.Seed().load({ id: 'seed_id' })
+const seed = await client.seed.load({ id: 'seed_id' })
 ```
 
 
 ### SeedInfo
 
-Create an instance: `const seed_info = client.SeedInfo()`
+Create an instance: `const seed_info = client.seed_info`
 
 #### Operations
 
@@ -543,7 +540,7 @@ Create an instance: `const seed_info = client.SeedInfo()`
 #### Example: Load
 
 ```ts
-const seed_info = await client.SeedInfo().load({ id: 'seed_info_id' })
+const seed_info = await client.seed_info.load({ id: 'seed_info_id' })
 ```
 
 
@@ -604,7 +601,7 @@ lorem-picsum/
 Import the SDK from the package root:
 
 ```ts
-import { LoremPicsumSDK } from 'lorem-picsum'
+import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
 ```
 
 ### Entity state
@@ -614,11 +611,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const getrandomimage = client.getrandomimage
+await getrandomimage.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// getrandomimage.data() now returns the loaded getrandomimage data
+// getrandomimage.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration
