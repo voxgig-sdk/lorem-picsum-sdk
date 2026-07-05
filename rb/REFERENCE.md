@@ -8,7 +8,7 @@ Complete API reference for the LoremPicsum Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'lorem-picsum_sdk'
+require_relative 'LoremPicsum_sdk'
 
 client = LoremPicsumSDK.new(options)
 ```
@@ -128,7 +128,7 @@ get_random_image = client.GetRandomImage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetRandomImage.load({ "id" => "get_random_image_id" })
+result = client.GetRandomImage.load()
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ height = client.Height
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Height.load({ "id" => "height_id" })
+result = client.Height.load()
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ heightwebp = client.Heightwebp
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Heightwebp.load({ "id" => "heightwebp_id" })
+result = client.Heightwebp.load()
 ```
 
 ### Common Methods
@@ -309,12 +309,12 @@ id_info = client.IdInfo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `String` | Yes |  |
+| `download_url` | `String` | Yes |  |
+| `height` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `width` | `Integer` | Yes |  |
 
 ### Operations
 
@@ -412,21 +412,21 @@ list = client.List
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `String` | Yes |  |
+| `download_url` | `String` | Yes |  |
+| `height` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `width` | `Integer` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.List.list(nil)
+results = client.List.list
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ seed = client.Seed
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Seed.load({ "id" => "seed_id" })
+result = client.Seed.load()
 ```
 
 ### Common Methods
@@ -515,12 +515,12 @@ seed_info = client.SeedInfo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `String` | Yes |  |
+| `download_url` | `String` | Yes |  |
+| `height` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `url` | `String` | Yes |  |
+| `width` | `Integer` | Yes |  |
 
 ### Operations
 

@@ -67,7 +67,14 @@ export interface List {
   width: number
 }
 
-export type ListListMatch = Partial<List>
+export interface ListListMatch {
+  author?: string
+  download_url?: string
+  height?: number
+  id?: string
+  url?: string
+  width?: number
+}
 
 export interface Seed {
 }

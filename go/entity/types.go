@@ -83,8 +83,7 @@ type List struct {
 	Width int `json:"width"`
 }
 
-// ListListMatch mirrors the list fields as an all-optional match
-// filter (Go analog of Partial<List>).
+// ListListMatch is the typed request payload for List.ListTyped.
 type ListListMatch struct {
 	Author *string `json:"author,omitempty"`
 	DownloadUrl *string `json:"download_url,omitempty"`

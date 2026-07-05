@@ -160,7 +160,7 @@ List = Struct.new(
   keyword_init: true
 )
 
-# Match filter for List#list (any subset of List fields).
+# Request payload for List#list.
 #
 # @!attribute [rw] author
 #   @return [String, nil]

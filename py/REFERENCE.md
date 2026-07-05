@@ -8,7 +8,7 @@ Complete API reference for the LoremPicsum Python SDK.
 ### Constructor
 
 ```python
-from lorem-picsum_sdk import LoremPicsumSDK
+from lorempicsum_sdk import LoremPicsumSDK
 
 client = LoremPicsumSDK(options)
 ```
@@ -122,7 +122,7 @@ get_random_image = client.GetRandomImage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GetRandomImage().load({"id": "get_random_image_id"})
+result = client.GetRandomImage().load()
 ```
 
 ### Common Methods
@@ -212,7 +212,7 @@ height = client.Height()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Height().load({"id": "height_id"})
+result = client.Height().load()
 ```
 
 ### Common Methods
@@ -257,7 +257,7 @@ heightwebp = client.Heightwebp()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Heightwebp().load({"id": "heightwebp_id"})
+result = client.Heightwebp().load()
 ```
 
 ### Common Methods
@@ -299,12 +299,12 @@ id_info = client.IdInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `str` | Yes |  |
+| `download_url` | `str` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
@@ -400,21 +400,21 @@ list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `str` | Yes |  |
+| `download_url` | `str` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.List().list({})
+results = client.List().list()
 for list in results:
     print(list)
 ```
@@ -461,7 +461,7 @@ seed = client.Seed()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Seed().load({"id": "seed_id"})
+result = client.Seed().load()
 ```
 
 ### Common Methods
@@ -503,12 +503,12 @@ seed_info = client.SeedInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `str` | Yes |  |
+| `download_url` | `str` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `url` | `str` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 

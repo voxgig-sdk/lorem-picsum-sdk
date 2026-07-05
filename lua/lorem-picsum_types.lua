@@ -56,6 +56,12 @@
 ---@field width number
 
 ---@class ListListMatch
+---@field author? string
+---@field download_url? string
+---@field height? number
+---@field id? string
+---@field url? string
+---@field width? number
 
 ---@class Seed
 

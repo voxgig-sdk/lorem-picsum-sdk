@@ -215,7 +215,7 @@ const get_random_image = client.GetRandomImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRandomImage().load({ id: 'get_random_image_id' })
+const result = await client.GetRandomImage().load()
 ```
 
 ### Common Methods
@@ -259,7 +259,7 @@ const get_random_square_image = client.GetRandomSquareImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRandomSquareImage().load({ id: 'get_random_square_image_id' })
+const result = await client.GetRandomSquareImage().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ const height = client.Height()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Height().load({ id: 'height_id' })
+const result = await client.Height().load()
 ```
 
 ### Common Methods
@@ -347,7 +347,7 @@ const heightwebp = client.Heightwebp()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Heightwebp().load({ id: 'heightwebp_id' })
+const result = await client.Heightwebp().load()
 ```
 
 ### Common Methods
@@ -388,12 +388,12 @@ const id_info = client.IdInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 
@@ -487,12 +487,12 @@ const list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 
@@ -545,7 +545,7 @@ const seed = client.Seed()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Seed().load({ id: 'seed_id' })
+const result = await client.Seed().load()
 ```
 
 ### Common Methods
@@ -586,12 +586,12 @@ const seed_info = client.SeedInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 

@@ -4,6 +4,8 @@
 
 The Golang SDK for the LoremPicsum API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetRandomImage(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -49,12 +51,41 @@ func main() {
     client := sdk.New()
 
     // Load a single getrandomimage — the value is the loaded record.
-    getrandomimage, err := client.GetRandomImage(nil).Load(map[string]any{"id": "example_id"}, nil)
+    getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(getrandomimage)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = getrandomimage
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -105,12 +136,12 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 getrandomimage, err := client.GetRandomImage(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getrandomimage) // the loaded mock data
+fmt.Println(getrandomimage) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -205,9 +236,6 @@ All entities implement the `LoremPicsumEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -220,16 +248,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getrandomimage, err := client.GetRandomImage(nil).Load(map[string]any{"id": "example_id"}, nil)
+    getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getrandomimage is the loaded record
+    // getrandomimage is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -353,7 +381,7 @@ Create an instance: `get_random_image := client.GetRandomImage(nil)`
 #### Example: Load
 
 ```go
-get_random_image, err := client.GetRandomImage(nil).Load(map[string]any{"id": "get_random_image_id"}, nil)
+get_random_image, err := client.GetRandomImage(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -395,7 +423,7 @@ Create an instance: `height := client.Height(nil)`
 #### Example: Load
 
 ```go
-height, err := client.Height(nil).Load(map[string]any{"id": "height_id"}, nil)
+height, err := client.Height(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -416,7 +444,7 @@ Create an instance: `heightwebp := client.Heightwebp(nil)`
 #### Example: Load
 
 ```go
-heightwebp, err := client.Heightwebp(nil).Load(map[string]any{"id": "heightwebp_id"}, nil)
+heightwebp, err := client.Heightwebp(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -438,12 +466,12 @@ Create an instance: `id_info := client.IdInfo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | ``$STRING`` |  |
-| `download_url` | ``$STRING`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `author` | `string` |  |
+| `download_url` | `string` |  |
+| `height` | `int` |  |
+| `id` | `string` |  |
+| `url` | `string` |  |
+| `width` | `int` |  |
 
 #### Example: Load
 
@@ -491,12 +519,12 @@ Create an instance: `list := client.List(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | ``$STRING`` |  |
-| `download_url` | ``$STRING`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `author` | `string` |  |
+| `download_url` | `string` |  |
+| `height` | `int` |  |
+| `id` | `string` |  |
+| `url` | `string` |  |
+| `width` | `int` |  |
 
 #### Example: List
 
@@ -522,7 +550,7 @@ Create an instance: `seed := client.Seed(nil)`
 #### Example: Load
 
 ```go
-seed, err := client.Seed(nil).Load(map[string]any{"id": "seed_id"}, nil)
+seed, err := client.Seed(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -544,12 +572,12 @@ Create an instance: `seed_info := client.SeedInfo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | ``$STRING`` |  |
-| `download_url` | ``$STRING`` |  |
-| `height` | ``$INTEGER`` |  |
-| `id` | ``$STRING`` |  |
-| `url` | ``$STRING`` |  |
-| `width` | ``$INTEGER`` |  |
+| `author` | `string` |  |
+| `download_url` | `string` |  |
+| `height` | `int` |  |
+| `id` | `string` |  |
+| `url` | `string` |  |
+| `width` | `int` |  |
 
 #### Example: Load
 
@@ -562,12 +590,16 @@ fmt.Println(seed_info) // the loaded record
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -584,9 +616,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -632,9 +664,9 @@ stores the returned data and match criteria internally.
 
 ```go
 getrandomimage := client.GetRandomImage(nil)
-getrandomimage.Load(map[string]any{"id": "example_id"}, nil)
+getrandomimage.Load(nil, nil)
 
-// getrandomimage.Data() now returns the loaded getrandomimage data
+// getrandomimage.Data() now returns the getrandomimage data from the last load
 // getrandomimage.Match() returns the last match criteria
 ```
 

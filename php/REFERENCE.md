@@ -8,7 +8,7 @@ Complete API reference for the LoremPicsum PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/lorem-picsum_sdk.php';
+require_once __DIR__ . '/lorempicsum_sdk.php';
 
 $client = new LoremPicsumSDK($options);
 ```
@@ -77,11 +77,11 @@ Create a new `SeedEntity` instance. Pass `null` for no initial data.
 
 Create a new `SeedInfoEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): LoremPicsumUtility`
 
 Return a copy of the SDK utility object.
 
@@ -127,24 +127,24 @@ $get_random_image = $client->GetRandomImage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GetRandomImage()->load(["id" => "get_random_image_id"]);
+$result = $client->GetRandomImage()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -153,7 +153,7 @@ Set the entity match criteria.
 Create a new `GetRandomImageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -178,19 +178,19 @@ $result = $client->GetRandomSquareImage()->load(["id" => "get_random_square_imag
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -199,7 +199,7 @@ Set the entity match criteria.
 Create a new `GetRandomSquareImageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -219,24 +219,24 @@ $height = $client->Height();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Height()->load(["id" => "height_id"]);
+$result = $client->Height()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -245,7 +245,7 @@ Set the entity match criteria.
 Create a new `HeightEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -265,24 +265,24 @@ $heightwebp = $client->Heightwebp();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Heightwebp()->load(["id" => "heightwebp_id"]);
+$result = $client->Heightwebp()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -291,7 +291,7 @@ Set the entity match criteria.
 Create a new `HeightwebpEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -308,12 +308,12 @@ $id_info = $client->IdInfo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
@@ -327,19 +327,19 @@ $result = $client->IdInfo()->load(["id" => "id_info_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -348,7 +348,7 @@ Set the entity match criteria.
 Create a new `IdInfoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -373,19 +373,19 @@ $result = $client->Idn()->load(["id" => "idn_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -394,7 +394,7 @@ Set the entity match criteria.
 Create a new `IdnEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -411,38 +411,38 @@ $list = $client->List();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->List()->list([]);
+$results = $client->List()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -451,7 +451,7 @@ Set the entity match criteria.
 Create a new `ListEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -471,24 +471,24 @@ $seed = $client->Seed();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Seed()->load(["id" => "seed_id"]);
+$result = $client->Seed()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -497,7 +497,7 @@ Set the entity match criteria.
 Create a new `SeedEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -514,12 +514,12 @@ $seed_info = $client->SeedInfo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
@@ -533,19 +533,19 @@ $result = $client->SeedInfo()->load(["id" => "seed_info_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -554,7 +554,7 @@ Set the entity match criteria.
 Create a new `SeedInfoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

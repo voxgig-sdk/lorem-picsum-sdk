@@ -67,10 +67,12 @@ class SeedInfoEntity
   
   # Load a single SeedInfo.
   #
-  # @param reqmatch [SeedInfoLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [SeedInfoLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.SeedInfo.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [SeedInfo, Hash] the loaded SeedInfo; raises LoremPicsumError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

@@ -100,7 +100,7 @@ class List
     public int $width;
 }
 
-/** Match filter for List#list (any subset of List fields). */
+/** Request payload for List#list. */
 class ListListMatch
 {
     public ?string $author = null;

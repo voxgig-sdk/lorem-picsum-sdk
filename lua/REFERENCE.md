@@ -125,7 +125,7 @@ local get_random_image = client:GetRandomImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRandomImage():load({ id = "get_random_image_id" })
+local result, err = client:GetRandomImage():load()
 ```
 
 ### Common Methods
@@ -217,7 +217,7 @@ local height = client:Height(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Height():load({ id = "height_id" })
+local result, err = client:Height():load()
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ local heightwebp = client:Heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Heightwebp():load({ id = "heightwebp_id" })
+local result, err = client:Heightwebp():load()
 ```
 
 ### Common Methods
@@ -306,12 +306,12 @@ local id_info = client:IdInfo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 
@@ -409,12 +409,12 @@ local list = client:List(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 
@@ -469,7 +469,7 @@ local seed = client:Seed(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Seed():load({ id = "seed_id" })
+local result, err = client:Seed():load()
 ```
 
 ### Common Methods
@@ -512,12 +512,12 @@ local seed_info = client:SeedInfo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `number` | Yes |  |
 
 ### Operations
 

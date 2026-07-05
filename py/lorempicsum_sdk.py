@@ -221,55 +221,55 @@ class LoremPicsumSDK:
 
 
     def GetRandomImage(self, data=None) -> "GetRandomImageEntity":
-        """Entity factory: client.GetRandomImage().list({}) / client.GetRandomImage().load({"id": ...})."""
+        """Entity factory: client.GetRandomImage().list() / client.GetRandomImage().load({"id": ...})."""
         from entity.get_random_image_entity import GetRandomImageEntity
         return GetRandomImageEntity(self, data)
 
 
     def GetRandomSquareImage(self, data=None) -> "GetRandomSquareImageEntity":
-        """Entity factory: client.GetRandomSquareImage().list({}) / client.GetRandomSquareImage().load({"id": ...})."""
+        """Entity factory: client.GetRandomSquareImage().list() / client.GetRandomSquareImage().load({"id": ...})."""
         from entity.get_random_square_image_entity import GetRandomSquareImageEntity
         return GetRandomSquareImageEntity(self, data)
 
 
     def Height(self, data=None) -> "HeightEntity":
-        """Entity factory: client.Height().list({}) / client.Height().load({"id": ...})."""
+        """Entity factory: client.Height().list() / client.Height().load({"id": ...})."""
         from entity.height_entity import HeightEntity
         return HeightEntity(self, data)
 
 
     def Heightwebp(self, data=None) -> "HeightwebpEntity":
-        """Entity factory: client.Heightwebp().list({}) / client.Heightwebp().load({"id": ...})."""
+        """Entity factory: client.Heightwebp().list() / client.Heightwebp().load({"id": ...})."""
         from entity.heightwebp_entity import HeightwebpEntity
         return HeightwebpEntity(self, data)
 
 
     def IdInfo(self, data=None) -> "IdInfoEntity":
-        """Entity factory: client.IdInfo().list({}) / client.IdInfo().load({"id": ...})."""
+        """Entity factory: client.IdInfo().list() / client.IdInfo().load({"id": ...})."""
         from entity.id_info_entity import IdInfoEntity
         return IdInfoEntity(self, data)
 
 
     def Idn(self, data=None) -> "IdnEntity":
-        """Entity factory: client.Idn().list({}) / client.Idn().load({"id": ...})."""
+        """Entity factory: client.Idn().list() / client.Idn().load({"id": ...})."""
         from entity.idn_entity import IdnEntity
         return IdnEntity(self, data)
 
 
     def List(self, data=None) -> "ListEntity":
-        """Entity factory: client.List().list({}) / client.List().load({"id": ...})."""
+        """Entity factory: client.List().list() / client.List().load({"id": ...})."""
         from entity.list_entity import ListEntity
         return ListEntity(self, data)
 
 
     def Seed(self, data=None) -> "SeedEntity":
-        """Entity factory: client.Seed().list({}) / client.Seed().load({"id": ...})."""
+        """Entity factory: client.Seed().list() / client.Seed().load({"id": ...})."""
         from entity.seed_entity import SeedEntity
         return SeedEntity(self, data)
 
 
     def SeedInfo(self, data=None) -> "SeedInfoEntity":
-        """Entity factory: client.SeedInfo().list({}) / client.SeedInfo().load({"id": ...})."""
+        """Entity factory: client.SeedInfo().list() / client.SeedInfo().load({"id": ...})."""
         from entity.seed_info_entity import SeedInfoEntity
         return SeedInfoEntity(self, data)
 

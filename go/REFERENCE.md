@@ -132,7 +132,7 @@ get_random_image := client.GetRandomImage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetRandomImage(nil).Load(map[string]any{"id": "get_random_image_id"}, nil)
+result, err := client.GetRandomImage(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -212,7 +212,7 @@ height := client.Height(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Height(nil).Load(map[string]any{"id": "height_id"}, nil)
+result, err := client.Height(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -252,7 +252,7 @@ heightwebp := client.Heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Heightwebp(nil).Load(map[string]any{"id": "heightwebp_id"}, nil)
+result, err := client.Heightwebp(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -289,12 +289,12 @@ id_info := client.IdInfo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
@@ -380,12 +380,12 @@ list := client.List(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
@@ -434,7 +434,7 @@ seed := client.Seed(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Seed(nil).Load(map[string]any{"id": "seed_id"}, nil)
+result, err := client.Seed(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -471,12 +471,12 @@ seed_info := client.SeedInfo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | Yes |  |
-| `download_url` | ``$STRING`` | Yes |  |
-| `height` | ``$INTEGER`` | Yes |  |
-| `id` | ``$STRING`` | Yes |  |
-| `url` | ``$STRING`` | Yes |  |
-| `width` | ``$INTEGER`` | Yes |  |
+| `author` | `string` | Yes |  |
+| `download_url` | `string` | Yes |  |
+| `height` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `url` | `string` | Yes |  |
+| `width` | `int` | Yes |  |
 
 ### Operations
 
