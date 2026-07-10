@@ -122,7 +122,8 @@ same parameters as `Direct()`.
 ## GetRandomImageEntity
 
 ```go
-get_random_image := client.GetRandomImage(nil)
+getRandomImage := client.GetRandomImage(nil)
+fmt.Println(getRandomImage.GetName()) // "get_random_image"
 ```
 
 ### Operations
@@ -132,7 +133,11 @@ get_random_image := client.GetRandomImage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetRandomImage(nil).Load(nil, nil)
+result, err := client.GetRandomImage(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -162,7 +167,8 @@ Return the entity name.
 ## GetRandomSquareImageEntity
 
 ```go
-get_random_square_image := client.GetRandomSquareImage(nil)
+getRandomSquareImage := client.GetRandomSquareImage(nil)
+fmt.Println(getRandomSquareImage.GetName()) // "get_random_square_image"
 ```
 
 ### Operations
@@ -172,7 +178,11 @@ get_random_square_image := client.GetRandomSquareImage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": "get_random_square_image_id"}, nil)
+result, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -203,6 +213,7 @@ Return the entity name.
 
 ```go
 height := client.Height(nil)
+fmt.Println(height.GetName()) // "height"
 ```
 
 ### Operations
@@ -212,7 +223,11 @@ height := client.Height(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Height(nil).Load(nil, nil)
+result, err := client.Height(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -243,6 +258,7 @@ Return the entity name.
 
 ```go
 heightwebp := client.Heightwebp(nil)
+fmt.Println(heightwebp.GetName()) // "heightwebp"
 ```
 
 ### Operations
@@ -252,7 +268,11 @@ heightwebp := client.Heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Heightwebp(nil).Load(nil, nil)
+result, err := client.Heightwebp(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -282,7 +302,8 @@ Return the entity name.
 ## IdInfoEntity
 
 ```go
-id_info := client.IdInfo(nil)
+idInfo := client.IdInfo(nil)
+fmt.Println(idInfo.GetName()) // "id_info"
 ```
 
 ### Fields
@@ -304,6 +325,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.IdInfo(nil).Load(map[string]any{"id": "id_info_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -334,6 +359,7 @@ Return the entity name.
 
 ```go
 idn := client.Idn(nil)
+fmt.Println(idn.GetName()) // "idn"
 ```
 
 ### Operations
@@ -343,7 +369,11 @@ idn := client.Idn(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Idn(nil).Load(map[string]any{"id": "idn_id"}, nil)
+result, err := client.Idn(nil).Load(map[string]any{"id": "idn_id", "height": 1, "width": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -374,6 +404,7 @@ Return the entity name.
 
 ```go
 list := client.List(nil)
+fmt.Println(list.GetName()) // "list"
 ```
 
 ### Fields
@@ -395,6 +426,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.List(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -425,6 +460,7 @@ Return the entity name.
 
 ```go
 seed := client.Seed(nil)
+fmt.Println(seed.GetName()) // "seed"
 ```
 
 ### Operations
@@ -434,7 +470,11 @@ seed := client.Seed(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Seed(nil).Load(nil, nil)
+result, err := client.Seed(nil).Load(map[string]any{"height": 1, "seed": "seed", "width": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -464,7 +504,8 @@ Return the entity name.
 ## SeedInfoEntity
 
 ```go
-seed_info := client.SeedInfo(nil)
+seedInfo := client.SeedInfo(nil)
+fmt.Println(seedInfo.GetName()) // "seed_info"
 ```
 
 ### Fields
@@ -486,6 +527,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.SeedInfo(nil).Load(map[string]any{"id": "seed_info_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -215,7 +215,7 @@ const get_random_image = client.GetRandomImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRandomImage().load()
+const result = await client.GetRandomImage().load({ height: 1, width: 1 })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ const height = client.Height()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Height().load()
+const result = await client.Height().load({ height: 1, width: 1 })
 ```
 
 ### Common Methods
@@ -347,7 +347,7 @@ const heightwebp = client.Heightwebp()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Heightwebp().load()
+const result = await client.Heightwebp().load({ height: 1, width: 1 })
 ```
 
 ### Common Methods
@@ -446,7 +446,7 @@ const idn = client.Idn()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Idn().load({ id: 'idn_id' })
+const result = await client.Idn().load({ id: 'idn_id', height: 1, width: 1 })
 ```
 
 ### Common Methods
@@ -545,7 +545,7 @@ const seed = client.Seed()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Seed().load()
+const result = await client.Seed().load({ height: 1, seed: 'seed', width: 1 })
 ```
 
 ### Common Methods

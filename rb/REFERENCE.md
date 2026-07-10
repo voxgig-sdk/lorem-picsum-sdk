@@ -128,7 +128,7 @@ get_random_image = client.GetRandomImage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetRandomImage.load()
+result = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
 ```
 
 ### Common Methods
@@ -174,7 +174,7 @@ get_random_square_image = client.GetRandomSquareImage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetRandomSquareImage.load({ "id" => "get_random_square_image_id" })
+result = client.GetRandomSquareImage.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ height = client.Height
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Height.load()
+result = client.Height.load({ "height" => 1, "width" => 1 })
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ heightwebp = client.Heightwebp
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Heightwebp.load()
+result = client.Heightwebp.load({ "height" => 1, "width" => 1 })
 ```
 
 ### Common Methods
@@ -369,7 +369,7 @@ idn = client.Idn
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Idn.load({ "id" => "idn_id" })
+result = client.Idn.load({ "id" => "idn_id", "height" => 1, "width" => 1 })
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ seed = client.Seed
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Seed.load()
+result = client.Seed.load({ "height" => 1, "seed" => "seed", "width" => 1 })
 ```
 
 ### Common Methods

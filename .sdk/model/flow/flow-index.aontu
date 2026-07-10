@@ -1,0 +1,11 @@
+# Flows
+
+@"BasicGetRandomImageFlow.aontu"
+@"BasicGetRandomSquareImageFlow.aontu"
+@"BasicHeightFlow.aontu"
+@"BasicHeightwebpFlow.aontu"
+@"BasicIdInfoFlow.aontu"
+@"BasicIdnFlow.aontu"
+@"BasicListFlow.aontu"
+@"BasicSeedFlow.aontu"
+@"BasicSeedInfoFlow.aontu"

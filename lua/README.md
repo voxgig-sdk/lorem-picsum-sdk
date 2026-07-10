@@ -33,12 +33,14 @@ local sdk = require("lorem-picsum_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a getrandomimage
+### 3. Load a seed
+
+Seed is nested under height, so provide the `height`.
 
 ```lua
-local getrandomimage, err = client:GetRandomImage():load()
+local seed, err = client:Seed():load({ height = 1, seed = "example_seed", width = 1 })
 if err then error(err) end
-print(getrandomimage)
+print(seed)
 ```
 
 
@@ -348,7 +350,7 @@ Create an instance: `local get_random_image = client:GetRandomImage(nil)`
 #### Example: Load
 
 ```lua
-local get_random_image, err = client:GetRandomImage():load()
+local get_random_image, err = client:GetRandomImage():load({ height = 1, width = 1 })
 ```
 
 
@@ -365,7 +367,7 @@ Create an instance: `local get_random_square_image = client:GetRandomSquareImage
 #### Example: Load
 
 ```lua
-local get_random_square_image, err = client:GetRandomSquareImage():load({ id = "get_random_square_image_id" })
+local get_random_square_image, err = client:GetRandomSquareImage():load({ id = 1 })
 ```
 
 
@@ -382,7 +384,7 @@ Create an instance: `local height = client:Height(nil)`
 #### Example: Load
 
 ```lua
-local height, err = client:Height():load()
+local height, err = client:Height():load({ height = 1, width = 1 })
 ```
 
 
@@ -399,7 +401,7 @@ Create an instance: `local heightwebp = client:Heightwebp(nil)`
 #### Example: Load
 
 ```lua
-local heightwebp, err = client:Heightwebp():load()
+local heightwebp, err = client:Heightwebp():load({ height = 1, width = 1 })
 ```
 
 
@@ -444,7 +446,7 @@ Create an instance: `local idn = client:Idn(nil)`
 #### Example: Load
 
 ```lua
-local idn, err = client:Idn():load({ id = "idn_id" })
+local idn, err = client:Idn():load({ id = "idn_id", height = 1, width = 1 })
 ```
 
 
@@ -489,7 +491,7 @@ Create an instance: `local seed = client:Seed(nil)`
 #### Example: Load
 
 ```lua
-local seed, err = client:Seed():load()
+local seed, err = client:Seed():load({ height = 1, seed = "seed", width = 1 })
 ```
 
 

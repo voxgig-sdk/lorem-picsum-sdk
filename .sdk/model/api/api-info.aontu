@@ -15,9 +15,9 @@ main: {
           url: "https://picsum.photos"
         }
       ]
+      summary: "The Lorem Ipsum for photos."
       title: "Lorem Picsum"
       version: "2.0.0"
+      website: "https://picsum.photos"
     }
   }
-}
-

@@ -33,14 +33,19 @@ import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
 const client = new LoremPicsumSDK()
 ```
 
-### 3. Load a getrandomimage
+### 3. Load a seed
 
+Seed is nested under height, so provide the `height`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const getrandomimage = await client.GetRandomImage().load()
-  console.log(getrandomimage)
+  const seed = await client.Seed().load({
+    height: 1,
+    seed: 'example_seed',
+    width: 1,
+  })
+  console.log(seed)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -408,7 +413,7 @@ Create an instance: `const get_random_image = client.GetRandomImage()`
 #### Example: Load
 
 ```ts
-const get_random_image = await client.GetRandomImage().load()
+const get_random_image = await client.GetRandomImage().load({ height: 1, width: 1 })
 ```
 
 
@@ -442,7 +447,7 @@ Create an instance: `const height = client.Height()`
 #### Example: Load
 
 ```ts
-const height = await client.Height().load()
+const height = await client.Height().load({ height: 1, width: 1 })
 ```
 
 
@@ -459,7 +464,7 @@ Create an instance: `const heightwebp = client.Heightwebp()`
 #### Example: Load
 
 ```ts
-const heightwebp = await client.Heightwebp().load()
+const heightwebp = await client.Heightwebp().load({ height: 1, width: 1 })
 ```
 
 
@@ -504,7 +509,7 @@ Create an instance: `const idn = client.Idn()`
 #### Example: Load
 
 ```ts
-const idn = await client.Idn().load({ id: 'idn_id' })
+const idn = await client.Idn().load({ id: 'idn_id', height: 1, width: 1 })
 ```
 
 
@@ -549,7 +554,7 @@ Create an instance: `const seed = client.Seed()`
 #### Example: Load
 
 ```ts
-const seed = await client.Seed().load()
+const seed = await client.Seed().load({ height: 1, seed: 'seed', width: 1 })
 ```
 
 

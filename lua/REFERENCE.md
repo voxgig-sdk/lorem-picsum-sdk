@@ -125,7 +125,7 @@ local get_random_image = client:GetRandomImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRandomImage():load()
+local result, err = client:GetRandomImage():load({ height = 1, width = 1 })
 ```
 
 ### Common Methods
@@ -171,7 +171,7 @@ local get_random_square_image = client:GetRandomSquareImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRandomSquareImage():load({ id = "get_random_square_image_id" })
+local result, err = client:GetRandomSquareImage():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -217,7 +217,7 @@ local height = client:Height(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Height():load()
+local result, err = client:Height():load({ height = 1, width = 1 })
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ local heightwebp = client:Heightwebp(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Heightwebp():load()
+local result, err = client:Heightwebp():load({ height = 1, width = 1 })
 ```
 
 ### Common Methods
@@ -366,7 +366,7 @@ local idn = client:Idn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Idn():load({ id = "idn_id" })
+local result, err = client:Idn():load({ id = "idn_id", height = 1, width = 1 })
 ```
 
 ### Common Methods
@@ -469,7 +469,7 @@ local seed = client:Seed(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Seed():load()
+local result, err = client:Seed():load({ height = 1, seed = "seed", width = 1 })
 ```
 
 ### Common Methods

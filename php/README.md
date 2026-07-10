@@ -31,13 +31,15 @@ require_once 'lorempicsum_sdk.php';
 $client = new LoremPicsumSDK();
 ```
 
-### 3. Load a getrandomimage
+### 3. Load a seed
+
+Seed is nested under height, so provide the `height`.
 
 ```php
 try {
-    // load() returns the bare GetRandomImage record (throws on error).
-    $getrandomimage = $client->GetRandomImage()->load();
-    print_r($getrandomimage);
+    // load() returns the bare Seed record (throws on error).
+    $seed = $client->Seed()->load(["height" => 1, "seed" => "example_seed", "width" => 1]);
+    print_r($seed);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -367,7 +369,7 @@ Create an instance: `$get_random_image = $client->GetRandomImage();`
 
 ```php
 // load() returns the bare GetRandomImage record (throws on error).
-$get_random_image = $client->GetRandomImage()->load();
+$get_random_image = $client->GetRandomImage()->load(["height" => 1, "width" => 1]);
 ```
 
 
@@ -385,7 +387,7 @@ Create an instance: `$get_random_square_image = $client->GetRandomSquareImage();
 
 ```php
 // load() returns the bare GetRandomSquareImage record (throws on error).
-$get_random_square_image = $client->GetRandomSquareImage()->load(["id" => "get_random_square_image_id"]);
+$get_random_square_image = $client->GetRandomSquareImage()->load(["id" => 1]);
 ```
 
 
@@ -403,7 +405,7 @@ Create an instance: `$height = $client->Height();`
 
 ```php
 // load() returns the bare Height record (throws on error).
-$height = $client->Height()->load();
+$height = $client->Height()->load(["height" => 1, "width" => 1]);
 ```
 
 
@@ -421,7 +423,7 @@ Create an instance: `$heightwebp = $client->Heightwebp();`
 
 ```php
 // load() returns the bare Heightwebp record (throws on error).
-$heightwebp = $client->Heightwebp()->load();
+$heightwebp = $client->Heightwebp()->load(["height" => 1, "width" => 1]);
 ```
 
 
@@ -468,7 +470,7 @@ Create an instance: `$idn = $client->Idn();`
 
 ```php
 // load() returns the bare Idn record (throws on error).
-$idn = $client->Idn()->load(["id" => "idn_id"]);
+$idn = $client->Idn()->load(["id" => "idn_id", "height" => 1, "width" => 1]);
 ```
 
 
@@ -515,7 +517,7 @@ Create an instance: `$seed = $client->Seed();`
 
 ```php
 // load() returns the bare Seed record (throws on error).
-$seed = $client->Seed()->load();
+$seed = $client->Seed()->load(["height" => 1, "seed" => "seed", "width" => 1]);
 ```
 
 

@@ -30,13 +30,15 @@ require_relative "LoremPicsum_sdk"
 client = LoremPicsumSDK.new
 ```
 
-### 3. Load a getrandomimage
+### 3. Load a seed
+
+Seed is nested under height, so provide the `height`.
 
 ```ruby
 begin
-  # load returns the bare GetRandomImage record (raises on error).
-  getrandomimage = client.GetRandomImage.load()
-  puts getrandomimage
+  # load returns the bare Seed record (raises on error).
+  seed = client.Seed.load({ "height" => 1, "seed" => "example_seed", "width" => 1 })
+  puts seed
 rescue => err
   warn "load failed: #{err}"
 end
@@ -357,7 +359,7 @@ Create an instance: `get_random_image = client.GetRandomImage`
 
 ```ruby
 # load returns the bare GetRandomImage record (raises on error).
-get_random_image = client.GetRandomImage.load()
+get_random_image = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
 ```
 
 
@@ -375,7 +377,7 @@ Create an instance: `get_random_square_image = client.GetRandomSquareImage`
 
 ```ruby
 # load returns the bare GetRandomSquareImage record (raises on error).
-get_random_square_image = client.GetRandomSquareImage.load({ "id" => "get_random_square_image_id" })
+get_random_square_image = client.GetRandomSquareImage.load({ "id" => 1 })
 ```
 
 
@@ -393,7 +395,7 @@ Create an instance: `height = client.Height`
 
 ```ruby
 # load returns the bare Height record (raises on error).
-height = client.Height.load()
+height = client.Height.load({ "height" => 1, "width" => 1 })
 ```
 
 
@@ -411,7 +413,7 @@ Create an instance: `heightwebp = client.Heightwebp`
 
 ```ruby
 # load returns the bare Heightwebp record (raises on error).
-heightwebp = client.Heightwebp.load()
+heightwebp = client.Heightwebp.load({ "height" => 1, "width" => 1 })
 ```
 
 
@@ -458,7 +460,7 @@ Create an instance: `idn = client.Idn`
 
 ```ruby
 # load returns the bare Idn record (raises on error).
-idn = client.Idn.load({ "id" => "idn_id" })
+idn = client.Idn.load({ "id" => "idn_id", "height" => 1, "width" => 1 })
 ```
 
 
@@ -505,7 +507,7 @@ Create an instance: `seed = client.Seed`
 
 ```ruby
 # load returns the bare Seed record (raises on error).
-seed = client.Seed.load()
+seed = client.Seed.load({ "height" => 1, "seed" => "seed", "width" => 1 })
 ```
 
 

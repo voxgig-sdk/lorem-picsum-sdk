@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single getrandomimage — the value is the loaded record.
-    getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
+    // Load a single getRandomImage — the value is the loaded record.
+    getRandomImage, err := client.GetRandomImage(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(getrandomimage)
+    fmt.Println(getRandomImage)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getrandomimage, err := client.GetRandomImage(nil).Load(
+getRandomImage, err := client.GetRandomImage(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getrandomimage) // the returned mock data
+fmt.Println(getRandomImage) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -255,9 +255,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
+    getRandomImage, err := client.GetRandomImage(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getrandomimage is the returned record
+    // getRandomImage is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -370,7 +370,7 @@ API path: `/seed/{seed}/info`
 
 ### GetRandomImage
 
-Create an instance: `get_random_image := client.GetRandomImage(nil)`
+Create an instance: `getRandomImage := client.GetRandomImage(nil)`
 
 #### Operations
 
@@ -381,17 +381,17 @@ Create an instance: `get_random_image := client.GetRandomImage(nil)`
 #### Example: Load
 
 ```go
-get_random_image, err := client.GetRandomImage(nil).Load(nil, nil)
+getRandomImage, err := client.GetRandomImage(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_random_image) // the loaded record
+fmt.Println(getRandomImage) // the loaded record
 ```
 
 
 ### GetRandomSquareImage
 
-Create an instance: `get_random_square_image := client.GetRandomSquareImage(nil)`
+Create an instance: `getRandomSquareImage := client.GetRandomSquareImage(nil)`
 
 #### Operations
 
@@ -402,11 +402,11 @@ Create an instance: `get_random_square_image := client.GetRandomSquareImage(nil)
 #### Example: Load
 
 ```go
-get_random_square_image, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": "get_random_square_image_id"}, nil)
+getRandomSquareImage, err := client.GetRandomSquareImage(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_random_square_image) // the loaded record
+fmt.Println(getRandomSquareImage) // the loaded record
 ```
 
 
@@ -423,7 +423,7 @@ Create an instance: `height := client.Height(nil)`
 #### Example: Load
 
 ```go
-height, err := client.Height(nil).Load(nil, nil)
+height, err := client.Height(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -444,7 +444,7 @@ Create an instance: `heightwebp := client.Heightwebp(nil)`
 #### Example: Load
 
 ```go
-heightwebp, err := client.Heightwebp(nil).Load(nil, nil)
+heightwebp, err := client.Heightwebp(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -454,7 +454,7 @@ fmt.Println(heightwebp) // the loaded record
 
 ### IdInfo
 
-Create an instance: `id_info := client.IdInfo(nil)`
+Create an instance: `idInfo := client.IdInfo(nil)`
 
 #### Operations
 
@@ -476,11 +476,11 @@ Create an instance: `id_info := client.IdInfo(nil)`
 #### Example: Load
 
 ```go
-id_info, err := client.IdInfo(nil).Load(map[string]any{"id": "id_info_id"}, nil)
+idInfo, err := client.IdInfo(nil).Load(map[string]any{"id": "id_info_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(id_info) // the loaded record
+fmt.Println(idInfo) // the loaded record
 ```
 
 
@@ -497,7 +497,7 @@ Create an instance: `idn := client.Idn(nil)`
 #### Example: Load
 
 ```go
-idn, err := client.Idn(nil).Load(map[string]any{"id": "idn_id"}, nil)
+idn, err := client.Idn(nil).Load(map[string]any{"id": "idn_id", "height": 1, "width": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -550,7 +550,7 @@ Create an instance: `seed := client.Seed(nil)`
 #### Example: Load
 
 ```go
-seed, err := client.Seed(nil).Load(nil, nil)
+seed, err := client.Seed(nil).Load(map[string]any{"height": 1, "seed": "seed", "width": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -560,7 +560,7 @@ fmt.Println(seed) // the loaded record
 
 ### SeedInfo
 
-Create an instance: `seed_info := client.SeedInfo(nil)`
+Create an instance: `seedInfo := client.SeedInfo(nil)`
 
 #### Operations
 
@@ -582,11 +582,11 @@ Create an instance: `seed_info := client.SeedInfo(nil)`
 #### Example: Load
 
 ```go
-seed_info, err := client.SeedInfo(nil).Load(map[string]any{"id": "seed_info_id"}, nil)
+seedInfo, err := client.SeedInfo(nil).Load(map[string]any{"id": "seed_info_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(seed_info) // the loaded record
+fmt.Println(seedInfo) // the loaded record
 ```
 
 

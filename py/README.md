@@ -36,14 +36,15 @@ from lorempicsum_sdk import LoremPicsumSDK
 client = LoremPicsumSDK()
 ```
 
-### 3. Load a getrandomimage
+### 3. Load a seed
 
+Seed is nested under height, so provide the `height`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    getrandomimage = client.GetRandomImage().load()
-    print(getrandomimage)
+    seed = client.Seed().load({"height": 1, "seed": "example_seed", "width": 1})
+    print(seed)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -362,7 +363,7 @@ Create an instance: `get_random_image = client.GetRandomImage()`
 #### Example: Load
 
 ```python
-get_random_image = client.GetRandomImage().load()
+get_random_image = client.GetRandomImage().load({"height": 1, "width": 1})
 ```
 
 
@@ -379,7 +380,7 @@ Create an instance: `get_random_square_image = client.GetRandomSquareImage()`
 #### Example: Load
 
 ```python
-get_random_square_image = client.GetRandomSquareImage().load({"id": "get_random_square_image_id"})
+get_random_square_image = client.GetRandomSquareImage().load({"id": 1})
 ```
 
 
@@ -396,7 +397,7 @@ Create an instance: `height = client.Height()`
 #### Example: Load
 
 ```python
-height = client.Height().load()
+height = client.Height().load({"height": 1, "width": 1})
 ```
 
 
@@ -413,7 +414,7 @@ Create an instance: `heightwebp = client.Heightwebp()`
 #### Example: Load
 
 ```python
-heightwebp = client.Heightwebp().load()
+heightwebp = client.Heightwebp().load({"height": 1, "width": 1})
 ```
 
 
@@ -458,7 +459,7 @@ Create an instance: `idn = client.Idn()`
 #### Example: Load
 
 ```python
-idn = client.Idn().load({"id": "idn_id"})
+idn = client.Idn().load({"id": "idn_id", "height": 1, "width": 1})
 ```
 
 
@@ -503,7 +504,7 @@ Create an instance: `seed = client.Seed()`
 #### Example: Load
 
 ```python
-seed = client.Seed().load()
+seed = client.Seed().load({"height": 1, "seed": "seed", "width": 1})
 ```
 
 
