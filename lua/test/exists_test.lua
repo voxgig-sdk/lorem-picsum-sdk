@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- LoremPicsum SDK exists test
 
 local sdk = require("lorem-picsum_sdk")
 
