@@ -75,11 +75,11 @@ function get_random_square_image_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "LOREMPICSUM_TEST_GET_RANDOM_SQUARE_IMAGE_ENTID" => [],
-        "LOREMPICSUM_TEST_LIVE" => "FALSE",
+        "LOREM_PICSUM_TEST_GET_RANDOM_SQUARE_IMAGE_ENTID" => [],
+        "LOREM_PICSUM_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["LOREMPICSUM_TEST_LIVE"] === "TRUE";
+    $live = $env["LOREM_PICSUM_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-getrandomimage, err := client.GetRandomImage(nil).Load(nil, nil)
+height, err := client.Height(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = getrandomimage
+_ = height
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getRandomImage, err := client.GetRandomImage(nil).Load(
-    nil, nil,
+height, err := client.Height(nil).Load(
+    map[string]any{"height": 1, "width": 1}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getRandomImage) // the returned mock data
+fmt.Println(height) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -663,11 +663,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-getrandomimage := client.GetRandomImage(nil)
-getrandomimage.Load(nil, nil)
+height := client.Height(nil)
+height.Load(map[string]any{"height": 1, "width": 1}, nil)
 
-// getrandomimage.Data() now returns the getrandomimage data from the last load
-// getrandomimage.Match() returns the last match criteria
+// height.Data() now returns the height data from the last load
+// height.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import LoremPicsumControl
-from core.error import LoremPicsumError
-from core.result import LoremPicsumResult
-from core.spec import LoremPicsumSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import LoremPicsumControl
+from projectname_sdk.core.error import LoremPicsumError
+from projectname_sdk.core.result import LoremPicsumResult
+from projectname_sdk.core.spec import LoremPicsumSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -37,7 +37,7 @@ class ListEntity extends LoremPicsumEntityBase<List> {
 
 
 
-  async list(this: any, reqmatch?: ListListMatch, ctrl?: Control): Promise<List[]> {
+  async list(this: any, reqmatch?: ListListMatch, ctrl?: Control): Promise<ListEntity[]> {
 
     const utility = this._utility
 

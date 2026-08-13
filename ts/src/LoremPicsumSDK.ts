@@ -154,8 +154,29 @@ class LoremPicsumSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('LoremPicsumSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -216,66 +237,138 @@ class LoremPicsumSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('LoremPicsumSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('LoremPicsumSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.GetRandomImage().list()` / `client.GetRandomImage().load({ id })`.
-  GetRandomImage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GetRandomImage(entopts?: Record<string, any>) {
     const self = this
-    return new GetRandomImageEntity(self,data)
+    return new GetRandomImageEntity(self, entopts)
   }
 
 
   // Entity access: `client.GetRandomSquareImage().list()` / `client.GetRandomSquareImage().load({ id })`.
-  GetRandomSquareImage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GetRandomSquareImage(entopts?: Record<string, any>) {
     const self = this
-    return new GetRandomSquareImageEntity(self,data)
+    return new GetRandomSquareImageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Height().list()` / `client.Height().load({ id })`.
-  Height(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Height(entopts?: Record<string, any>) {
     const self = this
-    return new HeightEntity(self,data)
+    return new HeightEntity(self, entopts)
   }
 
 
   // Entity access: `client.Heightwebp().list()` / `client.Heightwebp().load({ id })`.
-  Heightwebp(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Heightwebp(entopts?: Record<string, any>) {
     const self = this
-    return new HeightwebpEntity(self,data)
+    return new HeightwebpEntity(self, entopts)
   }
 
 
   // Entity access: `client.IdInfo().list()` / `client.IdInfo().load({ id })`.
-  IdInfo(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IdInfo(entopts?: Record<string, any>) {
     const self = this
-    return new IdInfoEntity(self,data)
+    return new IdInfoEntity(self, entopts)
   }
 
 
   // Entity access: `client.Idn().list()` / `client.Idn().load({ id })`.
-  Idn(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Idn(entopts?: Record<string, any>) {
     const self = this
-    return new IdnEntity(self,data)
+    return new IdnEntity(self, entopts)
   }
 
 
   // Entity access: `client.List().list()` / `client.List().load({ id })`.
-  List(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  List(entopts?: Record<string, any>) {
     const self = this
-    return new ListEntity(self,data)
+    return new ListEntity(self, entopts)
   }
 
 
   // Entity access: `client.Seed().list()` / `client.Seed().load({ id })`.
-  Seed(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Seed(entopts?: Record<string, any>) {
     const self = this
-    return new SeedEntity(self,data)
+    return new SeedEntity(self, entopts)
   }
 
 
   // Entity access: `client.SeedInfo().list()` / `client.SeedInfo().load({ id })`.
-  SeedInfo(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SeedInfo(entopts?: Record<string, any>) {
     const self = this
-    return new SeedInfoEntity(self,data)
+    return new SeedInfoEntity(self, entopts)
   }
 
 

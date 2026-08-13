@@ -36,7 +36,7 @@ Seed is nested under height, so provide the `height`.
 
 ```ruby
 begin
-  # load returns the bare Seed record (raises on error).
+  # load returns the ENTITY — call data_get for the Seed record (raises on error).
   seed = client.Seed.load({ "height" => 1, "seed" => "example_seed", "width" => 1 })
   puts seed
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  getrandomimage = client.GetRandomImage.load()
+  height = client.Height.load({ "height" => 1, "width" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = LoremPicsumSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-getrandomimage = client.GetRandomImage.load()
-puts getrandomimage
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+height = client.Height.load({ "height" => 1, "width" => 1 })
+puts height
 ```
 
 ### Use a custom fetch function
@@ -358,7 +359,7 @@ Create an instance: `get_random_image = client.GetRandomImage`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetRandomImage record (raises on error).
+# load returns the ENTITY — call data_get for the GetRandomImage record (raises on error).
 get_random_image = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
 ```
 
@@ -376,7 +377,7 @@ Create an instance: `get_random_square_image = client.GetRandomSquareImage`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetRandomSquareImage record (raises on error).
+# load returns the ENTITY — call data_get for the GetRandomSquareImage record (raises on error).
 get_random_square_image = client.GetRandomSquareImage.load({ "id" => 1 })
 ```
 
@@ -394,7 +395,7 @@ Create an instance: `height = client.Height`
 #### Example: Load
 
 ```ruby
-# load returns the bare Height record (raises on error).
+# load returns the ENTITY — call data_get for the Height record (raises on error).
 height = client.Height.load({ "height" => 1, "width" => 1 })
 ```
 
@@ -412,7 +413,7 @@ Create an instance: `heightwebp = client.Heightwebp`
 #### Example: Load
 
 ```ruby
-# load returns the bare Heightwebp record (raises on error).
+# load returns the ENTITY — call data_get for the Heightwebp record (raises on error).
 heightwebp = client.Heightwebp.load({ "height" => 1, "width" => 1 })
 ```
 
@@ -441,7 +442,7 @@ Create an instance: `id_info = client.IdInfo`
 #### Example: Load
 
 ```ruby
-# load returns the bare IdInfo record (raises on error).
+# load returns the ENTITY — call data_get for the IdInfo record (raises on error).
 id_info = client.IdInfo.load({ "id" => "id_info_id" })
 ```
 
@@ -459,7 +460,7 @@ Create an instance: `idn = client.Idn`
 #### Example: Load
 
 ```ruby
-# load returns the bare Idn record (raises on error).
+# load returns the ENTITY — call data_get for the Idn record (raises on error).
 idn = client.Idn.load({ "id" => "idn_id", "height" => 1, "width" => 1 })
 ```
 
@@ -506,7 +507,7 @@ Create an instance: `seed = client.Seed`
 #### Example: Load
 
 ```ruby
-# load returns the bare Seed record (raises on error).
+# load returns the ENTITY — call data_get for the Seed record (raises on error).
 seed = client.Seed.load({ "height" => 1, "seed" => "seed", "width" => 1 })
 ```
 
@@ -535,7 +536,7 @@ Create an instance: `seed_info = client.SeedInfo`
 #### Example: Load
 
 ```ruby
-# load returns the bare SeedInfo record (raises on error).
+# load returns the ENTITY — call data_get for the SeedInfo record (raises on error).
 seed_info = client.SeedInfo.load({ "id" => "seed_info_id" })
 ```
 
@@ -616,11 +617,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getrandomimage = client.GetRandomImage
-getrandomimage.load()
+height = client.Height
+height.load({ "height" => 1, "width" => 1 })
 
-# getrandomimage.data_get now returns the getrandomimage data from the last load
-# getrandomimage.match_get returns the last match criteria
+# height.data_get now returns the height data from the last load
+# height.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

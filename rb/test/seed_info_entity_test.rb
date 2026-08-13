@@ -26,7 +26,7 @@ class SeedInfoEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set LOREMPICSUM_TEST_SEED_INFO_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set LOREM_PICSUM_TEST_SEED_INFO_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -45,7 +45,7 @@ class SeedInfoEntityTest < Minitest::Test
       "id" => seed_info_ref01_data["id"],
     }
     seed_info_ref01_data_dt0_loaded = seed_info_ref01_ent.load(seed_info_ref01_match_dt0, nil)
-    seed_info_ref01_data_dt0_load_result = Helpers.to_map(seed_info_ref01_data_dt0_loaded)
+    seed_info_ref01_data_dt0_load_result = Helpers.to_map(seed_info_ref01_data_dt0_loaded.respond_to?(:data_get) ? seed_info_ref01_data_dt0_loaded.data_get : seed_info_ref01_data_dt0_loaded)
     assert !seed_info_ref01_data_dt0_load_result.nil?
     assert_equal seed_info_ref01_data_dt0_load_result["id"], seed_info_ref01_data["id"]
 
@@ -78,22 +78,22 @@ def seed_info_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["LOREMPICSUM_TEST_SEED_INFO_ENTID"]
+  entid_env_raw = ENV["LOREM_PICSUM_TEST_SEED_INFO_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "LOREMPICSUM_TEST_SEED_INFO_ENTID" => idmap,
-    "LOREMPICSUM_TEST_LIVE" => "FALSE",
-    "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
+    "LOREM_PICSUM_TEST_SEED_INFO_ENTID" => idmap,
+    "LOREM_PICSUM_TEST_LIVE" => "FALSE",
+    "LOREM_PICSUM_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["LOREMPICSUM_TEST_SEED_INFO_ENTID"])
+    env["LOREM_PICSUM_TEST_SEED_INFO_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
+  if env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -102,13 +102,13 @@ def seed_info_basic_setup(extra)
     client = LoremPicsumSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
+  live = env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["LOREMPICSUM_TEST_EXPLAIN"] == "TRUE",
+    explain: env["LOREM_PICSUM_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

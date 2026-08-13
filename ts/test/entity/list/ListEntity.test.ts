@@ -26,8 +26,8 @@ import {
 describe('ListEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when LOREMPICSUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('LOREMPICSUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when LOREM_PICSUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('LOREM_PICSUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = LoremPicsumSDK.test()
@@ -63,7 +63,7 @@ describe('ListEntity', async () => {
     const list_ref01_ent = client.List()
     const list_ref01_match: any = {}
 
-    const list_ref01_list = await list_ref01_ent.list(list_ref01_match)
+    const list_ref01_list = (await list_ref01_ent.list(list_ref01_match)).map((e: any) => e.data())
 
 
   })

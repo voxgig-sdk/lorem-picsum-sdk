@@ -26,8 +26,8 @@ import {
 describe('IdInfoEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when LOREMPICSUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('LOREMPICSUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when LOREM_PICSUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('LOREM_PICSUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = LoremPicsumSDK.test()
@@ -63,7 +63,7 @@ describe('IdInfoEntity', async () => {
     const id_info_ref01_ent = client.IdInfo()
     const id_info_ref01_match_dt0: any = {}
     id_info_ref01_match_dt0.id = id_info_ref01_data.id
-    const id_info_ref01_data_dt0 = await id_info_ref01_ent.load(id_info_ref01_match_dt0)
+    const id_info_ref01_data_dt0 = (await id_info_ref01_ent.load(id_info_ref01_match_dt0)).data()
     assert(id_info_ref01_data_dt0.id === id_info_ref01_data.id)
 
 

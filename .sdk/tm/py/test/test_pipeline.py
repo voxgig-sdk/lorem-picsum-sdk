@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import LoremPicsumSDK
-from core.error import LoremPicsumError
-from core.result import LoremPicsumResult
-from core.response import LoremPicsumResponse
-from core.spec import LoremPicsumSpec
-from feature.base_feature import LoremPicsumBaseFeature
+from projectname_sdk.core.error import LoremPicsumError
+from projectname_sdk.core.result import LoremPicsumResult
+from projectname_sdk.core.response import LoremPicsumResponse
+from projectname_sdk.core.spec import LoremPicsumSpec
+from projectname_sdk.feature.base_feature import LoremPicsumBaseFeature
 
 
 def _client():

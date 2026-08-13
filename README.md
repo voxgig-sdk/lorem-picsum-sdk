@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new LoremPicsumSDK()
-const getrandomimage = await client.GetRandomImage().load()
+const getrandomimage = await client.GetRandomImage().load({ height: 1, width: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = LoremPicsumSDK.test()
-const getrandomimage = await client.GetRandomImage().load({ height: 1, width: 1 })
-// getrandomimage is a bare GetRandomImage populated with mock data
-console.log(getrandomimage)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = LoremPicsumSDK.test({
+  entity: {
+    height: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const height = await client.Height().load({ height: 1, width: 1 })
+// height is the Height entity, populated with mock data
+// — call height.data() for the record itself
+console.log(height)
 ```
 
 ### Python
 
 ```python
 client = LoremPicsumSDK.test()
-getrandomimage = client.GetRandomImage().load({"height": 1, "width": 1})
-print(getrandomimage)
+height = client.Height().load({"height": 1, "width": 1})
+print(height)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(getrandomimage)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = LoremPicsumSDK::test([
-    "entity" => ["getrandomimage" => ["test01" => []]],
+    "entity" => ["height" => ["test01" => []]],
 ]);
-$getrandomimage = $client->GetRandomImage()->load(["height" => 1, "width" => 1]);
+$height = $client->Height()->load(["height" => 1, "width" => 1]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.GetRandomImage(nil).Load(
+result, err := client.Height(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.GetRandomImage(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = LoremPicsumSDK.test({
-  "entity" => { "getrandomimage" => { "test01" => {} } },
+  "entity" => { "height" => { "test01" => {} } },
 })
-getrandomimage = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
+height = client.Height.load({ "height" => 1, "width" => 1 })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:GetRandomImage():load({ height = 1, width = 1 })
+local result, err = client:Height():load({ height = 1, width = 1 })
 ```
 
 ## Packages
@@ -195,7 +204,7 @@ require_once 'lorempicsum_sdk.php';
 $client = new LoremPicsumSDK();
 
 
-// Load a specific getrandomimage (returns the bare record; throws on error)
+// Load a specific getrandomimage (returns the ENTITY; call data_get() for the record; throws on error)
 $getrandomimage = $client->GetRandomImage()->load(["height" => 1, "width" => 1]);
 print_r($getrandomimage);
 ```
@@ -226,7 +235,7 @@ require_relative "LoremPicsum_sdk"
 client = LoremPicsumSDK.new
 
 
-# Load a specific getrandomimage (returns the bare record; raises on error)
+# Load a specific getrandomimage (returns the ENTITY; call data_get for the record)
 getrandomimage = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
 puts getrandomimage
 ```
@@ -360,6 +369,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://picsum.photos/](https://picsum.photos/)
 

@@ -94,6 +94,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}',
                   'parts' => [
@@ -164,6 +165,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{size}',
                   'parts' => [
@@ -245,6 +247,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.jpg',
                   'parts' => [
@@ -323,6 +326,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.webp',
                   'parts' => [
@@ -417,6 +421,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/info',
                   'parts' => [
@@ -502,6 +507,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/{width}/{height}',
                   'parts' => [
@@ -608,6 +614,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v2/list',
                   'parts' => [
@@ -693,6 +700,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/{width}/{height}',
                   'parts' => [
@@ -794,6 +802,7 @@ class LoremPicsumConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/info',
                   'parts' => [

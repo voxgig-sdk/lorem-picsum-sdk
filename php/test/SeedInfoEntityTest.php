@@ -33,7 +33,7 @@ class SeedInfoEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set LOREMPICSUM_TEST_SEED_INFO_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set LOREM_PICSUM_TEST_SEED_INFO_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -52,7 +52,7 @@ class SeedInfoEntityTest extends TestCase
             "id" => $seed_info_ref01_data["id"],
         ];
         $seed_info_ref01_data_dt0_loaded = $seed_info_ref01_ent->load($seed_info_ref01_match_dt0, null);
-        $seed_info_ref01_data_dt0_load_result = Helpers::to_map($seed_info_ref01_data_dt0_loaded);
+        $seed_info_ref01_data_dt0_load_result = Helpers::to_map(is_object($seed_info_ref01_data_dt0_loaded) && method_exists($seed_info_ref01_data_dt0_loaded, 'data_get') ? $seed_info_ref01_data_dt0_loaded->data_get() : $seed_info_ref01_data_dt0_loaded);
         $this->assertNotNull($seed_info_ref01_data_dt0_load_result);
         $this->assertEquals($seed_info_ref01_data_dt0_load_result["id"], $seed_info_ref01_data["id"]);
 
@@ -81,22 +81,22 @@ function seed_info_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("LOREMPICSUM_TEST_SEED_INFO_ENTID");
+    $entid_env_raw = getenv("LOREM_PICSUM_TEST_SEED_INFO_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "LOREMPICSUM_TEST_SEED_INFO_ENTID" => $idmap,
-        "LOREMPICSUM_TEST_LIVE" => "FALSE",
-        "LOREMPICSUM_TEST_EXPLAIN" => "FALSE",
+        "LOREM_PICSUM_TEST_SEED_INFO_ENTID" => $idmap,
+        "LOREM_PICSUM_TEST_LIVE" => "FALSE",
+        "LOREM_PICSUM_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["LOREMPICSUM_TEST_SEED_INFO_ENTID"]);
+        $env["LOREM_PICSUM_TEST_SEED_INFO_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["LOREMPICSUM_TEST_LIVE"] === "TRUE") {
+    if ($env["LOREM_PICSUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -105,13 +105,13 @@ function seed_info_basic_setup($extra)
         $client = new LoremPicsumSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["LOREMPICSUM_TEST_LIVE"] === "TRUE";
+    $live = $env["LOREM_PICSUM_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["LOREMPICSUM_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["LOREM_PICSUM_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

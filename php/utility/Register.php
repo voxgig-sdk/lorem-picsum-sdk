@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ LoremPicsumUtility::setRegistrar(function (LoremPicsumUtility $u): void {
     $u->prepare_params = [LoremPicsumPrepareParams::class, 'call'];
     $u->prepare_path = [LoremPicsumPreparePath::class, 'call'];
     $u->prepare_query = [LoremPicsumPrepareQuery::class, 'call'];
+    $u->graphql_body = [LoremPicsumGraphql::class, 'body'];
+    $u->graphql_errors = [LoremPicsumGraphql::class, 'errors'];
     $u->result_basic = [LoremPicsumResultBasic::class, 'call'];
     $u->result_body = [LoremPicsumResultBody::class, 'call'];
     $u->result_headers = [LoremPicsumResultHeaders::class, 'call'];

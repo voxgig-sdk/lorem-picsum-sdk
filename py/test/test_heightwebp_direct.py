@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from lorempicsum_sdk.utility.voxgig_struct import voxgig_struct as vs
 from lorempicsum_sdk import LoremPicsumSDK
-from core import helpers
+from lorempicsum_sdk.core import helpers
 from test import runner
 
 
@@ -66,11 +66,11 @@ def _heightwebp_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "LOREMPICSUM_TEST_HEIGHTWEBP_ENTID": {},
-        "LOREMPICSUM_TEST_LIVE": "FALSE",
+        "LOREM_PICSUM_TEST_HEIGHTWEBP_ENTID": {},
+        "LOREM_PICSUM_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("LOREMPICSUM_TEST_LIVE") == "TRUE"
+    live = env.get("LOREM_PICSUM_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

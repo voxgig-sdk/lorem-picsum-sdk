@@ -60,11 +60,11 @@ def list_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "LOREMPICSUM_TEST_LIST_ENTID" => {},
-    "LOREMPICSUM_TEST_LIVE" => "FALSE",
+    "LOREM_PICSUM_TEST_LIST_ENTID" => {},
+    "LOREM_PICSUM_TEST_LIVE" => "FALSE",
   })
 
-  live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
+  live = env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

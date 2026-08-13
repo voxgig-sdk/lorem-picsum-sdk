@@ -88,6 +88,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}",
                 ["parts"] = {
@@ -158,6 +159,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{size}",
                 ["parts"] = {
@@ -239,6 +241,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}.jpg",
                 ["parts"] = {
@@ -317,6 +320,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}.webp",
                 ["parts"] = {
@@ -411,6 +415,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/id/{id}/info",
                 ["parts"] = {
@@ -496,6 +501,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/id/{id}/{width}/{height}",
                 ["parts"] = {
@@ -602,6 +608,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v2/list",
                 ["parts"] = {
@@ -687,6 +694,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seed/{seed}/{width}/{height}",
                 ["parts"] = {
@@ -788,6 +796,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seed/{seed}/info",
                 ["parts"] = {

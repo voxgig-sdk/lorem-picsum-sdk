@@ -26,8 +26,8 @@ import {
 describe('SeedEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when LOREMPICSUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('LOREMPICSUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when LOREM_PICSUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('LOREM_PICSUM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = LoremPicsumSDK.test()

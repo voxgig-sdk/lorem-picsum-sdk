@@ -29,7 +29,7 @@ describe("IdInfoEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set LOREMPICSUM_TEST_ID_INFO_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set LOREM_PICSUM_TEST_ID_INFO_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -49,7 +49,7 @@ describe("IdInfoEntity", function()
     }
     local id_info_ref01_data_dt0_loaded, err = id_info_ref01_ent:load(id_info_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local id_info_ref01_data_dt0_load_result = helpers.to_map(id_info_ref01_data_dt0_loaded)
+    local id_info_ref01_data_dt0_load_result = helpers.to_map(type(id_info_ref01_data_dt0_loaded) == 'table' and id_info_ref01_data_dt0_loaded.data_get and id_info_ref01_data_dt0_loaded:data_get() or id_info_ref01_data_dt0_loaded)
     assert.is_not_nil(id_info_ref01_data_dt0_load_result)
     assert.are.equal(id_info_ref01_data_dt0_load_result["id"], id_info_ref01_data["id"])
 
@@ -88,22 +88,22 @@ function id_info_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("LOREMPICSUM_TEST_ID_INFO_ENTID")
+  local entid_env_raw = os.getenv("LOREM_PICSUM_TEST_ID_INFO_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["LOREMPICSUM_TEST_ID_INFO_ENTID"] = idmap,
-    ["LOREMPICSUM_TEST_LIVE"] = "FALSE",
-    ["LOREMPICSUM_TEST_EXPLAIN"] = "FALSE",
+    ["LOREM_PICSUM_TEST_ID_INFO_ENTID"] = idmap,
+    ["LOREM_PICSUM_TEST_LIVE"] = "FALSE",
+    ["LOREM_PICSUM_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["LOREMPICSUM_TEST_ID_INFO_ENTID"])
+    env["LOREM_PICSUM_TEST_ID_INFO_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["LOREMPICSUM_TEST_LIVE"] == "TRUE" then
+  if env["LOREM_PICSUM_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -112,13 +112,13 @@ function id_info_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
+  local live = env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["LOREMPICSUM_TEST_EXPLAIN"] == "TRUE",
+    explain = env["LOREM_PICSUM_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

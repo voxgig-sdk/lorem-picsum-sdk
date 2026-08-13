@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.LOREMPICSUM_TEST_LIVE ||
-    'TRUE' === process.env.LOREMPICSUM_TEST_OVERRIDE
+    'TRUE' === process.env.LOREM_PICSUM_TEST_LIVE ||
+    'TRUE' === process.env.LOREM_PICSUM_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.LOREMPICSUM_TEST_EXPLAIN = process.env.LOREMPICSUM_TEST_EXPLAIN || m.LOREMPICSUM_TEST_EXPLAIN
+  m.LOREM_PICSUM_TEST_EXPLAIN = process.env.LOREM_PICSUM_TEST_EXPLAIN || m.LOREM_PICSUM_TEST_EXPLAIN
 
   return m
 }

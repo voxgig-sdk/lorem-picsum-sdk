@@ -89,6 +89,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}",
                   "parts" => [
@@ -159,6 +160,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{size}",
                   "parts" => [
@@ -240,6 +242,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}.jpg",
                   "parts" => [
@@ -318,6 +321,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}.webp",
                   "parts" => [
@@ -412,6 +416,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/id/{id}/info",
                   "parts" => [
@@ -497,6 +502,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/id/{id}/{width}/{height}",
                   "parts" => [
@@ -603,6 +609,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v2/list",
                   "parts" => [
@@ -688,6 +695,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seed/{seed}/{width}/{height}",
                   "parts" => [
@@ -789,6 +797,7 @@ module LoremPicsumConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seed/{seed}/info",
                   "parts" => [

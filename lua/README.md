@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local getrandomimage, err = client:GetRandomImage():load()
+local height, err = client:Height():load({ height = 1, width = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:GetRandomImage():load()
+local result, err = client:Height():load({ height = 1, width = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -599,11 +599,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local getrandomimage = client:GetRandomImage()
-getrandomimage:load()
+local height = client:Height()
+height:load({ height = 1, width = 1 })
 
--- getrandomimage:data_get() now returns the getrandomimage data from the last load
--- getrandomimage:match_get() returns the last match criteria
+-- height:data_get() now returns the height data from the last load
+-- height:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'LoremPicsum',
   }
 
 
@@ -134,6 +134,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}",
               "parts": [
@@ -204,6 +205,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{size}",
               "parts": [
@@ -285,6 +287,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}.jpg",
               "parts": [
@@ -363,6 +366,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}.webp",
               "parts": [
@@ -457,6 +461,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/id/{id}/info",
               "parts": [
@@ -542,6 +547,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/id/{id}/{width}/{height}",
               "parts": [
@@ -648,6 +654,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/v2/list",
               "parts": [
@@ -733,6 +740,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/seed/{seed}/{width}/{height}",
               "parts": [
@@ -834,6 +842,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/seed/{seed}/info",
               "parts": [

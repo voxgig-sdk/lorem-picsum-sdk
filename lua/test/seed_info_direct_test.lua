@@ -70,11 +70,11 @@ function seed_info_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["LOREMPICSUM_TEST_SEED_INFO_ENTID"] = {},
-    ["LOREMPICSUM_TEST_LIVE"] = "FALSE",
+    ["LOREM_PICSUM_TEST_SEED_INFO_ENTID"] = {},
+    ["LOREM_PICSUM_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["LOREMPICSUM_TEST_LIVE"] == "TRUE"
+  local live = env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

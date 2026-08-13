@@ -37,7 +37,7 @@ Seed is nested under height, so provide the `height`.
 
 ```php
 try {
-    // load() returns the bare Seed record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Seed record (throws on error).
     $seed = $client->Seed()->load(["height" => 1, "seed" => "example_seed", "width" => 1]);
     print_r($seed);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $getrandomimage = $client->GetRandomImage()->load();
+    $height = $client->Height()->load(["height" => 1, "width" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = LoremPicsumSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$getrandomimage = $client->GetRandomImage()->load();
-print_r($getrandomimage);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$height = $client->Height()->load(["height" => 1, "width" => 1]);
+print_r($height);
 ```
 
 ### Use a custom fetch function
@@ -233,7 +234,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -368,7 +369,7 @@ Create an instance: `$get_random_image = $client->GetRandomImage();`
 #### Example: Load
 
 ```php
-// load() returns the bare GetRandomImage record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetRandomImage record (throws on error).
 $get_random_image = $client->GetRandomImage()->load(["height" => 1, "width" => 1]);
 ```
 
@@ -386,7 +387,7 @@ Create an instance: `$get_random_square_image = $client->GetRandomSquareImage();
 #### Example: Load
 
 ```php
-// load() returns the bare GetRandomSquareImage record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetRandomSquareImage record (throws on error).
 $get_random_square_image = $client->GetRandomSquareImage()->load(["id" => 1]);
 ```
 
@@ -404,7 +405,7 @@ Create an instance: `$height = $client->Height();`
 #### Example: Load
 
 ```php
-// load() returns the bare Height record (throws on error).
+// load() returns the ENTITY — call data_get() for the Height record (throws on error).
 $height = $client->Height()->load(["height" => 1, "width" => 1]);
 ```
 
@@ -422,7 +423,7 @@ Create an instance: `$heightwebp = $client->Heightwebp();`
 #### Example: Load
 
 ```php
-// load() returns the bare Heightwebp record (throws on error).
+// load() returns the ENTITY — call data_get() for the Heightwebp record (throws on error).
 $heightwebp = $client->Heightwebp()->load(["height" => 1, "width" => 1]);
 ```
 
@@ -451,7 +452,7 @@ Create an instance: `$id_info = $client->IdInfo();`
 #### Example: Load
 
 ```php
-// load() returns the bare IdInfo record (throws on error).
+// load() returns the ENTITY — call data_get() for the IdInfo record (throws on error).
 $id_info = $client->IdInfo()->load(["id" => "id_info_id"]);
 ```
 
@@ -469,7 +470,7 @@ Create an instance: `$idn = $client->Idn();`
 #### Example: Load
 
 ```php
-// load() returns the bare Idn record (throws on error).
+// load() returns the ENTITY — call data_get() for the Idn record (throws on error).
 $idn = $client->Idn()->load(["id" => "idn_id", "height" => 1, "width" => 1]);
 ```
 
@@ -516,7 +517,7 @@ Create an instance: `$seed = $client->Seed();`
 #### Example: Load
 
 ```php
-// load() returns the bare Seed record (throws on error).
+// load() returns the ENTITY — call data_get() for the Seed record (throws on error).
 $seed = $client->Seed()->load(["height" => 1, "seed" => "seed", "width" => 1]);
 ```
 
@@ -545,7 +546,7 @@ Create an instance: `$seed_info = $client->SeedInfo();`
 #### Example: Load
 
 ```php
-// load() returns the bare SeedInfo record (throws on error).
+// load() returns the ENTITY — call data_get() for the SeedInfo record (throws on error).
 $seed_info = $client->SeedInfo()->load(["id" => "seed_info_id"]);
 ```
 
@@ -626,11 +627,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getrandomimage = $client->GetRandomImage();
-$getrandomimage->load();
+$height = $client->Height();
+$height->load(["height" => 1, "width" => 1]);
 
-// $getrandomimage->data_get() now returns the getrandomimage data from the last load
-// $getrandomimage->match_get() returns the last match criteria
+// $height->data_get() now returns the height data from the last load
+// $height->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

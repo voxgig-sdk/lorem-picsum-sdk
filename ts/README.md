@@ -58,8 +58,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const getrandomimage = await client.GetRandomImage().load()
-  console.log(getrandomimage)
+  const height = await client.Height().load({ height: 1, width: 1 })
+  console.log(height)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoremPicsumSDK.test()
 
-const getrandomimage = await client.GetRandomImage().load()
-// getrandomimage is a bare entity populated with mock response data
-console.log(getrandomimage)
+const height = await client.Height().load({ height: 1, width: 1 })
+// height is the entity, populated with mock response data
+// — call height.data() for the record itself
+console.log(height)
 ```
 
 You can also use the instance method:
@@ -142,10 +143,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.GetRandomImage()
+const entity = client.Height()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ height: 1, width: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -655,11 +656,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const getrandomimage = client.GetRandomImage()
-await getrandomimage.load()
+const height = client.Height()
+await height.load({ height: 1, width: 1 })
 
-// getrandomimage.data() now returns the getrandomimage data from the last `load`
-// getrandomimage.match() returns the last match criteria
+// height.data() now returns the height data from the last `load`
+// height.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

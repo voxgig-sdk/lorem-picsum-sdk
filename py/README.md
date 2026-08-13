@@ -39,7 +39,7 @@ client = LoremPicsumSDK()
 ### 3. Load a seed
 
 Seed is nested under height, so provide the `height`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -56,8 +56,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    getrandomimage = client.GetRandomImage().load()
-    print(getrandomimage)
+    height = client.Height().load({"height": 1, "width": 1})
+    print(height)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = LoremPicsumSDK.test()
 
-# Entity ops return the bare record and raise on error.
-getrandomimage = client.GetRandomImage().load()
-# getrandomimage contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+height = client.Height().load({"height": 1, "width": 1})
+# height contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -228,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -611,11 +612,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getrandomimage = client.GetRandomImage()
-getrandomimage.load()
+height = client.Height()
+height.load({"height": 1, "width": 1})
 
-# getrandomimage.data_get() now returns the getrandomimage data from the last load
-# getrandomimage.match_get() returns the last match criteria
+# height.data_get() now returns the height data from the last load
+# height.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

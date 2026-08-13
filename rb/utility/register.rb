@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ LoremPicsumUtility.registrar = ->(u) {
   u.prepare_params = LoremPicsumUtilities::PrepareParams
   u.prepare_path = LoremPicsumUtilities::PreparePath
   u.prepare_query = LoremPicsumUtilities::PrepareQuery
+  u.graphql_body = LoremPicsumUtilities::GraphqlBody
+  u.graphql_errors = LoremPicsumUtilities::GraphqlErrors
   u.result_basic = LoremPicsumUtilities::ResultBasic
   u.result_body = LoremPicsumUtilities::ResultBody
   u.result_headers = LoremPicsumUtilities::ResultHeaders

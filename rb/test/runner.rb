@@ -23,8 +23,8 @@ module LoremPicsumTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("LOREMPICSUM_TEST_LIVE")
-    override = getenv("LOREMPICSUM_TEST_OVERRIDE")
+    live = getenv("LOREM_PICSUM_TEST_LIVE")
+    override = getenv("LOREM_PICSUM_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module LoremPicsumTestRunner
       end
     end
 
-    explain = getenv("LOREMPICSUM_TEST_EXPLAIN")
-    m["LOREMPICSUM_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("LOREM_PICSUM_TEST_EXPLAIN")
+    m["LOREM_PICSUM_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -19,11 +19,15 @@ import {
 describe('IdInfoDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when LOREMPICSUM_TEST_LIVE=TRUE.
-  afterEach(liveDelay('LOREMPICSUM_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when LOREM_PICSUM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('LOREM_PICSUM_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new LoremPicsumSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -78,17 +82,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'LOREMPICSUM_TEST_ID_INFO_ENTID': {},
-    'LOREMPICSUM_TEST_LIVE': 'FALSE',
+    'LOREM_PICSUM_TEST_ID_INFO_ENTID': {},
+    'LOREM_PICSUM_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.LOREMPICSUM_TEST_LIVE
+  const live = 'TRUE' === env.LOREM_PICSUM_TEST_LIVE
 
   if (live) {
     const client = new LoremPicsumSDK({
     })
 
-    let idmap: any = env['LOREMPICSUM_TEST_ID_INFO_ENTID']
+    let idmap: any = env['LOREM_PICSUM_TEST_ID_INFO_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

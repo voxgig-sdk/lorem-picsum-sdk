@@ -43,8 +43,8 @@ class LoremPicsumTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('LOREMPICSUM_TEST_LIVE');
-        $override = self::getenv('LOREMPICSUM_TEST_OVERRIDE');
+        $live = self::getenv('LOREM_PICSUM_TEST_LIVE');
+        $override = self::getenv('LOREM_PICSUM_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class LoremPicsumTestRunner
             }
         }
 
-        $explain = self::getenv('LOREMPICSUM_TEST_EXPLAIN');
+        $explain = self::getenv('LOREM_PICSUM_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['LOREMPICSUM_TEST_EXPLAIN'] = $explain;
+            $m['LOREM_PICSUM_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;
