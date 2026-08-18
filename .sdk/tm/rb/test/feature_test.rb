@@ -15,7 +15,7 @@ require_relative "../LoremPicsum_sdk"
 module LoremPicsumFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = LoremPicsumConfig.make_config["feature"]
+    f = LoremPicsumConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

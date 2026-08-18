@@ -40,7 +40,7 @@ class LoremPicsumSDK
         $utility = new LoremPicsumUtility();
         $this->_utility = $utility;
 
-        $config = LoremPicsumConfig::make_config();
+        $config = LoremPicsumConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

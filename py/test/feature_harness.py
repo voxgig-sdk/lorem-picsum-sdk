@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from lorempicsum_sdk.config import make_config
+from lorempicsum_sdk.config import shared_config
 from lorempicsum_sdk.features import _make_feature
 from lorempicsum_sdk.core.control import LoremPicsumControl
 from lorempicsum_sdk.core.error import LoremPicsumError
@@ -24,7 +24,7 @@ from lorempicsum_sdk.core.spec import LoremPicsumSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

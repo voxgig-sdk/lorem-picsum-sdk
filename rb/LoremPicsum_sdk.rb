@@ -28,7 +28,7 @@ class LoremPicsumSDK
     utility = LoremPicsumUtility.new
     @_utility = utility
 
-    config = LoremPicsumConfig.make_config
+    config = LoremPicsumConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

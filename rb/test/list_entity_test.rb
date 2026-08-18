@@ -33,7 +33,7 @@ class ListEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = LoremPicsumConfig.make_config
+    cfg = LoremPicsumConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = LoremPicsumSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []

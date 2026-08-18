@@ -90,7 +90,7 @@ class IdnLoadMatch
 }
 
 /** List entity data model. */
-class List
+class ListType
 {
     public string $author;
     public string $download_url;

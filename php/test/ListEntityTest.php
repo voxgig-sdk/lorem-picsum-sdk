@@ -40,7 +40,7 @@ class ListEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = LoremPicsumConfig::make_config();
+        $cfg = LoremPicsumConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = LoremPicsumSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
