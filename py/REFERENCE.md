@@ -299,12 +299,12 @@ id_info = client.IdInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | Yes |  |
-| `download_url` | `str` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `str` | Yes |  |
-| `url` | `str` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `str` | Yes | Name of the image author |
+| `download_url` | `str` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `str` | Yes | Unique identifier for the image |
+| `url` | `str` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -400,12 +400,12 @@ list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | Yes |  |
-| `download_url` | `str` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `str` | Yes |  |
-| `url` | `str` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `str` | Yes | Name of the image author |
+| `download_url` | `str` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `str` | Yes | Unique identifier for the image |
+| `url` | `str` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -503,12 +503,12 @@ seed_info = client.SeedInfo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | Yes |  |
-| `download_url` | `str` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `str` | Yes |  |
-| `url` | `str` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `str` | Yes | Name of the image author |
+| `download_url` | `str` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `str` | Yes | Unique identifier for the image |
+| `url` | `str` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 

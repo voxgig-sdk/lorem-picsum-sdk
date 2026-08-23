@@ -1,6 +1,6 @@
-# Entity: seed_info
+# Entity: id_info
 
-main: kit: entity: seed_info: {
+main: kit: entity: id_info: {
 
   alias: field: {}
 
@@ -8,31 +8,37 @@ main: kit: entity: seed_info: {
     {
       name: "author"
       req: true
+      short: "Name of the image author"
       type: "`$STRING`"
     }
     {
       name: "download_url"
       req: true
+      short: "URL to download the image from Picsum"
       type: "`$STRING`"
     }
     {
       name: "height"
       req: true
+      short: "Original height of the image in pixels"
       type: "`$INTEGER`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the image"
       type: "`$STRING`"
     }
     {
       name: "url"
       req: true
+      short: "URL to the original image on Unsplash"
       type: "`$STRING`"
     }
     {
       name: "width"
       req: true
+      short: "Original width of the image in pixels"
       type: "`$INTEGER`"
     }
   ]
@@ -42,7 +48,7 @@ main: kit: entity: seed_info: {
     name: "id"
   }
 
-  name: "seed_info"
+  name: "id_info"
   op: {
     load: {
       name: "load"
@@ -53,24 +59,19 @@ main: kit: entity: seed_info: {
               {
                 kind: "param"
                 name: "id"
-                orig: "seed"
+                orig: "id"
                 reqd: true
                 type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/seed/{seed}/info"
+          orig: "/id/{id}/info"
           parts: [
-            "seed"
+            "id"
             "{id}"
             "info"
           ]
-          rename: {
-            param: {
-              seed: "id"
-            }
-          }
           select: {
             exist: [
               "id"

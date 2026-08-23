@@ -6,7 +6,7 @@ The Golang SDK for the LoremPicsum API — an entity-oriented client using stand
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetRandomImage(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -304,12 +304,12 @@ API path: `/{width}/{height}.webp`
 
 | Field | Description |
 | --- | --- |
-| `"author"` |  |
-| `"download_url"` |  |
-| `"height"` |  |
-| `"id"` |  |
-| `"url"` |  |
-| `"width"` |  |
+| `"author"` | Name of the image author |
+| `"download_url"` | URL to download the image from Picsum |
+| `"height"` | Original height of the image in pixels |
+| `"id"` | Unique identifier for the image |
+| `"url"` | URL to the original image on Unsplash |
+| `"width"` | Original width of the image in pixels |
 
 Operations: Load.
 
@@ -328,12 +328,12 @@ API path: `/id/{id}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `"author"` |  |
-| `"download_url"` |  |
-| `"height"` |  |
-| `"id"` |  |
-| `"url"` |  |
-| `"width"` |  |
+| `"author"` | Name of the image author |
+| `"download_url"` | URL to download the image from Picsum |
+| `"height"` | Original height of the image in pixels |
+| `"id"` | Unique identifier for the image |
+| `"url"` | URL to the original image on Unsplash |
+| `"width"` | Original width of the image in pixels |
 
 Operations: List.
 
@@ -352,12 +352,12 @@ API path: `/seed/{seed}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `"author"` |  |
-| `"download_url"` |  |
-| `"height"` |  |
-| `"id"` |  |
-| `"url"` |  |
-| `"width"` |  |
+| `"author"` | Name of the image author |
+| `"download_url"` | URL to download the image from Picsum |
+| `"height"` | Original height of the image in pixels |
+| `"id"` | Unique identifier for the image |
+| `"url"` | URL to the original image on Unsplash |
+| `"width"` | Original width of the image in pixels |
 
 Operations: Load.
 
@@ -466,12 +466,12 @@ Create an instance: `idInfo := client.IdInfo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `int` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `int` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: Load
 
@@ -519,12 +519,12 @@ Create an instance: `list := client.List(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `int` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `int` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: List
 
@@ -572,12 +572,12 @@ Create an instance: `seedInfo := client.SeedInfo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `int` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `int` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: Load
 

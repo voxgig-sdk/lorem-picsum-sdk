@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "LoremPicsum",
+			"slug": "lorem-picsum",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -317,31 +320,37 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "author",
 						"req": true,
+						"short": "Name of the image author",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "download_url",
 						"req": true,
+						"short": "URL to download the image from Picsum",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "height",
 						"req": true,
+						"short": "Original height of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "URL to the original image on Unsplash",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "width",
 						"req": true,
+						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -471,31 +480,37 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "author",
 						"req": true,
+						"short": "Name of the image author",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "download_url",
 						"req": true,
+						"short": "URL to download the image from Picsum",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "height",
 						"req": true,
+						"short": "Original height of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "URL to the original image on Unsplash",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "width",
 						"req": true,
+						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -636,31 +651,37 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "author",
 						"req": true,
+						"short": "Name of the image author",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "download_url",
 						"req": true,
+						"short": "URL to download the image from Picsum",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "height",
 						"req": true,
+						"short": "Original height of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "URL to the original image on Unsplash",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "width",
 						"req": true,
+						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
 				},

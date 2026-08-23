@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -337,12 +337,12 @@ API path: `/{width}/{height}.webp`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: load.
 
@@ -361,12 +361,12 @@ API path: `/id/{id}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: list.
 
@@ -385,12 +385,12 @@ API path: `/seed/{seed}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: load.
 
@@ -483,12 +483,12 @@ Create an instance: `const id_info = client.IdInfo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `number` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `number` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `number` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `number` | Original width of the image in pixels |
 
 #### Example: Load
 
@@ -528,12 +528,12 @@ Create an instance: `const list = client.List()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `number` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `number` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `number` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `number` | Original width of the image in pixels |
 
 #### Example: List
 
@@ -573,12 +573,12 @@ Create an instance: `const seed_info = client.SeedInfo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `download_url` | `string` |  |
-| `height` | `number` |  |
-| `id` | `string` |  |
-| `url` | `string` |  |
-| `width` | `number` |  |
+| `author` | `string` | Name of the image author |
+| `download_url` | `string` | URL to download the image from Picsum |
+| `height` | `number` | Original height of the image in pixels |
+| `id` | `string` | Unique identifier for the image |
+| `url` | `string` | URL to the original image on Unsplash |
+| `width` | `number` | Original width of the image in pixels |
 
 #### Example: Load
 

@@ -308,12 +308,12 @@ $id_info = $client->IdInfo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | Yes |  |
-| `download_url` | `string` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `string` | Yes |  |
-| `url` | `string` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `string` | Yes | Name of the image author |
+| `download_url` | `string` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `string` | Yes | Unique identifier for the image |
+| `url` | `string` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -411,12 +411,12 @@ $list = $client->List();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | Yes |  |
-| `download_url` | `string` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `string` | Yes |  |
-| `url` | `string` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `string` | Yes | Name of the image author |
+| `download_url` | `string` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `string` | Yes | Unique identifier for the image |
+| `url` | `string` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -514,12 +514,12 @@ $seed_info = $client->SeedInfo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | Yes |  |
-| `download_url` | `string` | Yes |  |
-| `height` | `int` | Yes |  |
-| `id` | `string` | Yes |  |
-| `url` | `string` | Yes |  |
-| `width` | `int` | Yes |  |
+| `author` | `string` | Yes | Name of the image author |
+| `download_url` | `string` | Yes | URL to download the image from Picsum |
+| `height` | `int` | Yes | Original height of the image in pixels |
+| `id` | `string` | Yes | Unique identifier for the image |
+| `url` | `string` | Yes | URL to the original image on Unsplash |
+| `width` | `int` | Yes | Original width of the image in pixels |
 
 ### Operations
 

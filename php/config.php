@@ -33,6 +33,9 @@ class LoremPicsumConfig
         return [
             "main" => [
                 "name" => "LoremPicsum",
+                "slug" => "lorem-picsum",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -339,31 +342,37 @@ class LoremPicsumConfig
             [
               'name' => 'author',
               'req' => true,
+              'short' => 'Name of the image author',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'download_url',
               'req' => true,
+              'short' => 'URL to download the image from Picsum',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'height',
               'req' => true,
+              'short' => 'Original height of the image in pixels',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the image',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'URL to the original image on Unsplash',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'width',
               'req' => true,
+              'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
           ],
@@ -493,31 +502,37 @@ class LoremPicsumConfig
             [
               'name' => 'author',
               'req' => true,
+              'short' => 'Name of the image author',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'download_url',
               'req' => true,
+              'short' => 'URL to download the image from Picsum',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'height',
               'req' => true,
+              'short' => 'Original height of the image in pixels',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the image',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'URL to the original image on Unsplash',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'width',
               'req' => true,
+              'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
           ],
@@ -658,31 +673,37 @@ class LoremPicsumConfig
             [
               'name' => 'author',
               'req' => true,
+              'short' => 'Name of the image author',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'download_url',
               'req' => true,
+              'short' => 'URL to download the image from Picsum',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'height',
               'req' => true,
+              'short' => 'Original height of the image in pixels',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the image',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'URL to the original image on Unsplash',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'width',
               'req' => true,
+              'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
           ],

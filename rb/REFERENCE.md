@@ -309,12 +309,12 @@ id_info = client.IdInfo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `String` | Yes |  |
-| `download_url` | `String` | Yes |  |
-| `height` | `Integer` | Yes |  |
-| `id` | `String` | Yes |  |
-| `url` | `String` | Yes |  |
-| `width` | `Integer` | Yes |  |
+| `author` | `String` | Yes | Name of the image author |
+| `download_url` | `String` | Yes | URL to download the image from Picsum |
+| `height` | `Integer` | Yes | Original height of the image in pixels |
+| `id` | `String` | Yes | Unique identifier for the image |
+| `url` | `String` | Yes | URL to the original image on Unsplash |
+| `width` | `Integer` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -412,12 +412,12 @@ list = client.List
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `String` | Yes |  |
-| `download_url` | `String` | Yes |  |
-| `height` | `Integer` | Yes |  |
-| `id` | `String` | Yes |  |
-| `url` | `String` | Yes |  |
-| `width` | `Integer` | Yes |  |
+| `author` | `String` | Yes | Name of the image author |
+| `download_url` | `String` | Yes | URL to download the image from Picsum |
+| `height` | `Integer` | Yes | Original height of the image in pixels |
+| `id` | `String` | Yes | Unique identifier for the image |
+| `url` | `String` | Yes | URL to the original image on Unsplash |
+| `width` | `Integer` | Yes | Original width of the image in pixels |
 
 ### Operations
 
@@ -515,12 +515,12 @@ seed_info = client.SeedInfo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `String` | Yes |  |
-| `download_url` | `String` | Yes |  |
-| `height` | `Integer` | Yes |  |
-| `id` | `String` | Yes |  |
-| `url` | `String` | Yes |  |
-| `width` | `Integer` | Yes |  |
+| `author` | `String` | Yes | Name of the image author |
+| `download_url` | `String` | Yes | URL to download the image from Picsum |
+| `height` | `Integer` | Yes | Original height of the image in pixels |
+| `id` | `String` | Yes | Unique identifier for the image |
+| `url` | `String` | Yes | URL to the original image on Unsplash |
+| `width` | `Integer` | Yes | Original width of the image in pixels |
 
 ### Operations
 

@@ -287,12 +287,12 @@ API path: `/{width}/{height}.webp`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: Load.
 
@@ -311,12 +311,12 @@ API path: `/id/{id}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: List.
 
@@ -335,12 +335,12 @@ API path: `/seed/{seed}/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `download_url` |  |
-| `height` |  |
-| `id` |  |
-| `url` |  |
-| `width` |  |
+| `author` | Name of the image author |
+| `download_url` | URL to download the image from Picsum |
+| `height` | Original height of the image in pixels |
+| `id` | Unique identifier for the image |
+| `url` | URL to the original image on Unsplash |
+| `width` | Original width of the image in pixels |
 
 Operations: Load.
 
@@ -433,12 +433,12 @@ Create an instance: `id_info = client.IdInfo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `str` |  |
-| `download_url` | `str` |  |
-| `height` | `int` |  |
-| `id` | `str` |  |
-| `url` | `str` |  |
-| `width` | `int` |  |
+| `author` | `str` | Name of the image author |
+| `download_url` | `str` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `str` | Unique identifier for the image |
+| `url` | `str` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: Load
 
@@ -478,12 +478,12 @@ Create an instance: `list = client.List()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `str` |  |
-| `download_url` | `str` |  |
-| `height` | `int` |  |
-| `id` | `str` |  |
-| `url` | `str` |  |
-| `width` | `int` |  |
+| `author` | `str` | Name of the image author |
+| `download_url` | `str` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `str` | Unique identifier for the image |
+| `url` | `str` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: List
 
@@ -523,12 +523,12 @@ Create an instance: `seed_info = client.SeedInfo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `str` |  |
-| `download_url` | `str` |  |
-| `height` | `int` |  |
-| `id` | `str` |  |
-| `url` | `str` |  |
-| `width` | `int` |  |
+| `author` | `str` | Name of the image author |
+| `download_url` | `str` | URL to download the image from Picsum |
+| `height` | `int` | Original height of the image in pixels |
+| `id` | `str` | Unique identifier for the image |
+| `url` | `str` | URL to the original image on Unsplash |
+| `width` | `int` | Original width of the image in pixels |
 
 #### Example: Load
 
