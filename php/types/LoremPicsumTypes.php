@@ -27,6 +27,7 @@ class GetRandomImageLoadMatch
 /** GetRandomSquareImage entity data model. */
 class GetRandomSquareImage
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GetRandomSquareImage#load. */
@@ -79,6 +80,7 @@ class IdInfoLoadMatch
 /** Idn entity data model. */
 class Idn
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Idn#load. */

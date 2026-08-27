@@ -166,6 +166,12 @@ Return the entity name.
 $get_random_square_image = $client->GetRandomSquareImage();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -360,6 +366,12 @@ Return the entity name.
 ```php
 $idn = $client->Idn();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

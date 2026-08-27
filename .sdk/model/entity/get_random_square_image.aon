@@ -4,6 +4,19 @@ main: kit: entity: get_random_square_image: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "get_random_square_image"
   op: {
     load: {

@@ -24,6 +24,7 @@ type GetRandomImageLoadMatch struct {
 
 // GetRandomSquareImage is the typed data model for the get_random_square_image entity.
 type GetRandomSquareImage struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GetRandomSquareImageLoadMatch is the typed request payload for GetRandomSquareImage.LoadTyped.
@@ -68,6 +69,7 @@ type IdInfoLoadMatch struct {
 
 // Idn is the typed data model for the idn entity.
 type Idn struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // IdnLoadMatch is the typed request payload for Idn.LoadTyped.

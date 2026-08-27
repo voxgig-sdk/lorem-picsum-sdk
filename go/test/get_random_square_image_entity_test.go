@@ -61,13 +61,19 @@ func TestGetRandomSquareImageEntity(t *testing.T) {
 
 		// LOAD
 		getRandomSquareImageRef01Ent := client.GetRandomSquareImage(nil)
-		getRandomSquareImageRef01MatchDt0 := map[string]any{}
+		getRandomSquareImageRef01MatchDt0 := map[string]any{
+			"id": getRandomSquareImageRef01Data["id"],
+		}
 		getRandomSquareImageRef01DataDt0Loaded, err := getRandomSquareImageRef01Ent.Load(getRandomSquareImageRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if getRandomSquareImageRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		getRandomSquareImageRef01DataDt0LoadResult := core.ToMapAny(entityData(getRandomSquareImageRef01DataDt0Loaded))
+		if getRandomSquareImageRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if getRandomSquareImageRef01DataDt0LoadResult["id"] != getRandomSquareImageRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

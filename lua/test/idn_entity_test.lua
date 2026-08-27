@@ -44,10 +44,14 @@ describe("IdnEntity", function()
 
     -- LOAD
     local idn_ref01_ent = client:Idn(nil)
-    local idn_ref01_match_dt0 = {}
+    local idn_ref01_match_dt0 = {
+      id = idn_ref01_data["id"],
+    }
     local idn_ref01_data_dt0_loaded, err = idn_ref01_ent:load(idn_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(idn_ref01_data_dt0_loaded)
+    local idn_ref01_data_dt0_load_result = helpers.to_map(type(idn_ref01_data_dt0_loaded) == 'table' and idn_ref01_data_dt0_loaded.data_get and idn_ref01_data_dt0_loaded:data_get() or idn_ref01_data_dt0_loaded)
+    assert.is_not_nil(idn_ref01_data_dt0_load_result)
+    assert.are.equal(idn_ref01_data_dt0_load_result["id"], idn_ref01_data["id"])
 
   end)
 end)

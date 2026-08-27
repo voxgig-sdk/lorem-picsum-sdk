@@ -48,9 +48,13 @@ class TestIdnEntity:
 
         # LOAD
         idn_ref01_ent = client.Idn(None)
-        idn_ref01_match_dt0 = {}
+        idn_ref01_match_dt0 = {
+            "id": idn_ref01_data["id"],
+        }
         idn_ref01_data_dt0_loaded = idn_ref01_ent.load(idn_ref01_match_dt0, None)
-        assert idn_ref01_data_dt0_loaded is not None
+        idn_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(idn_ref01_data_dt0_loaded))
+        assert idn_ref01_data_dt0_load_result is not None
+        assert idn_ref01_data_dt0_load_result["id"] == idn_ref01_data["id"]
 
 
 

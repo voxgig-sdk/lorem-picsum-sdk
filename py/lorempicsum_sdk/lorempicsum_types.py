@@ -25,8 +25,8 @@ class GetRandomImageLoadMatch(TypedDict):
     width: int
 
 
-class GetRandomSquareImage(TypedDict):
-    pass
+class GetRandomSquareImage(TypedDict, total=False):
+    id: str
 
 
 class GetRandomSquareImageLoadMatch(TypedDict):
@@ -64,8 +64,8 @@ class IdInfoLoadMatch(TypedDict):
     id: str
 
 
-class Idn(TypedDict):
-    pass
+class Idn(TypedDict, total=False):
+    id: str
 
 
 class IdnLoadMatch(TypedDict):

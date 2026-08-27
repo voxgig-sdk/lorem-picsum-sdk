@@ -171,6 +171,12 @@ getRandomSquareImage := client.GetRandomSquareImage(nil)
 fmt.Println(getRandomSquareImage.GetName()) // "get_random_square_image"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -361,6 +367,12 @@ Return the entity name.
 idn := client.Idn(nil)
 fmt.Println(idn.GetName()) // "idn"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

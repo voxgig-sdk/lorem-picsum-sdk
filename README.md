@@ -42,23 +42,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = LoremPicsumSDK.test({
   entity: {
-    height: {
+    idn: {
       test01: { id: 'test01' },
     },
   },
 })
-const height = await client.Height().load({ height: 1, width: 1 })
-// height is the Height entity, populated with mock data
-// — call height.data() for the record itself
-console.log(height)
+const idn = await client.Idn().load({ id: 'test01', height: 1, width: 1 })
+// idn is the Idn entity, populated with mock data
+// — call idn.data() for the record itself
+console.log(idn)
 ```
 
 ### Python
 
 ```python
 client = LoremPicsumSDK.test()
-height = client.Height().load({"height": 1, "width": 1})
-print(height)
+idn = client.Idn().load({"id": "test01", "height": 1, "width": 1})
+print(idn)
 ```
 
 ### PHP
@@ -66,17 +66,17 @@ print(height)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = LoremPicsumSDK::test([
-    "entity" => ["height" => ["test01" => []]],
+    "entity" => ["idn" => ["test01" => ["id" => "test01"]]],
 ]);
-$height = $client->Height()->load(["height" => 1, "width" => 1]);
+$idn = $client->Idn()->load(["id" => "test01", "height" => 1, "width" => 1]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Height(nil).Load(
-    nil, nil,
+result, err := client.Idn(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -85,16 +85,16 @@ result, err := client.Height(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = LoremPicsumSDK.test({
-  "entity" => { "height" => { "test01" => {} } },
+  "entity" => { "idn" => { "test01" => { "id" => "test01" } } },
 })
-height = client.Height.load({ "height" => 1, "width" => 1 })
+idn = client.Idn.load({ "id" => "test01", "height" => 1, "width" => 1 })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Height():load({ height = 1, width = 1 })
+local result, err = client:Idn():load({ id = "test01", height = 1, width = 1 })
 ```
 
 ## Packages

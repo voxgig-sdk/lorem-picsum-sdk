@@ -41,9 +41,13 @@ class IdnEntityTest < Minitest::Test
 
     # LOAD
     idn_ref01_ent = client.Idn(nil)
-    idn_ref01_match_dt0 = {}
+    idn_ref01_match_dt0 = {
+      "id" => idn_ref01_data["id"],
+    }
     idn_ref01_data_dt0_loaded = idn_ref01_ent.load(idn_ref01_match_dt0, nil)
-    assert !idn_ref01_data_dt0_loaded.nil?
+    idn_ref01_data_dt0_load_result = Helpers.to_map(idn_ref01_data_dt0_loaded.respond_to?(:data_get) ? idn_ref01_data_dt0_loaded.data_get : idn_ref01_data_dt0_loaded)
+    assert !idn_ref01_data_dt0_load_result.nil?
+    assert_equal idn_ref01_data_dt0_load_result["id"], idn_ref01_data["id"]
 
   end
 end

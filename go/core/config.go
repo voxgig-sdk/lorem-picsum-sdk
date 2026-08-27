@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -116,7 +117,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"get_random_square_image": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "get_random_square_image",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -398,7 +404,12 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"idn": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
 				"name": "idn",
 				"op": map[string]any{
 					"load": map[string]any{

@@ -14,6 +14,7 @@ export interface GetRandomImageLoadMatch {
 }
 
 export interface GetRandomSquareImage {
+  id?: string
 }
 
 export interface GetRandomSquareImageLoadMatch {
@@ -50,6 +51,7 @@ export interface IdInfoLoadMatch {
 }
 
 export interface Idn {
+  id?: string
 }
 
 export interface IdnLoadMatch {

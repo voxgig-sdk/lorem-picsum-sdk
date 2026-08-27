@@ -160,6 +160,12 @@ Return the entity name.
 get_random_square_image = client.GetRandomSquareImage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -350,6 +356,12 @@ Return the entity name.
 ```python
 idn = client.Idn()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 

@@ -13,6 +13,7 @@
 ---@field width number
 
 ---@class GetRandomSquareImage
+---@field id? string
 
 ---@class GetRandomSquareImageLoadMatch
 ---@field id number
@@ -41,6 +42,7 @@
 ---@field id string
 
 ---@class Idn
+---@field id? string
 
 ---@class IdnLoadMatch
 ---@field height number

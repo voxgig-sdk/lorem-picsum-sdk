@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -163,7 +164,12 @@ class Config {
       }
     },
     "get_random_square_image": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "get_random_square_image",
       "op": {
         "load": {
@@ -445,7 +451,12 @@ class Config {
       }
     },
     "idn": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
       "name": "idn",
       "op": {
         "load": {

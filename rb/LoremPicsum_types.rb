@@ -26,8 +26,13 @@ GetRandomImageLoadMatch = Struct.new(
 )
 
 # GetRandomSquareImage entity data model.
-class GetRandomSquareImage
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GetRandomSquareImage = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GetRandomSquareImage#load.
 #
@@ -111,8 +116,13 @@ IdInfoLoadMatch = Struct.new(
 )
 
 # Idn entity data model.
-class Idn
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Idn = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Idn#load.
 #

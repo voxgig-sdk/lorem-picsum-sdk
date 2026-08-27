@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -133,7 +134,12 @@ def make_config():
         },
       },
       "get_random_square_image": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "get_random_square_image",
         "op": {
           "load": {
@@ -415,7 +421,12 @@ def make_config():
         },
       },
       "idn": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
         "name": "idn",
         "op": {
           "load": {

@@ -28,6 +28,7 @@ module LoremPicsumConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -124,7 +125,12 @@ module LoremPicsumConfig
           },
         },
         "get_random_square_image" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "get_random_square_image",
           "op" => {
             "load" => {
@@ -406,7 +412,12 @@ module LoremPicsumConfig
           },
         },
         "idn" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "idn",
           "op" => {
             "load" => {

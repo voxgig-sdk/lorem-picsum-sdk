@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-height, err := client.Height(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
+idn, err := client.Idn(nil).Load(map[string]any{"height": 1, "id": "example_id", "width": 1}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = height
+_ = idn
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-height, err := client.Height(nil).Load(
-    map[string]any{"height": 1, "width": 1}, nil,
+idn, err := client.Idn(nil).Load(
+    map[string]any{"id": "test01", "height": 1, "width": 1}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(height) // the returned mock data
+fmt.Println(idn) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -277,6 +277,7 @@ API path: `/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -319,6 +320,7 @@ API path: `/id/{id}/info`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -398,6 +400,12 @@ Create an instance: `getRandomSquareImage := client.GetRandomSquareImage(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -493,6 +501,12 @@ Create an instance: `idn := client.Idn(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -663,11 +677,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-height := client.Height(nil)
-height.Load(map[string]any{"height": 1, "width": 1}, nil)
+idn := client.Idn(nil)
+idn.Load(map[string]any{"height": 1, "id": "example_id", "width": 1}, nil)
 
-// height.Data() now returns the height data from the last load
-// height.Match() returns the last match criteria
+// idn.Data() now returns the idn data from the last load
+// idn.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

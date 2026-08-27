@@ -56,8 +56,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    height = client.Height().load({"height": 1, "width": 1})
-    print(height)
+    idn = client.Idn().load({"height": 1, "id": "example_id", "width": 1})
+    print(idn)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -125,8 +125,8 @@ client = LoremPicsumSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-height = client.Height().load({"height": 1, "width": 1})
-# height contains the mock response record
+idn = client.Idn().load({"id": "test01", "height": 1, "width": 1})
+# idn contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -260,6 +260,7 @@ API path: `/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -302,6 +303,7 @@ API path: `/id/{id}/info`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -377,6 +379,12 @@ Create an instance: `get_random_square_image = client.GetRandomSquareImage()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -456,6 +464,12 @@ Create an instance: `idn = client.Idn()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -612,11 +626,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-height = client.Height()
-height.load({"height": 1, "width": 1})
+idn = client.Idn()
+idn.load({"height": 1, "id": "example_id", "width": 1})
 
-# height.data_get() now returns the height data from the last load
-# height.match_get() returns the last match criteria
+# idn.data_get() now returns the idn data from the last load
+# idn.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

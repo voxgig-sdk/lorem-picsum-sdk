@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  height = client.Height.load({ "height" => 1, "width" => 1 })
+  idn = client.Idn.load({ "height" => 1, "id" => "example_id", "width" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -114,15 +114,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = LoremPicsumSDK.test
+client = LoremPicsumSDK.test({
+  "entity" => { "idn" => { "test01" => { "id" => "test01" } } },
+})
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-height = client.Height.load({ "height" => 1, "width" => 1 })
-puts height
+idn = client.Idn.load({ "id" => "test01", "height" => 1, "width" => 1 })
+puts idn
 ```
 
 ### Use a custom fetch function
@@ -255,6 +258,7 @@ API path: `/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -297,6 +301,7 @@ API path: `/id/{id}/info`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -373,6 +378,12 @@ Create an instance: `get_random_square_image = client.GetRandomSquareImage`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
 
 #### Example: Load
 
@@ -456,6 +467,12 @@ Create an instance: `idn = client.Idn`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
 
 #### Example: Load
 
@@ -617,11 +634,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-height = client.Height
-height.load({ "height" => 1, "width" => 1 })
+idn = client.Idn
+idn.load({ "height" => 1, "id" => "example_id", "width" => 1 })
 
-# height.data_get now returns the height data from the last load
-# height.match_get returns the last match criteria
+# idn.data_get now returns the idn data from the last load
+# idn.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

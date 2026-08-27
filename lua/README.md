@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local height, err = client:Height():load({ height = 1, width = 1 })
+local idn, err = client:Idn():load({ height = 1, id = "example_id", width = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Height():load({ height = 1, width = 1 })
+local result, err = client:Idn():load({ id = "test01", height = 1, width = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -246,6 +246,7 @@ API path: `/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -288,6 +289,7 @@ API path: `/id/{id}/info`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -363,6 +365,12 @@ Create an instance: `local get_random_square_image = client:GetRandomSquareImage
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -442,6 +450,12 @@ Create an instance: `local idn = client:Idn(nil)`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -599,11 +613,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local height = client:Height()
-height:load({ height = 1, width = 1 })
+local idn = client:Idn()
+idn:load({ height = 1, id = "example_id", width = 1 })
 
--- height:data_get() now returns the height data from the last load
--- height:match_get() returns the last match criteria
+-- idn:data_get() now returns the idn data from the last load
+-- idn:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

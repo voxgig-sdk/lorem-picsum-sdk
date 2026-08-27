@@ -2,19 +2,19 @@
   "existing": {
     "idn": {
       "IDN00": {
+        "id": "IDN00",
         "height": "HEIGHT01",
-        "width": "WIDTH01",
-        "id": "IDN00"
+        "width": "WIDTH01"
       },
       "IDN01": {
+        "id": "IDN01",
         "height": "HEIGHT01",
-        "width": "WIDTH01",
-        "id": "IDN01"
+        "width": "WIDTH01"
       },
       "IDN02": {
+        "id": "IDN02",
         "height": "HEIGHT01",
-        "width": "WIDTH01",
-        "id": "IDN02"
+        "width": "WIDTH01"
       }
     }
   },

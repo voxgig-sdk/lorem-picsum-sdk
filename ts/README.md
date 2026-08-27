@@ -58,8 +58,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const height = await client.Height().load({ height: 1, width: 1 })
-  console.log(height)
+  const idn = await client.Idn().load({ height: 1, id: "example_id", width: 1 })
+  console.log(idn)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -125,10 +125,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoremPicsumSDK.test()
 
-const height = await client.Height().load({ height: 1, width: 1 })
-// height is the entity, populated with mock response data
-// — call height.data() for the record itself
-console.log(height)
+const idn = await client.Idn().load({ id: 'test01', height: 1, width: 1 })
+// idn is the entity, populated with mock response data
+// — call idn.data() for the record itself
+console.log(idn)
 ```
 
 You can also use the instance method:
@@ -143,14 +143,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Height()
+const entity = client.Idn()
 
 // First call runs the operation and stores its result
-await entity.load({ height: 1, width: 1 })
+await entity.load({ id: 'example', height: 1, width: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -310,6 +310,7 @@ API path: `/{width}/{height}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -352,6 +353,7 @@ API path: `/id/{id}/info`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -427,6 +429,12 @@ Create an instance: `const get_random_square_image = client.GetRandomSquareImage
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -506,6 +514,12 @@ Create an instance: `const idn = client.Idn()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -656,11 +670,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const height = client.Height()
-await height.load({ height: 1, width: 1 })
+const idn = client.Idn()
+await idn.load({ height: 1, id: "example_id", width: 1 })
 
-// height.data() now returns the height data from the last `load`
-// height.match() returns the last match criteria
+// idn.data() now returns the idn data from the last `load`
+// idn.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

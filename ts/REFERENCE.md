@@ -252,6 +252,12 @@ Return a copy of the entity options.
 const get_random_square_image = client.GetRandomSquareImage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -438,6 +444,12 @@ Return a copy of the entity options.
 ```ts
 const idn = client.Idn()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

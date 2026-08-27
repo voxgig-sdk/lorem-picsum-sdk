@@ -164,6 +164,12 @@ Return the entity name.
 local get_random_square_image = client:GetRandomSquareImage(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -358,6 +364,12 @@ Return the entity name.
 ```lua
 local idn = client:Idn(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

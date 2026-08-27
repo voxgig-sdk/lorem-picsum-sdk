@@ -167,6 +167,12 @@ Return the entity name.
 get_random_square_image = client.GetRandomSquareImage
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -361,6 +367,12 @@ Return the entity name.
 ```ruby
 idn = client.Idn
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 

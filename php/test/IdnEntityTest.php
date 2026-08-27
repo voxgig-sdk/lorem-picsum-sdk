@@ -48,9 +48,13 @@ class IdnEntityTest extends TestCase
 
         // LOAD
         $idn_ref01_ent = $client->Idn(null);
-        $idn_ref01_match_dt0 = [];
+        $idn_ref01_match_dt0 = [
+            "id" => $idn_ref01_data["id"],
+        ];
         $idn_ref01_data_dt0_loaded = $idn_ref01_ent->load($idn_ref01_match_dt0, null);
-        $this->assertNotNull($idn_ref01_data_dt0_loaded);
+        $idn_ref01_data_dt0_load_result = Helpers::to_map(is_object($idn_ref01_data_dt0_loaded) && method_exists($idn_ref01_data_dt0_loaded, 'data_get') ? $idn_ref01_data_dt0_loaded->data_get() : $idn_ref01_data_dt0_loaded);
+        $this->assertNotNull($idn_ref01_data_dt0_load_result);
+        $this->assertEquals($idn_ref01_data_dt0_load_result["id"], $idn_ref01_data["id"]);
 
     }
 }
