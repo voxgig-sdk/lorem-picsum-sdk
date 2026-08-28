@@ -20,35 +20,56 @@ class GetRandomImage(TypedDict):
     pass
 
 
-class GetRandomImageLoadMatch(TypedDict):
+class GetRandomImageLoadMatchRequired(TypedDict):
     height: int
     width: int
+
+
+class GetRandomImageLoadMatch(GetRandomImageLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
+    random: int
 
 
 class GetRandomSquareImage(TypedDict, total=False):
     id: str
 
 
-class GetRandomSquareImageLoadMatch(TypedDict):
+class GetRandomSquareImageLoadMatchRequired(TypedDict):
     id: int
+
+
+class GetRandomSquareImageLoadMatch(GetRandomSquareImageLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
 
 
 class Height(TypedDict):
     pass
 
 
-class HeightLoadMatch(TypedDict):
+class HeightLoadMatchRequired(TypedDict):
     height: int
     width: int
+
+
+class HeightLoadMatch(HeightLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
 
 
 class Heightwebp(TypedDict):
     pass
 
 
-class HeightwebpLoadMatch(TypedDict):
+class HeightwebpLoadMatchRequired(TypedDict):
     height: int
     width: int
+
+
+class HeightwebpLoadMatch(HeightwebpLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
 
 
 class IdInfo(TypedDict):
@@ -68,10 +89,15 @@ class Idn(TypedDict, total=False):
     id: str
 
 
-class IdnLoadMatch(TypedDict):
+class IdnLoadMatchRequired(TypedDict):
     height: int
     id: str
     width: int
+
+
+class IdnLoadMatch(IdnLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
 
 
 class List(TypedDict):
@@ -84,22 +110,23 @@ class List(TypedDict):
 
 
 class ListListMatch(TypedDict, total=False):
-    author: str
-    download_url: str
-    height: int
-    id: str
-    url: str
-    width: int
+    limit: int
+    page: int
 
 
 class Seed(TypedDict):
     pass
 
 
-class SeedLoadMatch(TypedDict):
+class SeedLoadMatchRequired(TypedDict):
     height: int
     seed: str
     width: int
+
+
+class SeedLoadMatch(SeedLoadMatchRequired, total=False):
+    blur: int
+    grayscale: bool
 
 
 class SeedInfo(TypedDict):

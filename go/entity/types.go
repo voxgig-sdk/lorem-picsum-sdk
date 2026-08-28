@@ -20,6 +20,9 @@ type GetRandomImage struct {
 type GetRandomImageLoadMatch struct {
 	Height int `json:"height"`
 	Width int `json:"width"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
+	Random *int `json:"random,omitempty"`
 }
 
 // GetRandomSquareImage is the typed data model for the get_random_square_image entity.
@@ -30,6 +33,8 @@ type GetRandomSquareImage struct {
 // GetRandomSquareImageLoadMatch is the typed request payload for GetRandomSquareImage.LoadTyped.
 type GetRandomSquareImageLoadMatch struct {
 	Id int `json:"id"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
 }
 
 // Height is the typed data model for the height entity.
@@ -40,6 +45,8 @@ type Height struct {
 type HeightLoadMatch struct {
 	Height int `json:"height"`
 	Width int `json:"width"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
 }
 
 // Heightwebp is the typed data model for the heightwebp entity.
@@ -50,6 +57,8 @@ type Heightwebp struct {
 type HeightwebpLoadMatch struct {
 	Height int `json:"height"`
 	Width int `json:"width"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
 }
 
 // IdInfo is the typed data model for the id_info entity.
@@ -77,6 +86,8 @@ type IdnLoadMatch struct {
 	Height int `json:"height"`
 	Id string `json:"id"`
 	Width int `json:"width"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
 }
 
 // List is the typed data model for the list entity.
@@ -91,12 +102,8 @@ type List struct {
 
 // ListListMatch is the typed request payload for List.ListTyped.
 type ListListMatch struct {
-	Author *string `json:"author,omitempty"`
-	DownloadUrl *string `json:"download_url,omitempty"`
-	Height *int `json:"height,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Width *int `json:"width,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
 }
 
 // Seed is the typed data model for the seed entity.
@@ -108,6 +115,8 @@ type SeedLoadMatch struct {
 	Height int `json:"height"`
 	Seed string `json:"seed"`
 	Width int `json:"width"`
+	Blur *int `json:"blur,omitempty"`
+	Grayscale *bool `json:"grayscale,omitempty"`
 }
 
 // SeedInfo is the typed data model for the seed_info entity.

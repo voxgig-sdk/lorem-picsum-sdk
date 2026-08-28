@@ -22,6 +22,9 @@ class GetRandomImageLoadMatch
 {
     public int $height;
     public int $width;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
+    public ?int $random = null;
 }
 
 /** GetRandomSquareImage entity data model. */
@@ -34,6 +37,8 @@ class GetRandomSquareImage
 class GetRandomSquareImageLoadMatch
 {
     public int $id;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
 }
 
 /** Height entity data model. */
@@ -46,6 +51,8 @@ class HeightLoadMatch
 {
     public int $height;
     public int $width;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
 }
 
 /** Heightwebp entity data model. */
@@ -58,6 +65,8 @@ class HeightwebpLoadMatch
 {
     public int $height;
     public int $width;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
 }
 
 /** IdInfo entity data model. */
@@ -89,6 +98,8 @@ class IdnLoadMatch
     public int $height;
     public string $id;
     public int $width;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
 }
 
 /** List entity data model. */
@@ -105,12 +116,8 @@ class ListType
 /** Request payload for List#list. */
 class ListListMatch
 {
-    public ?string $author = null;
-    public ?string $download_url = null;
-    public ?int $height = null;
-    public ?string $id = null;
-    public ?string $url = null;
-    public ?int $width = null;
+    public ?int $limit = null;
+    public ?int $page = null;
 }
 
 /** Seed entity data model. */
@@ -124,6 +131,8 @@ class SeedLoadMatch
     public int $height;
     public string $seed;
     public int $width;
+    public ?int $blur = null;
+    public ?bool $grayscale = null;
 }
 
 /** SeedInfo entity data model. */

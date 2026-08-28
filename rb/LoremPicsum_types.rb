@@ -19,9 +19,21 @@ end
 #
 # @!attribute [rw] width
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] random
+#   @return [Integer, nil]
 GetRandomImageLoadMatch = Struct.new(
   :height,
   :width,
+  :blur,
+  :grayscale,
+  :random,
   keyword_init: true
 )
 
@@ -38,8 +50,16 @@ GetRandomSquareImage = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
 GetRandomSquareImageLoadMatch = Struct.new(
   :id,
+  :blur,
+  :grayscale,
   keyword_init: true
 )
 
@@ -54,9 +74,17 @@ end
 #
 # @!attribute [rw] width
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
 HeightLoadMatch = Struct.new(
   :height,
   :width,
+  :blur,
+  :grayscale,
   keyword_init: true
 )
 
@@ -71,9 +99,17 @@ end
 #
 # @!attribute [rw] width
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
 HeightwebpLoadMatch = Struct.new(
   :height,
   :width,
+  :blur,
+  :grayscale,
   keyword_init: true
 )
 
@@ -134,10 +170,18 @@ Idn = Struct.new(
 #
 # @!attribute [rw] width
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
 IdnLoadMatch = Struct.new(
   :height,
   :id,
   :width,
+  :blur,
+  :grayscale,
   keyword_init: true
 )
 
@@ -172,30 +216,14 @@ List = Struct.new(
 
 # Request payload for List#list.
 #
-# @!attribute [rw] author
-#   @return [String, nil]
-#
-# @!attribute [rw] download_url
-#   @return [String, nil]
-#
-# @!attribute [rw] height
+# @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] width
+# @!attribute [rw] page
 #   @return [Integer, nil]
 ListListMatch = Struct.new(
-  :author,
-  :download_url,
-  :height,
-  :id,
-  :url,
-  :width,
+  :limit,
+  :page,
   keyword_init: true
 )
 
@@ -213,10 +241,18 @@ end
 #
 # @!attribute [rw] width
 #   @return [Integer]
+#
+# @!attribute [rw] blur
+#   @return [Integer, nil]
+#
+# @!attribute [rw] grayscale
+#   @return [Boolean, nil]
 SeedLoadMatch = Struct.new(
   :height,
   :seed,
   :width,
+  :blur,
+  :grayscale,
   keyword_init: true
 )
 

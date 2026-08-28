@@ -11,24 +11,33 @@
 ---@class GetRandomImageLoadMatch
 ---@field height number
 ---@field width number
+---@field blur? number
+---@field grayscale? boolean
+---@field random? number
 
 ---@class GetRandomSquareImage
 ---@field id? string
 
 ---@class GetRandomSquareImageLoadMatch
 ---@field id number
+---@field blur? number
+---@field grayscale? boolean
 
 ---@class Height
 
 ---@class HeightLoadMatch
 ---@field height number
 ---@field width number
+---@field blur? number
+---@field grayscale? boolean
 
 ---@class Heightwebp
 
 ---@class HeightwebpLoadMatch
 ---@field height number
 ---@field width number
+---@field blur? number
+---@field grayscale? boolean
 
 ---@class IdInfo
 ---@field author string
@@ -48,6 +57,8 @@
 ---@field height number
 ---@field id string
 ---@field width number
+---@field blur? number
+---@field grayscale? boolean
 
 ---@class List
 ---@field author string
@@ -58,12 +69,8 @@
 ---@field width number
 
 ---@class ListListMatch
----@field author? string
----@field download_url? string
----@field height? number
----@field id? string
----@field url? string
----@field width? number
+---@field limit? number
+---@field page? number
 
 ---@class Seed
 
@@ -71,6 +78,8 @@
 ---@field height number
 ---@field seed string
 ---@field width number
+---@field blur? number
+---@field grayscale? boolean
 
 ---@class SeedInfo
 ---@field author string

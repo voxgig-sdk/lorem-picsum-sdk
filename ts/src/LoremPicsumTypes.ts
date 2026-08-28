@@ -11,6 +11,9 @@ export interface GetRandomImage {
 export interface GetRandomImageLoadMatch {
   height: number
   width: number
+  blur?: number
+  grayscale?: boolean
+  random?: number
 }
 
 export interface GetRandomSquareImage {
@@ -19,6 +22,8 @@ export interface GetRandomSquareImage {
 
 export interface GetRandomSquareImageLoadMatch {
   id: number
+  blur?: number
+  grayscale?: boolean
 }
 
 export interface Height {
@@ -27,6 +32,8 @@ export interface Height {
 export interface HeightLoadMatch {
   height: number
   width: number
+  blur?: number
+  grayscale?: boolean
 }
 
 export interface Heightwebp {
@@ -35,6 +42,8 @@ export interface Heightwebp {
 export interface HeightwebpLoadMatch {
   height: number
   width: number
+  blur?: number
+  grayscale?: boolean
 }
 
 export interface IdInfo {
@@ -58,6 +67,8 @@ export interface IdnLoadMatch {
   height: number
   id: string
   width: number
+  blur?: number
+  grayscale?: boolean
 }
 
 export interface List {
@@ -70,12 +81,8 @@ export interface List {
 }
 
 export interface ListListMatch {
-  author?: string
-  download_url?: string
-  height?: number
-  id?: string
-  url?: string
-  width?: number
+  limit?: number
+  page?: number
 }
 
 export interface Seed {
@@ -85,6 +92,8 @@ export interface SeedLoadMatch {
   height: number
   seed: string
   width: number
+  blur?: number
+  grayscale?: boolean
 }
 
 export interface SeedInfo {
