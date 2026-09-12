@@ -115,6 +115,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 get_random_image = client.GetRandomImage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -465,6 +471,12 @@ Return the entity name.
 ```python
 seed = client.Seed()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 

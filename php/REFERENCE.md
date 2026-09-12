@@ -120,6 +120,12 @@ Prepare a fetch definition without sending the request. Returns the
 $get_random_image = $client->GetRandomImage();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -475,6 +481,12 @@ Return the entity name.
 ```php
 $seed = $client->Seed();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

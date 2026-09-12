@@ -4,6 +4,24 @@ main: kit: entity: get_random_image: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "width"
+      "height"
+    ]
+    sep: "/"
+  }
+
   name: "get_random_image"
   op: {
     load: {
@@ -53,9 +71,13 @@ main: kit: entity: get_random_image: {
           }
           method: "GET"
           orig: "/{width}/{height}"
-          parts: [
-            "{width}"
-            "{height}"
+          segments: [
+            {
+              var: "width"
+            }
+            {
+              var: "height"
+            }
           ]
           select: {
             exist: [

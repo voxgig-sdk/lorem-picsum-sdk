@@ -9,8 +9,13 @@
 # annotations document the shapes. Do not edit by hand.
 
 # GetRandomImage entity data model.
-class GetRandomImage
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GetRandomImage = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GetRandomImage#load.
 #
@@ -228,8 +233,13 @@ ListListMatch = Struct.new(
 )
 
 # Seed entity data model.
-class Seed
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Seed = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Seed#load.
 #

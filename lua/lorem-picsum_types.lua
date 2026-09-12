@@ -7,6 +7,7 @@
 -- edit by hand.
 
 ---@class GetRandomImage
+---@field id? string
 
 ---@class GetRandomImageLoadMatch
 ---@field height number
@@ -73,6 +74,7 @@
 ---@field page? number
 
 ---@class Seed
+---@field id? string
 
 ---@class SeedLoadMatch
 ---@field height number

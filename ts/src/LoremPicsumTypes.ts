@@ -6,6 +6,7 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface GetRandomImage {
+  id?: string
 }
 
 export interface GetRandomImageLoadMatch {
@@ -86,6 +87,7 @@ export interface ListListMatch {
 }
 
 export interface Seed {
+  id?: string
 }
 
 export interface SeedLoadMatch {

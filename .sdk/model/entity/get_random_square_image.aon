@@ -52,14 +52,16 @@ main: kit: entity: get_random_square_image: {
           }
           method: "GET"
           orig: "/{size}"
-          parts: [
-            "{id}"
-          ]
           rename: {
             param: {
               size: "id"
             }
           }
+          segments: [
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "blur"

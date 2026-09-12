@@ -118,6 +118,12 @@ same parameters as `direct()`.
 local get_random_image = client:GetRandomImage(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -473,6 +479,12 @@ Return the entity name.
 ```lua
 local seed = client:Seed(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

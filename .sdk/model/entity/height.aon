@@ -46,9 +46,13 @@ main: kit: entity: height: {
           }
           method: "GET"
           orig: "/{width}/{height}.jpg"
-          parts: [
-            "{width}"
-            "{height}.jpg"
+          segments: [
+            {
+              var: "width"
+            }
+            {
+              lit: "{height}.jpg"
+            }
           ]
           select: {
             exist: [

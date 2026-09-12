@@ -48,9 +48,13 @@ class SeedEntityTest extends TestCase
 
         // LOAD
         $seed_ref01_ent = $client->Seed(null);
-        $seed_ref01_match_dt0 = [];
+        $seed_ref01_match_dt0 = [
+            "id" => $seed_ref01_data["id"],
+        ];
         $seed_ref01_data_dt0_loaded = $seed_ref01_ent->load($seed_ref01_match_dt0, null);
-        $this->assertNotNull($seed_ref01_data_dt0_loaded);
+        $seed_ref01_data_dt0_load_result = Helpers::to_map(is_object($seed_ref01_data_dt0_loaded) && method_exists($seed_ref01_data_dt0_loaded, 'data_get') ? $seed_ref01_data_dt0_loaded->data_get() : $seed_ref01_data_dt0_loaded);
+        $this->assertNotNull($seed_ref01_data_dt0_load_result);
+        $this->assertEquals($seed_ref01_data_dt0_load_result["id"], $seed_ref01_data["id"]);
 
     }
 }
@@ -94,9 +98,16 @@ function seed_basic_setup($extra)
 
     if ($env["LOREM_PICSUM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new LoremPicsumSDK(Helpers::to_map($merged_opts));
     }

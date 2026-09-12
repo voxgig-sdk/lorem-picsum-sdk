@@ -46,9 +46,13 @@ main: kit: entity: heightwebp: {
           }
           method: "GET"
           orig: "/{width}/{height}.webp"
-          parts: [
-            "{width}"
-            "{height}.webp"
+          segments: [
+            {
+              var: "width"
+            }
+            {
+              lit: "{height}.webp"
+            }
           ]
           select: {
             exist: [

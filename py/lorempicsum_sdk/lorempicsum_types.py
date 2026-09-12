@@ -16,8 +16,8 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class GetRandomImage(TypedDict):
-    pass
+class GetRandomImage(TypedDict, total=False):
+    id: str
 
 
 class GetRandomImageLoadMatchRequired(TypedDict):
@@ -114,8 +114,8 @@ class ListListMatch(TypedDict, total=False):
     page: int
 
 
-class Seed(TypedDict):
-    pass
+class Seed(TypedDict, total=False):
+    id: str
 
 
 class SeedLoadMatchRequired(TypedDict):

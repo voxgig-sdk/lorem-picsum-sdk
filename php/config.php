@@ -64,7 +64,21 @@ class LoremPicsumConfig
             ],
             "entity" => [
         'get_random_image' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+            'parts' => [
+              'width',
+              'height',
+            ],
+            'sep' => '/',
+          ],
           'name' => 'get_random_image',
           'op' => [
             'load' => [
@@ -113,9 +127,13 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}',
-                  'parts' => [
-                    '{width}',
-                    '{height}',
+                  'segments' => [
+                    [
+                      'var' => 'width',
+                    ],
+                    [
+                      'var' => 'height',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -129,6 +147,10 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{width}',
+                    '{height}',
                   ],
                 ],
               ],
@@ -144,6 +166,10 @@ class LoremPicsumConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'get_random_square_image',
           'op' => [
@@ -180,12 +206,14 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{size}',
-                  'parts' => [
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'size' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -198,6 +226,9 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{id}',
                   ],
                 ],
               ],
@@ -251,9 +282,13 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.jpg',
-                  'parts' => [
-                    '{width}',
-                    '{height}.jpg',
+                  'segments' => [
+                    [
+                      'var' => 'width',
+                    ],
+                    [
+                      'lit' => '{height}.jpg',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -266,6 +301,10 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{width}',
+                    '{height}.jpg',
                   ],
                 ],
               ],
@@ -319,9 +358,13 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.webp',
-                  'parts' => [
-                    '{width}',
-                    '{height}.webp',
+                  'segments' => [
+                    [
+                      'var' => 'width',
+                    ],
+                    [
+                      'lit' => '{height}.webp',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -334,6 +377,10 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    '{width}',
+                    '{height}.webp',
                   ],
                 ],
               ],
@@ -352,6 +399,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'download_url',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
@@ -370,6 +418,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
@@ -381,6 +430,10 @@ class LoremPicsumConfig
               'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'id_info',
           'op' => [
@@ -403,10 +456,16 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/info',
-                  'parts' => [
-                    'id',
-                    '{id}',
-                    'info',
+                  'segments' => [
+                    [
+                      'lit' => 'id',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                    [
+                      'lit' => 'info',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -416,6 +475,11 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'id',
+                    '{id}',
+                    'info',
                   ],
                 ],
               ],
@@ -431,6 +495,16 @@ class LoremPicsumConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+            'parts' => [
+              'id',
+              'width',
+              'height',
+            ],
+            'sep' => '/',
           ],
           'name' => 'idn',
           'op' => [
@@ -481,11 +555,19 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/{width}/{height}',
-                  'parts' => [
-                    'id',
-                    '{id}',
-                    '{width}',
-                    '{height}',
+                  'segments' => [
+                    [
+                      'lit' => 'id',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                    [
+                      'var' => 'width',
+                    ],
+                    [
+                      'var' => 'height',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -499,6 +581,12 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'id',
+                    '{id}',
+                    '{width}',
+                    '{height}',
                   ],
                 ],
               ],
@@ -517,6 +605,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'download_url',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
@@ -535,6 +624,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
@@ -546,6 +636,10 @@ class LoremPicsumConfig
               'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'list',
           'op' => [
@@ -575,9 +669,13 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v2/list',
-                  'parts' => [
-                    'v2',
-                    'list',
+                  'segments' => [
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'list',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -589,6 +687,10 @@ class LoremPicsumConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'v2',
+                    'list',
+                  ],
                 ],
               ],
             ],
@@ -598,7 +700,22 @@ class LoremPicsumConfig
           ],
         ],
         'seed' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+            'parts' => [
+              'seed',
+              'width',
+              'height',
+            ],
+            'sep' => '/',
+          ],
           'name' => 'seed',
           'op' => [
             'load' => [
@@ -648,11 +765,19 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/{width}/{height}',
-                  'parts' => [
-                    'seed',
-                    '{seed}',
-                    '{width}',
-                    '{height}',
+                  'segments' => [
+                    [
+                      'lit' => 'seed',
+                    ],
+                    [
+                      'var' => 'seed',
+                    ],
+                    [
+                      'var' => 'width',
+                    ],
+                    [
+                      'var' => 'height',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -666,6 +791,12 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'seed',
+                    '{seed}',
+                    '{width}',
+                    '{height}',
                   ],
                 ],
               ],
@@ -688,6 +819,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'download_url',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
@@ -706,6 +838,7 @@ class LoremPicsumConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
@@ -717,6 +850,10 @@ class LoremPicsumConfig
               'short' => 'Original width of the image in pixels',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'seed_info',
           'op' => [
@@ -739,14 +876,20 @@ class LoremPicsumConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/info',
-                  'parts' => [
-                    'seed',
-                    '{id}',
-                    'info',
-                  ],
                   'rename' => [
                     'param' => [
                       'seed' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'seed',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                    [
+                      'lit' => 'info',
                     ],
                   ],
                   'select' => [
@@ -757,6 +900,11 @@ class LoremPicsumConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'seed',
+                    '{id}',
+                    'info',
                   ],
                 ],
               ],

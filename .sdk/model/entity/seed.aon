@@ -4,6 +4,25 @@ main: kit: entity: seed: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "seed"
+      "width"
+      "height"
+    ]
+    sep: "/"
+  }
+
   name: "seed"
   op: {
     load: {
@@ -53,11 +72,19 @@ main: kit: entity: seed: {
           }
           method: "GET"
           orig: "/seed/{seed}/{width}/{height}"
-          parts: [
-            "seed"
-            "{seed}"
-            "{width}"
-            "{height}"
+          segments: [
+            {
+              lit: "seed"
+            }
+            {
+              var: "seed"
+            }
+            {
+              var: "width"
+            }
+            {
+              var: "height"
+            }
           ]
           select: {
             exist: [

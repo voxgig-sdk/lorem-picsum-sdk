@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $idn = $client->Idn()->load(["height" => 1, "id" => "example_id", "width" => 1]);
+    $seed = $client->Seed()->load(["height" => 1, "seed" => "example", "width" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -120,18 +120,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = LoremPicsumSDK::test([
-    "entity" => ["idn" => ["test01" => ["id" => "test01"]]],
-]);
+$client = LoremPicsumSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$idn = $client->Idn()->load(["id" => "test01", "height" => 1, "width" => 1]);
-print_r($idn);
+$seed = $client->Seed()->load(["height" => 1, "seed" => "example", "width" => 1]);
+print_r($seed);
 ```
 
 ### Use a custom fetch function
@@ -259,6 +256,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -336,6 +334,7 @@ API path: `/v2/list`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -370,6 +369,12 @@ Create an instance: `$get_random_image = $client->GetRandomImage();`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -531,6 +536,12 @@ Create an instance: `$seed = $client->Seed();`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```php
@@ -667,11 +678,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$idn = $client->Idn();
-$idn->load(["height" => 1, "id" => "example_id", "width" => 1]);
+$seed = $client->Seed();
+$seed->load(["height" => 1, "seed" => "example", "width" => 1]);
 
-// $idn->data_get() now returns the idn data from the last load
-// $idn->match_get() returns the last match criteria
+// $seed->data_get() now returns the seed data from the last load
+// $seed->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

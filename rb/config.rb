@@ -50,7 +50,21 @@ module LoremPicsumConfig
       },
       "entity" => {
         "get_random_image" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "width",
+              "height",
+            ],
+            "sep" => "/",
+          },
           "name" => "get_random_image",
           "op" => {
             "load" => {
@@ -99,9 +113,13 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}",
-                  "parts" => [
-                    "{width}",
-                    "{height}",
+                  "segments" => [
+                    {
+                      "var" => "width",
+                    },
+                    {
+                      "var" => "height",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -116,6 +134,10 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{width}",
+                    "{height}",
+                  ],
                 },
               ],
             },
@@ -131,6 +153,10 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "get_random_square_image",
           "op" => {
             "load" => {
@@ -166,14 +192,16 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{size}",
-                  "parts" => [
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "size" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "blur",
@@ -185,6 +213,9 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -237,9 +268,13 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}.jpg",
-                  "parts" => [
-                    "{width}",
-                    "{height}.jpg",
+                  "segments" => [
+                    {
+                      "var" => "width",
+                    },
+                    {
+                      "lit" => "{height}.jpg",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -253,6 +288,10 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{width}",
+                    "{height}.jpg",
+                  ],
                 },
               ],
             },
@@ -305,9 +344,13 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{width}/{height}.webp",
-                  "parts" => [
-                    "{width}",
-                    "{height}.webp",
+                  "segments" => [
+                    {
+                      "var" => "width",
+                    },
+                    {
+                      "lit" => "{height}.webp",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -321,6 +364,10 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{width}",
+                    "{height}.webp",
+                  ],
                 },
               ],
             },
@@ -338,6 +385,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "download_url",
               "req" => true,
               "short" => "URL to download the image from Picsum",
@@ -356,6 +404,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "req" => true,
               "short" => "URL to the original image on Unsplash",
@@ -368,6 +417,10 @@ module LoremPicsumConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "id_info",
           "op" => {
             "load" => {
@@ -389,10 +442,16 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/id/{id}/info",
-                  "parts" => [
-                    "id",
-                    "{id}",
-                    "info",
+                  "segments" => [
+                    {
+                      "lit" => "id",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "info",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -403,6 +462,11 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "id",
+                    "{id}",
+                    "info",
+                  ],
                 },
               ],
             },
@@ -418,6 +482,16 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "id",
+              "width",
+              "height",
+            ],
+            "sep" => "/",
+          },
           "name" => "idn",
           "op" => {
             "load" => {
@@ -467,11 +541,19 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/id/{id}/{width}/{height}",
-                  "parts" => [
-                    "id",
-                    "{id}",
-                    "{width}",
-                    "{height}",
+                  "segments" => [
+                    {
+                      "lit" => "id",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "var" => "width",
+                    },
+                    {
+                      "var" => "height",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -486,6 +568,12 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "id",
+                    "{id}",
+                    "{width}",
+                    "{height}",
+                  ],
                 },
               ],
             },
@@ -503,6 +591,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "download_url",
               "req" => true,
               "short" => "URL to download the image from Picsum",
@@ -521,6 +610,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "req" => true,
               "short" => "URL to the original image on Unsplash",
@@ -533,6 +623,10 @@ module LoremPicsumConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "list",
           "op" => {
             "list" => {
@@ -561,9 +655,13 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v2/list",
-                  "parts" => [
-                    "v2",
-                    "list",
+                  "segments" => [
+                    {
+                      "lit" => "v2",
+                    },
+                    {
+                      "lit" => "list",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -575,6 +673,10 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v2",
+                    "list",
+                  ],
                 },
               ],
             },
@@ -584,7 +686,22 @@ module LoremPicsumConfig
           },
         },
         "seed" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+            "parts" => [
+              "seed",
+              "width",
+              "height",
+            ],
+            "sep" => "/",
+          },
           "name" => "seed",
           "op" => {
             "load" => {
@@ -634,11 +751,19 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seed/{seed}/{width}/{height}",
-                  "parts" => [
-                    "seed",
-                    "{seed}",
-                    "{width}",
-                    "{height}",
+                  "segments" => [
+                    {
+                      "lit" => "seed",
+                    },
+                    {
+                      "var" => "seed",
+                    },
+                    {
+                      "var" => "width",
+                    },
+                    {
+                      "var" => "height",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -653,6 +778,12 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "seed",
+                    "{seed}",
+                    "{width}",
+                    "{height}",
+                  ],
                 },
               ],
             },
@@ -674,6 +805,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "download_url",
               "req" => true,
               "short" => "URL to download the image from Picsum",
@@ -692,6 +824,7 @@ module LoremPicsumConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "req" => true,
               "short" => "URL to the original image on Unsplash",
@@ -704,6 +837,10 @@ module LoremPicsumConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "seed_info",
           "op" => {
             "load" => {
@@ -725,16 +862,22 @@ module LoremPicsumConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seed/{seed}/info",
-                  "parts" => [
-                    "seed",
-                    "{id}",
-                    "info",
-                  ],
                   "rename" => {
                     "param" => {
                       "seed" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "seed",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "info",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -744,6 +887,11 @@ module LoremPicsumConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "seed",
+                    "{id}",
+                    "info",
+                  ],
                 },
               ],
             },

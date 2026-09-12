@@ -38,7 +38,21 @@ local function make_config()
     },
     entity = {
       ["get_random_image"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+          ["parts"] = {
+            "width",
+            "height",
+          },
+          ["sep"] = "/",
+        },
         ["name"] = "get_random_image",
         ["op"] = {
           ["load"] = {
@@ -87,9 +101,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}",
-                ["parts"] = {
-                  "{width}",
-                  "{height}",
+                ["segments"] = {
+                  {
+                    ["var"] = "width",
+                  },
+                  {
+                    ["var"] = "height",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -103,6 +121,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{width}",
+                  "{height}",
                 },
               },
             },
@@ -118,6 +140,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "get_random_square_image",
         ["op"] = {
@@ -154,12 +180,14 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{size}",
-                ["parts"] = {
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["size"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -172,6 +200,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{id}",
                 },
               },
             },
@@ -225,9 +256,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}.jpg",
-                ["parts"] = {
-                  "{width}",
-                  "{height}.jpg",
+                ["segments"] = {
+                  {
+                    ["var"] = "width",
+                  },
+                  {
+                    ["lit"] = "{height}.jpg",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -240,6 +275,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{width}",
+                  "{height}.jpg",
                 },
               },
             },
@@ -293,9 +332,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{width}/{height}.webp",
-                ["parts"] = {
-                  "{width}",
-                  "{height}.webp",
+                ["segments"] = {
+                  {
+                    ["var"] = "width",
+                  },
+                  {
+                    ["lit"] = "{height}.webp",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -308,6 +351,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "{width}",
+                  "{height}.webp",
                 },
               },
             },
@@ -326,6 +373,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "download_url",
             ["req"] = true,
             ["short"] = "URL to download the image from Picsum",
@@ -344,6 +392,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["req"] = true,
             ["short"] = "URL to the original image on Unsplash",
@@ -355,6 +404,10 @@ local function make_config()
             ["short"] = "Original width of the image in pixels",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "id_info",
         ["op"] = {
@@ -377,10 +430,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/id/{id}/info",
-                ["parts"] = {
-                  "id",
-                  "{id}",
-                  "info",
+                ["segments"] = {
+                  {
+                    ["lit"] = "id",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "info",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -390,6 +449,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "id",
+                  "{id}",
+                  "info",
                 },
               },
             },
@@ -405,6 +469,16 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+          ["parts"] = {
+            "id",
+            "width",
+            "height",
+          },
+          ["sep"] = "/",
         },
         ["name"] = "idn",
         ["op"] = {
@@ -455,11 +529,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/id/{id}/{width}/{height}",
-                ["parts"] = {
-                  "id",
-                  "{id}",
-                  "{width}",
-                  "{height}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "id",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["var"] = "width",
+                  },
+                  {
+                    ["var"] = "height",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -473,6 +555,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "id",
+                  "{id}",
+                  "{width}",
+                  "{height}",
                 },
               },
             },
@@ -491,6 +579,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "download_url",
             ["req"] = true,
             ["short"] = "URL to download the image from Picsum",
@@ -509,6 +598,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["req"] = true,
             ["short"] = "URL to the original image on Unsplash",
@@ -520,6 +610,10 @@ local function make_config()
             ["short"] = "Original width of the image in pixels",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "list",
         ["op"] = {
@@ -549,9 +643,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v2/list",
-                ["parts"] = {
-                  "v2",
-                  "list",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v2",
+                  },
+                  {
+                    ["lit"] = "list",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -563,6 +661,10 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "v2",
+                  "list",
+                },
               },
             },
           },
@@ -572,7 +674,22 @@ local function make_config()
         },
       },
       ["seed"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["type"] = "`$STRING`",
+          },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+          ["parts"] = {
+            "seed",
+            "width",
+            "height",
+          },
+          ["sep"] = "/",
+        },
         ["name"] = "seed",
         ["op"] = {
           ["load"] = {
@@ -622,11 +739,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seed/{seed}/{width}/{height}",
-                ["parts"] = {
-                  "seed",
-                  "{seed}",
-                  "{width}",
-                  "{height}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "seed",
+                  },
+                  {
+                    ["var"] = "seed",
+                  },
+                  {
+                    ["var"] = "width",
+                  },
+                  {
+                    ["var"] = "height",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -640,6 +765,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "seed",
+                  "{seed}",
+                  "{width}",
+                  "{height}",
                 },
               },
             },
@@ -662,6 +793,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "download_url",
             ["req"] = true,
             ["short"] = "URL to download the image from Picsum",
@@ -680,6 +812,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["req"] = true,
             ["short"] = "URL to the original image on Unsplash",
@@ -691,6 +824,10 @@ local function make_config()
             ["short"] = "Original width of the image in pixels",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "seed_info",
         ["op"] = {
@@ -713,14 +850,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seed/{seed}/info",
-                ["parts"] = {
-                  "seed",
-                  "{id}",
-                  "info",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["seed"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "seed",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "info",
                   },
                 },
                 ["select"] = {
@@ -731,6 +874,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "seed",
+                  "{id}",
+                  "info",
                 },
               },
             },

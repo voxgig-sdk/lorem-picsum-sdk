@@ -208,6 +208,12 @@ Alias for `LoremPicsumSDK.test()`.
 const get_random_image = client.GetRandomImage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -549,6 +555,12 @@ Return a copy of the entity options.
 ```ts
 const seed = client.Seed()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

@@ -12,6 +12,7 @@ main: kit: entity: seed_info: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "download_url"
       req: true
       short: "URL to download the image from Picsum"
@@ -30,6 +31,7 @@ main: kit: entity: seed_info: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "URL to the original image on Unsplash"
@@ -67,16 +69,22 @@ main: kit: entity: seed_info: {
           }
           method: "GET"
           orig: "/seed/{seed}/info"
-          parts: [
-            "seed"
-            "{id}"
-            "info"
-          ]
           rename: {
             param: {
               seed: "id"
             }
           }
+          segments: [
+            {
+              lit: "seed"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "info"
+            }
+          ]
           select: {
             exist: [
               "id"

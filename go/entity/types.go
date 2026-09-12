@@ -14,6 +14,7 @@ import (
 
 // GetRandomImage is the typed data model for the get_random_image entity.
 type GetRandomImage struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GetRandomImageLoadMatch is the typed request payload for GetRandomImage.LoadTyped.
@@ -108,6 +109,7 @@ type ListListMatch struct {
 
 // Seed is the typed data model for the seed entity.
 type Seed struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // SeedLoadMatch is the typed request payload for Seed.LoadTyped.

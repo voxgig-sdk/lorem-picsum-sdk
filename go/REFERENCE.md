@@ -126,6 +126,12 @@ getRandomImage := client.GetRandomImage(nil)
 fmt.Println(getRandomImage.GetName()) // "get_random_image"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -474,6 +480,12 @@ Return the entity name.
 seed := client.Seed(nil)
 fmt.Println(seed.GetName()) // "seed"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

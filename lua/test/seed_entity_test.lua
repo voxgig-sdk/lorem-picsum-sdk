@@ -44,10 +44,14 @@ describe("SeedEntity", function()
 
     -- LOAD
     local seed_ref01_ent = client:Seed(nil)
-    local seed_ref01_match_dt0 = {}
+    local seed_ref01_match_dt0 = {
+      id = seed_ref01_data["id"],
+    }
     local seed_ref01_data_dt0_loaded, err = seed_ref01_ent:load(seed_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(seed_ref01_data_dt0_loaded)
+    local seed_ref01_data_dt0_load_result = helpers.to_map(type(seed_ref01_data_dt0_loaded) == 'table' and seed_ref01_data_dt0_loaded.data_get and seed_ref01_data_dt0_loaded:data_get() or seed_ref01_data_dt0_loaded)
+    assert.is_not_nil(seed_ref01_data_dt0_load_result)
+    assert.are.equal(seed_ref01_data_dt0_load_result["id"], seed_ref01_data["id"])
 
   end)
 end)
@@ -101,6 +105,9 @@ function seed_basic_setup(extra)
 
   if env["LOREM_PICSUM_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
       },
       extra or {},

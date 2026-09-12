@@ -41,9 +41,13 @@ class SeedEntityTest < Minitest::Test
 
     # LOAD
     seed_ref01_ent = client.Seed(nil)
-    seed_ref01_match_dt0 = {}
+    seed_ref01_match_dt0 = {
+      "id" => seed_ref01_data["id"],
+    }
     seed_ref01_data_dt0_loaded = seed_ref01_ent.load(seed_ref01_match_dt0, nil)
-    assert !seed_ref01_data_dt0_loaded.nil?
+    seed_ref01_data_dt0_load_result = Helpers.to_map(seed_ref01_data_dt0_loaded.respond_to?(:data_get) ? seed_ref01_data_dt0_loaded.data_get : seed_ref01_data_dt0_loaded)
+    assert !seed_ref01_data_dt0_load_result.nil?
+    assert_equal seed_ref01_data_dt0_load_result["id"], seed_ref01_data["id"]
 
   end
 end
@@ -91,6 +95,9 @@ def seed_basic_setup(extra)
 
   if env["LOREM_PICSUM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
       },
       extra || {},

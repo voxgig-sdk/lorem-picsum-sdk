@@ -48,9 +48,13 @@ class TestSeedEntity:
 
         # LOAD
         seed_ref01_ent = client.Seed(None)
-        seed_ref01_match_dt0 = {}
+        seed_ref01_match_dt0 = {
+            "id": seed_ref01_data["id"],
+        }
         seed_ref01_data_dt0_loaded = seed_ref01_ent.load(seed_ref01_match_dt0, None)
-        assert seed_ref01_data_dt0_loaded is not None
+        seed_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(seed_ref01_data_dt0_loaded))
+        assert seed_ref01_data_dt0_load_result is not None
+        assert seed_ref01_data_dt0_load_result["id"] == seed_ref01_data["id"]
 
 
 
@@ -99,6 +103,10 @@ def _seed_basic_setup(extra):
 
     if env.get("LOREM_PICSUM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
             },
             extra or {},

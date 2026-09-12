@@ -58,8 +58,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const idn = await client.Idn().load({ height: 1, id: "example_id", width: 1 })
-  console.log(idn)
+  const seed = await client.Seed().load({ height: 1, seed: "example", width: 1 })
+  console.log(seed)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -125,10 +125,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoremPicsumSDK.test()
 
-const idn = await client.Idn().load({ id: 'test01', height: 1, width: 1 })
-// idn is the entity, populated with mock response data
-// — call idn.data() for the record itself
-console.log(idn)
+const seed = await client.Seed().load({ height: 1, seed: 'example_seed', width: 1 })
+// seed is the entity, populated with mock response data
+// — call seed.data() for the record itself
+console.log(seed)
 ```
 
 You can also use the instance method:
@@ -143,10 +143,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Idn()
+const entity = client.Seed()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 'example', height: 1, width: 1 })
+await entity.load({ height: 1, seed: 'example_seed', width: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -301,6 +301,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -378,6 +379,7 @@ API path: `/v2/list`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -412,6 +414,12 @@ Create an instance: `const get_random_image = client.GetRandomImage()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -566,6 +574,12 @@ Create an instance: `const seed = client.Seed()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -693,11 +707,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const idn = client.Idn()
-await idn.load({ height: 1, id: "example_id", width: 1 })
+const seed = client.Seed()
+await seed.load({ height: 1, seed: "example", width: 1 })
 
-// idn.data() now returns the idn data from the last `load`
-// idn.match() returns { id: "example_id" }
+// seed.data() now returns the seed data from the last `load`
+// seed.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

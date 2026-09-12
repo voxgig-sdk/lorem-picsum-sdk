@@ -121,6 +121,12 @@ same parameters as `direct()`. Raises on error.
 get_random_image = client.GetRandomImage
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -476,6 +482,12 @@ Return the entity name.
 ```ruby
 seed = client.Seed
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 

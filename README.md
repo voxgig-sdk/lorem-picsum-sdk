@@ -46,23 +46,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = LoremPicsumSDK.test({
   entity: {
-    idn: {
+    seed: {
       test01: { id: 'test01' },
     },
   },
 })
-const idn = await client.Idn().load({ id: 'test01', height: 1, width: 1 })
-// idn is the Idn entity, populated with mock data
-// — call idn.data() for the record itself
-console.log(idn)
+const seed = await client.Seed().load({ height: 1, seed: 'example_seed', width: 1 })
+// seed is the Seed entity, populated with mock data
+// — call seed.data() for the record itself
+console.log(seed)
 ```
 
 ### Python
 
 ```python
 client = LoremPicsumSDK.test()
-idn = client.Idn().load({"id": "test01", "height": 1, "width": 1})
-print(idn)
+seed = client.Seed().load({"height": 1, "seed": "example", "width": 1})
+print(seed)
 ```
 
 ### PHP
@@ -70,17 +70,17 @@ print(idn)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = LoremPicsumSDK::test([
-    "entity" => ["idn" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["seed" => ["test01" => []]],
 ]);
-$idn = $client->Idn()->load(["id" => "test01", "height" => 1, "width" => 1]);
+$seed = $client->Seed()->load(["height" => 1, "seed" => "example", "width" => 1]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Idn(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+result, err := client.Seed(nil).Load(
+    nil, nil,
 )
 ```
 
@@ -89,16 +89,16 @@ result, err := client.Idn(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = LoremPicsumSDK.test({
-  "entity" => { "idn" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "seed" => { "test01" => {} } },
 })
-idn = client.Idn.load({ "id" => "test01", "height" => 1, "width" => 1 })
+seed = client.Seed.load({ "height" => 1, "seed" => "example", "width" => 1 })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Idn():load({ id = "test01", height = 1, width = 1 })
+local result, err = client:Seed():load({ height = 1, seed = "example", width = 1 })
 ```
 
 ## Packages
@@ -367,7 +367,7 @@ customizable without forking any upstream tool:
 
 - **The model** (`.sdk/model/`) declares everything this project owns:
   package names, versions, active features, per-target settings. It is
-  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  written in [aontu](https://aontu.dev), a JSON-based
   specification language designed for building ontologies: easy to edit
   by hand, and files unify rather than override, so small declarations
   compose into one model. Regeneration re-reads it every time.

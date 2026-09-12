@@ -42,7 +42,21 @@ func MakeConfig() map[string]any {
 		},
 		"entity": map[string]any{
 			"get_random_image": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+					"parts": []any{
+						"width",
+						"height",
+					},
+					"sep": "/",
+				},
 				"name": "get_random_image",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -91,9 +105,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}",
-								"parts": []any{
-									"{width}",
-									"{height}",
+								"segments": []any{
+									map[string]any{
+										"var": "width",
+									},
+									map[string]any{
+										"var": "height",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -107,6 +125,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"{width}",
+									"{height}",
 								},
 							},
 						},
@@ -122,6 +144,10 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "get_random_square_image",
 				"op": map[string]any{
@@ -158,12 +184,14 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{size}",
-								"parts": []any{
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"size": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -176,6 +204,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"{id}",
 								},
 							},
 						},
@@ -229,9 +260,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}.jpg",
-								"parts": []any{
-									"{width}",
-									"{height}.jpg",
+								"segments": []any{
+									map[string]any{
+										"var": "width",
+									},
+									map[string]any{
+										"lit": "{height}.jpg",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -244,6 +279,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"{width}",
+									"{height}.jpg",
 								},
 							},
 						},
@@ -297,9 +336,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}.webp",
-								"parts": []any{
-									"{width}",
-									"{height}.webp",
+								"segments": []any{
+									map[string]any{
+										"var": "width",
+									},
+									map[string]any{
+										"lit": "{height}.webp",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -312,6 +355,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"{width}",
+									"{height}.webp",
 								},
 							},
 						},
@@ -330,6 +377,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "download_url",
 						"req": true,
 						"short": "URL to download the image from Picsum",
@@ -348,6 +396,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
@@ -359,6 +408,10 @@ func MakeConfig() map[string]any {
 						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "id_info",
 				"op": map[string]any{
@@ -381,10 +434,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/id/{id}/info",
-								"parts": []any{
-									"id",
-									"{id}",
-									"info",
+								"segments": []any{
+									map[string]any{
+										"lit": "id",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "info",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -394,6 +453,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"id",
+									"{id}",
+									"info",
 								},
 							},
 						},
@@ -409,6 +473,16 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+					"parts": []any{
+						"id",
+						"width",
+						"height",
+					},
+					"sep": "/",
 				},
 				"name": "idn",
 				"op": map[string]any{
@@ -459,11 +533,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/id/{id}/{width}/{height}",
-								"parts": []any{
-									"id",
-									"{id}",
-									"{width}",
-									"{height}",
+								"segments": []any{
+									map[string]any{
+										"lit": "id",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"var": "width",
+									},
+									map[string]any{
+										"var": "height",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -477,6 +559,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"id",
+									"{id}",
+									"{width}",
+									"{height}",
 								},
 							},
 						},
@@ -495,6 +583,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "download_url",
 						"req": true,
 						"short": "URL to download the image from Picsum",
@@ -513,6 +602,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
@@ -524,6 +614,10 @@ func MakeConfig() map[string]any {
 						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "list",
 				"op": map[string]any{
@@ -553,9 +647,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v2/list",
-								"parts": []any{
-									"v2",
-									"list",
+								"segments": []any{
+									map[string]any{
+										"lit": "v2",
+									},
+									map[string]any{
+										"lit": "list",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -567,6 +665,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"v2",
+									"list",
+								},
 							},
 						},
 					},
@@ -576,7 +678,22 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"seed": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+					"parts": []any{
+						"seed",
+						"width",
+						"height",
+					},
+					"sep": "/",
+				},
 				"name": "seed",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -626,11 +743,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/seed/{seed}/{width}/{height}",
-								"parts": []any{
-									"seed",
-									"{seed}",
-									"{width}",
-									"{height}",
+								"segments": []any{
+									map[string]any{
+										"lit": "seed",
+									},
+									map[string]any{
+										"var": "seed",
+									},
+									map[string]any{
+										"var": "width",
+									},
+									map[string]any{
+										"var": "height",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -644,6 +769,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"seed",
+									"{seed}",
+									"{width}",
+									"{height}",
 								},
 							},
 						},
@@ -666,6 +797,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "download_url",
 						"req": true,
 						"short": "URL to download the image from Picsum",
@@ -684,6 +816,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
@@ -695,6 +828,10 @@ func MakeConfig() map[string]any {
 						"short": "Original width of the image in pixels",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "seed_info",
 				"op": map[string]any{
@@ -717,14 +854,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/seed/{seed}/info",
-								"parts": []any{
-									"seed",
-									"{id}",
-									"info",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"seed": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "seed",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "info",
 									},
 								},
 								"select": map[string]any{
@@ -736,6 +879,11 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"seed",
+									"{id}",
+									"info",
+								},
 							},
 						},
 					},
@@ -746,6 +894,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

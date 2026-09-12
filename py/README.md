@@ -56,8 +56,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    idn = client.Idn().load({"height": 1, "id": "example_id", "width": 1})
-    print(idn)
+    seed = client.Seed().load({"height": 1, "seed": "example", "width": 1})
+    print(seed)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -125,8 +125,8 @@ client = LoremPicsumSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-idn = client.Idn().load({"id": "test01", "height": 1, "width": 1})
-# idn contains the mock response record
+seed = client.Seed().load({"height": 1, "seed": "example", "width": 1})
+# seed contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -251,6 +251,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -328,6 +329,7 @@ API path: `/v2/list`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -362,6 +364,12 @@ Create an instance: `get_random_image = client.GetRandomImage()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
 
 #### Example: Load
 
@@ -516,6 +524,12 @@ Create an instance: `seed = client.Seed()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
+
 #### Example: Load
 
 ```python
@@ -649,11 +663,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-idn = client.Idn()
-idn.load({"height": 1, "id": "example_id", "width": 1})
+seed = client.Seed()
+seed.load({"height": 1, "seed": "example", "width": 1})
 
-# idn.data_get() now returns the idn data from the last load
-# idn.match_get() returns the last match criteria
+# seed.data_get() now returns the seed data from the last load
+# seed.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

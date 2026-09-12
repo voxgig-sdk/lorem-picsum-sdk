@@ -15,6 +15,12 @@ main: kit: entity: idn: {
   id: {
     field: "id"
     name: "id"
+    parts: [
+      "id"
+      "width"
+      "height"
+    ]
+    sep: "/"
   }
 
   name: "idn"
@@ -66,11 +72,19 @@ main: kit: entity: idn: {
           }
           method: "GET"
           orig: "/id/{id}/{width}/{height}"
-          parts: [
-            "id"
-            "{id}"
-            "{width}"
-            "{height}"
+          segments: [
+            {
+              lit: "id"
+            }
+            {
+              var: "id"
+            }
+            {
+              var: "width"
+            }
+            {
+              var: "height"
+            }
           ]
           select: {
             exist: [

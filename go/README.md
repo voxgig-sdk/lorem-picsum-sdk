@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-idn, err := client.Idn(nil).Load(map[string]any{"height": 1, "id": "example_id", "width": 1}, nil)
+seed, err := client.Seed(nil).Load(map[string]any{"height": 1, "seed": "example", "width": 1}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = idn
+_ = seed
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-idn, err := client.Idn(nil).Load(
-    map[string]any{"id": "test01", "height": 1, "width": 1}, nil,
+seed, err := client.Seed(nil).Load(
+    map[string]any{"height": 1, "seed": "example", "width": 1}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(idn) // the returned mock data
+fmt.Println(seed) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -268,6 +268,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -345,6 +346,7 @@ API path: `/v2/list`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -379,6 +381,12 @@ Create an instance: `getRandomImage := client.GetRandomImage(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -561,6 +569,12 @@ Create an instance: `seed := client.Seed(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -700,11 +714,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-idn := client.Idn(nil)
-idn.Load(map[string]any{"height": 1, "id": "example_id", "width": 1}, nil)
+seed := client.Seed(nil)
+seed.Load(map[string]any{"height": 1, "seed": "example", "width": 1}, nil)
 
-// idn.Data() now returns the idn data from the last load
-// idn.Match() returns the last match criteria
+// seed.Data() now returns the seed data from the last load
+// seed.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** GetRandomImage entity data model. */
 class GetRandomImage
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GetRandomImage#load. */
@@ -123,6 +124,7 @@ class ListListMatch
 /** Seed entity data model. */
 class Seed
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Seed#load. */

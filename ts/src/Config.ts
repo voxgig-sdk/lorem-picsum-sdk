@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -89,7 +100,21 @@ class Config {
 
   entity = {
     "get_random_image": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "width",
+          "height"
+        ],
+        "sep": "/"
+      },
       "name": "get_random_image",
       "op": {
         "load": {
@@ -138,9 +163,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}",
-              "parts": [
-                "{width}",
-                "{height}"
+              "segments": [
+                {
+                  "var": "width"
+                },
+                {
+                  "var": "height"
+                }
               ],
               "select": {
                 "exist": [
@@ -154,7 +183,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{width}",
+                "{height}"
+              ]
             }
           ]
         }
@@ -170,6 +203,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "get_random_square_image",
       "op": {
         "load": {
@@ -205,14 +242,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{size}",
-              "parts": [
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "size": "id"
                 }
               },
+              "segments": [
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "blur",
@@ -223,7 +262,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{id}"
+              ]
             }
           ]
         }
@@ -276,9 +318,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}.jpg",
-              "parts": [
-                "{width}",
-                "{height}.jpg"
+              "segments": [
+                {
+                  "var": "width"
+                },
+                {
+                  "lit": "{height}.jpg"
+                }
               ],
               "select": {
                 "exist": [
@@ -291,7 +337,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{width}",
+                "{height}.jpg"
+              ]
             }
           ]
         }
@@ -344,9 +394,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{width}/{height}.webp",
-              "parts": [
-                "{width}",
-                "{height}.webp"
+              "segments": [
+                {
+                  "var": "width"
+                },
+                {
+                  "lit": "{height}.webp"
+                }
               ],
               "select": {
                 "exist": [
@@ -359,7 +413,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{width}",
+                "{height}.webp"
+              ]
             }
           ]
         }
@@ -377,6 +435,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "download_url",
           "req": true,
           "short": "URL to download the image from Picsum",
@@ -395,6 +454,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "URL to the original image on Unsplash",
@@ -407,6 +467,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "id_info",
       "op": {
         "load": {
@@ -428,10 +492,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/id/{id}/info",
-              "parts": [
-                "id",
-                "{id}",
-                "info"
+              "segments": [
+                {
+                  "lit": "id"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "info"
+                }
               ],
               "select": {
                 "exist": [
@@ -441,7 +511,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "id",
+                "{id}",
+                "info"
+              ]
             }
           ]
         }
@@ -457,6 +532,16 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "id",
+          "width",
+          "height"
+        ],
+        "sep": "/"
+      },
       "name": "idn",
       "op": {
         "load": {
@@ -506,11 +591,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/id/{id}/{width}/{height}",
-              "parts": [
-                "id",
-                "{id}",
-                "{width}",
-                "{height}"
+              "segments": [
+                {
+                  "lit": "id"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "var": "width"
+                },
+                {
+                  "var": "height"
+                }
               ],
               "select": {
                 "exist": [
@@ -524,7 +617,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "id",
+                "{id}",
+                "{width}",
+                "{height}"
+              ]
             }
           ]
         }
@@ -542,6 +641,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "download_url",
           "req": true,
           "short": "URL to download the image from Picsum",
@@ -560,6 +660,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "URL to the original image on Unsplash",
@@ -572,6 +673,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "list",
       "op": {
         "list": {
@@ -600,9 +705,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/v2/list",
-              "parts": [
-                "v2",
-                "list"
+              "segments": [
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "list"
+                }
               ],
               "select": {
                 "exist": [
@@ -613,7 +722,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "v2",
+                "list"
+              ]
             }
           ]
         }
@@ -623,7 +736,22 @@ class Config {
       }
     },
     "seed": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "type": "`$STRING`"
+        }
+      ],
+      "id": {
+        "field": "id",
+        "name": "id",
+        "parts": [
+          "seed",
+          "width",
+          "height"
+        ],
+        "sep": "/"
+      },
       "name": "seed",
       "op": {
         "load": {
@@ -673,11 +801,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/seed/{seed}/{width}/{height}",
-              "parts": [
-                "seed",
-                "{seed}",
-                "{width}",
-                "{height}"
+              "segments": [
+                {
+                  "lit": "seed"
+                },
+                {
+                  "var": "seed"
+                },
+                {
+                  "var": "width"
+                },
+                {
+                  "var": "height"
+                }
               ],
               "select": {
                 "exist": [
@@ -691,7 +827,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "seed",
+                "{seed}",
+                "{width}",
+                "{height}"
+              ]
             }
           ]
         }
@@ -713,6 +855,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "download_url",
           "req": true,
           "short": "URL to download the image from Picsum",
@@ -731,6 +874,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "URL to the original image on Unsplash",
@@ -743,6 +887,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "seed_info",
       "op": {
         "load": {
@@ -764,16 +912,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/seed/{seed}/info",
-              "parts": [
-                "seed",
-                "{id}",
-                "info"
-              ],
               "rename": {
                 "param": {
                   "seed": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "seed"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "info"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -782,7 +936,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "seed",
+                "{id}",
+                "info"
+              ]
             }
           ]
         }
@@ -798,6 +957,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

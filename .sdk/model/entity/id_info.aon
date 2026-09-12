@@ -12,6 +12,7 @@ main: kit: entity: id_info: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "download_url"
       req: true
       short: "URL to download the image from Picsum"
@@ -30,6 +31,7 @@ main: kit: entity: id_info: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "URL to the original image on Unsplash"
@@ -67,10 +69,16 @@ main: kit: entity: id_info: {
           }
           method: "GET"
           orig: "/id/{id}/info"
-          parts: [
-            "id"
-            "{id}"
-            "info"
+          segments: [
+            {
+              lit: "id"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "info"
+            }
           ]
           select: {
             exist: [

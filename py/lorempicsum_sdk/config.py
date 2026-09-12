@@ -1,6 +1,14 @@
 # LoremPicsum SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -59,7 +67,21 @@ def make_config():
         },
         "entity": {
       "get_random_image": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+          "parts": [
+            "width",
+            "height",
+          ],
+          "sep": "/",
+        },
         "name": "get_random_image",
         "op": {
           "load": {
@@ -108,9 +130,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}",
-                "parts": [
-                  "{width}",
-                  "{height}",
+                "segments": [
+                  {
+                    "var": "width",
+                  },
+                  {
+                    "var": "height",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -125,6 +151,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{width}",
+                  "{height}",
+                ],
               },
             ],
           },
@@ -140,6 +170,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "get_random_square_image",
         "op": {
           "load": {
@@ -175,14 +209,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{size}",
-                "parts": [
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "size": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "blur",
@@ -194,6 +230,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{id}",
+                ],
               },
             ],
           },
@@ -246,9 +285,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}.jpg",
-                "parts": [
-                  "{width}",
-                  "{height}.jpg",
+                "segments": [
+                  {
+                    "var": "width",
+                  },
+                  {
+                    "lit": "{height}.jpg",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -262,6 +305,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{width}",
+                  "{height}.jpg",
+                ],
               },
             ],
           },
@@ -314,9 +361,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}.webp",
-                "parts": [
-                  "{width}",
-                  "{height}.webp",
+                "segments": [
+                  {
+                    "var": "width",
+                  },
+                  {
+                    "lit": "{height}.webp",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -330,6 +381,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{width}",
+                  "{height}.webp",
+                ],
               },
             ],
           },
@@ -347,6 +402,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "download_url",
             "req": True,
             "short": "URL to download the image from Picsum",
@@ -365,6 +421,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "URL to the original image on Unsplash",
@@ -377,6 +434,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "id_info",
         "op": {
           "load": {
@@ -398,10 +459,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/id/{id}/info",
-                "parts": [
-                  "id",
-                  "{id}",
-                  "info",
+                "segments": [
+                  {
+                    "lit": "id",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "info",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -412,6 +479,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "id",
+                  "{id}",
+                  "info",
+                ],
               },
             ],
           },
@@ -427,6 +499,16 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+          "parts": [
+            "id",
+            "width",
+            "height",
+          ],
+          "sep": "/",
+        },
         "name": "idn",
         "op": {
           "load": {
@@ -476,11 +558,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/id/{id}/{width}/{height}",
-                "parts": [
-                  "id",
-                  "{id}",
-                  "{width}",
-                  "{height}",
+                "segments": [
+                  {
+                    "lit": "id",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "var": "width",
+                  },
+                  {
+                    "var": "height",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -495,6 +585,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "id",
+                  "{id}",
+                  "{width}",
+                  "{height}",
+                ],
               },
             ],
           },
@@ -512,6 +608,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "download_url",
             "req": True,
             "short": "URL to download the image from Picsum",
@@ -530,6 +627,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "URL to the original image on Unsplash",
@@ -542,6 +640,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "list",
         "op": {
           "list": {
@@ -570,9 +672,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v2/list",
-                "parts": [
-                  "v2",
-                  "list",
+                "segments": [
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "list",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -584,6 +690,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "v2",
+                  "list",
+                ],
               },
             ],
           },
@@ -593,7 +703,22 @@ def make_config():
         },
       },
       "seed": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+          "parts": [
+            "seed",
+            "width",
+            "height",
+          ],
+          "sep": "/",
+        },
         "name": "seed",
         "op": {
           "load": {
@@ -643,11 +768,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seed/{seed}/{width}/{height}",
-                "parts": [
-                  "seed",
-                  "{seed}",
-                  "{width}",
-                  "{height}",
+                "segments": [
+                  {
+                    "lit": "seed",
+                  },
+                  {
+                    "var": "seed",
+                  },
+                  {
+                    "var": "width",
+                  },
+                  {
+                    "var": "height",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -662,6 +795,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "seed",
+                  "{seed}",
+                  "{width}",
+                  "{height}",
+                ],
               },
             ],
           },
@@ -683,6 +822,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "download_url",
             "req": True,
             "short": "URL to download the image from Picsum",
@@ -701,6 +841,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "URL to the original image on Unsplash",
@@ -713,6 +854,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "seed_info",
         "op": {
           "load": {
@@ -734,16 +879,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seed/{seed}/info",
-                "parts": [
-                  "seed",
-                  "{id}",
-                  "info",
-                ],
                 "rename": {
                   "param": {
                     "seed": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "seed",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "info",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -753,6 +904,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "seed",
+                  "{id}",
+                  "info",
+                ],
               },
             ],
           },
