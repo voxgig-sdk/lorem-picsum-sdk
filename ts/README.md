@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
+import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum-sdk'
 
 const client = new LoremPicsumSDK()
 ```
@@ -697,7 +697,7 @@ lorem-picsum/
 Import the SDK from the package root:
 
 ```ts
-import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
+import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local result, err = client:Seed():load({ height = 1, seed = "example", width = 1
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/lorem-picsum` | publish pending — [install from git tag](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases) |
+| TypeScript | `@voxgig-sdk/lorem-picsum-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases) |
 | Python | `voxgig-sdk-lorem-picsum` | publish pending — [install from git tag](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases) |
 | PHP | `voxgig-sdk/lorem-picsum` | publish pending — [install from git tag](https://github.com/voxgig-sdk/lorem-picsum-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/lorem-picsum-sdk/go` | `go get github.com/voxgig-sdk/lorem-picsum-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Seed():load({ height = 1, seed = "example", width = 1
 ### TypeScript
 
 ```ts
-import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum'
+import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum-sdk'
 
 const client = new LoremPicsumSDK()
 
