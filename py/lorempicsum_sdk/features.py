@@ -1,12 +1,18 @@
 # LoremPicsum SDK feature factory
 
 from lorempicsum_sdk.feature.base_feature import LoremPicsumBaseFeature
+from lorempicsum_sdk.feature.ratelimit_feature import LoremPicsumRatelimitFeature
+from lorempicsum_sdk.feature.retry_feature import LoremPicsumRetryFeature
 from lorempicsum_sdk.feature.test_feature import LoremPicsumTestFeature
+from lorempicsum_sdk.feature.timeout_feature import LoremPicsumTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: LoremPicsumBaseFeature(),
+    "ratelimit": lambda: LoremPicsumRatelimitFeature(),
+    "retry": lambda: LoremPicsumRetryFeature(),
     "test": lambda: LoremPicsumTestFeature(),
+    "timeout": lambda: LoremPicsumTimeoutFeature(),
 }
 
 

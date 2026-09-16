@@ -76,6 +76,12 @@ main: kit: entity: list: {
               }
             ]
           }
+          contract: {
+            id: "GET /v2/list"
+            json: "{\"operationId\":\"listImages\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":30,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"author\":{\"description\":\"Name of the image author\",\"type\":\"string\"},\"download_url\":{\"description\":\"URL to download the image from Picsum\",\"format\":\"uri\",\"type\":\"string\"},\"height\":{\"description\":\"Original height of the image in pixels\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the image\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the original image on Unsplash\",\"format\":\"uri\",\"type\":\"string\"},\"width\":{\"description\":\"Original width of the image in pixels\",\"type\":\"integer\"}},\"required\":[\"id\",\"author\",\"width\",\"height\",\"url\",\"download_url\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"List of images retrieved successfully\",\"headers\":{\"Link\":{\"description\":\"Pagination links for next/previous pages\",\"schema\":{\"type\":\"string\"}}}}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/v2/list"
           segments: [

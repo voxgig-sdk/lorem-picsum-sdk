@@ -67,6 +67,12 @@ main: kit: entity: id_info: {
               }
             ]
           }
+          contract: {
+            id: "GET /id/{id}/info"
+            json: "{\"operationId\":\"getImageInfoById\",\"parameters\":[{\"description\":\"ID of the image\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"author\":{\"description\":\"Name of the image author\",\"type\":\"string\"},\"download_url\":{\"description\":\"URL to download the image from Picsum\",\"format\":\"uri\",\"type\":\"string\"},\"height\":{\"description\":\"Original height of the image in pixels\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the image\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the original image on Unsplash\",\"format\":\"uri\",\"type\":\"string\"},\"width\":{\"description\":\"Original width of the image in pixels\",\"type\":\"integer\"}},\"required\":[\"id\",\"author\",\"width\",\"height\",\"url\",\"download_url\"],\"type\":\"object\"}}},\"description\":\"Image information retrieved successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/id/{id}/info"
           segments: [

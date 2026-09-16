@@ -69,6 +69,12 @@ main: kit: entity: get_random_image: {
               }
             ]
           }
+          contract: {
+            id: "GET /{width}/{height}"
+            json: "{\"operationId\":\"getRandomImage\",\"parameters\":[{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Random parameter to prevent caching\",\"in\":\"query\",\"name\":\"random\",\"required\":false,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\",\"headers\":{\"Picsum-ID\":{\"description\":\"ID of the returned image\",\"schema\":{\"type\":\"string\"}}}}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/{width}/{height}"
           segments: [

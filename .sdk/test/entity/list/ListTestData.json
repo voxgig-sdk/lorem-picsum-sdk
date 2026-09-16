@@ -4,26 +4,26 @@
       "LIST00": {
         "author": "s3c",
         "download_url": "s3d",
-        "height": "s3e",
+        "height": 62,
         "id": "LIST00",
         "url": "s40",
-        "width": "s41"
+        "width": 65
       },
       "LIST01": {
         "author": "s78",
         "download_url": "s79",
-        "height": "s7a",
+        "height": 122,
         "id": "LIST01",
         "url": "s7c",
-        "width": "s7d"
+        "width": 125
       },
       "LIST02": {
         "author": "sb4",
         "download_url": "sb5",
-        "height": "sb6",
+        "height": 182,
         "id": "LIST02",
         "url": "sb8",
-        "width": "sb9"
+        "width": 185
       }
     }
   },
@@ -32,9 +32,103 @@
       "list_ref01": {
         "author": "sf0",
         "download_url": "sf1",
-        "height": "sf2",
+        "height": 242,
         "url": "sf4",
-        "width": "sf5"
+        "width": 245
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/list": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listImages",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "author": {
+                        "description": "Name of the image author",
+                        "type": "string"
+                      },
+                      "download_url": {
+                        "description": "URL to download the image from Picsum",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "height": {
+                        "description": "Original height of the image in pixels",
+                        "type": "integer"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the image",
+                        "type": "string"
+                      },
+                      "url": {
+                        "description": "URL to the original image on Unsplash",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "width": {
+                        "description": "Original width of the image in pixels",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "author",
+                      "width",
+                      "height",
+                      "url",
+                      "download_url"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "List of images retrieved successfully",
+            "headers": {
+              "Link": {
+                "description": "Pagination links for next/previous pages",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }
