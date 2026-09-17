@@ -127,33 +127,33 @@ class Config {
 
     entity: {
       
-      get_random_image: {
-      },
-
-      get_random_square_image: {
-      },
-
-      height: {
-      },
-
-      heightwebp: {
-      },
-
-      id_info: {
-      },
-
-      idn: {
-      },
-
-      list: {
-      },
-
-      seed: {
-      },
-
-      seed_info: {
-      },
-
+        get_random_image: {
+        },
+  
+        get_random_square_image: {
+        },
+  
+        height: {
+        },
+  
+        heightwebp: {
+        },
+  
+        id_info: {
+        },
+  
+        idn: {
+        },
+  
+        list: {
+        },
+  
+        seed: {
+        },
+  
+        seed_info: {
+        },
+  
     }
   }
 
