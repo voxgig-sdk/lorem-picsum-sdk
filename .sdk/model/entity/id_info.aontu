@@ -1,0 +1,110 @@
+# Entity: id_info
+
+main: kit: entity: id_info: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: true
+      sh: "Name of the image author"
+      t: "`$STRING`"
+    }
+    download_url: {
+      fo: "uri"
+      h: "Download Url"
+      n: "download_url"
+      r: true
+      sh: "URL to download the image from Picsum"
+      t: "`$STRING`"
+    }
+    height: {
+      h: "Height"
+      n: "height"
+      r: true
+      sh: "Original height of the image in pixels"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the image"
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "URL to the original image on Unsplash"
+      t: "`$STRING`"
+    }
+    width: {
+      h: "Width"
+      n: "width"
+      r: true
+      sh: "Original width of the image in pixels"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "id_info"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /id/{id}/info"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/id/{id}/info"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "id"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "info"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

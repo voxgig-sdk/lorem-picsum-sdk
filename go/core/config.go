@@ -99,6 +99,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -118,44 +119,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "width",
-											"orig": "width",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "random",
-											"orig": "random",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}",
@@ -167,6 +130,53 @@ func MakeConfig() map[string]any {
 										"var": "height",
 									},
 								},
+								"parts": []any{
+									"{width}",
+									"{height}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "random",
+											"orig": "random",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"blur",
@@ -175,14 +185,6 @@ func MakeConfig() map[string]any {
 										"random",
 										"width",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"{width}",
-									"{height}",
 								},
 							},
 						},
@@ -196,6 +198,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -210,42 +213,49 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "size",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{size}",
+								"segments": []any{
+									map[string]any{
+										"var": "id",
+									},
+								},
+								"parts": []any{
+									"{id}",
+								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"size": "id",
 									},
 								},
-								"segments": []any{
-									map[string]any{
-										"var": "id",
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "size",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -254,13 +264,6 @@ func MakeConfig() map[string]any {
 										"grayscale",
 										"id",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"{id}",
 								},
 							},
 						},
@@ -279,38 +282,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "width",
-											"orig": "width",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}.jpg",
@@ -322,6 +293,47 @@ func MakeConfig() map[string]any {
 										"lit": "{height}.jpg",
 									},
 								},
+								"parts": []any{
+									"{width}",
+									"{height}.jpg",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"blur",
@@ -329,14 +341,6 @@ func MakeConfig() map[string]any {
 										"height",
 										"width",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"{width}",
-									"{height}.jpg",
 								},
 							},
 						},
@@ -355,38 +359,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "width",
-											"orig": "width",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{width}/{height}.webp",
@@ -398,6 +370,47 @@ func MakeConfig() map[string]any {
 										"lit": "{height}.webp",
 									},
 								},
+								"parts": []any{
+									"{width}",
+									"{height}.webp",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"blur",
@@ -405,14 +418,6 @@ func MakeConfig() map[string]any {
 										"height",
 										"width",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"{width}",
-									"{height}.webp",
 								},
 							},
 						},
@@ -426,41 +431,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "author",
+						"title": "Author",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the image author",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "download_url",
+						"title": "Download Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to download the image from Picsum",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "height",
+						"title": "Height",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original height of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Unique identifier for the image",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "width",
+						"title": "Width",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original width of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 				},
 				"id": map[string]any{
@@ -474,17 +485,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/id/{id}/info",
@@ -499,19 +499,31 @@ func MakeConfig() map[string]any {
 										"lit": "info",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"id",
 									"{id}",
 									"info",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -525,6 +537,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -545,45 +558,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "width",
-											"orig": "width",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/id/{id}/{width}/{height}",
@@ -601,6 +575,56 @@ func MakeConfig() map[string]any {
 										"var": "height",
 									},
 								},
+								"parts": []any{
+									"id",
+									"{id}",
+									"{width}",
+									"{height}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"blur",
@@ -609,16 +633,6 @@ func MakeConfig() map[string]any {
 										"id",
 										"width",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"id",
-									"{id}",
-									"{width}",
-									"{height}",
 								},
 							},
 						},
@@ -632,41 +646,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "author",
+						"title": "Author",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the image author",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "download_url",
+						"title": "Download Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to download the image from Picsum",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "height",
+						"title": "Height",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original height of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Unique identifier for the image",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "width",
+						"title": "Width",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original width of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 				},
 				"id": map[string]any{
@@ -680,24 +700,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 30,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v2/list",
@@ -709,19 +711,38 @@ func MakeConfig() map[string]any {
 										"lit": "list",
 									},
 								},
+								"parts": []any{
+									"v2",
+									"list",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 30,
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"page",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"v2",
-									"list",
 								},
 							},
 						},
@@ -735,6 +756,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -755,45 +777,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "height",
-											"orig": "height",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "seed",
-											"orig": "seed",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "width",
-											"orig": "width",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "blur",
-											"orig": "blur",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "grayscale",
-											"orig": "grayscale",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/seed/{seed}/{width}/{height}",
@@ -811,6 +794,56 @@ func MakeConfig() map[string]any {
 										"var": "height",
 									},
 								},
+								"parts": []any{
+									"seed",
+									"{seed}",
+									"{width}",
+									"{height}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "seed",
+											"orig": "seed",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "blur",
+											"orig": "blur",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "grayscale",
+											"orig": "grayscale",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"blur",
@@ -820,67 +853,59 @@ func MakeConfig() map[string]any {
 										"width",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"seed",
-									"{seed}",
-									"{width}",
-									"{height}",
-								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"seed",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"seed_info": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "author",
+						"title": "Author",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the image author",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "download_url",
+						"title": "Download Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to download the image from Picsum",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "height",
+						"title": "Height",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original height of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Unique identifier for the image",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "URL to the original image on Unsplash",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "width",
+						"title": "Width",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Original width of the image in pixels",
-						"type": "`$INTEGER`",
 					},
 				},
 				"id": map[string]any{
@@ -894,25 +919,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "seed",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/seed/{seed}/info",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"seed": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "seed",
@@ -924,19 +933,35 @@ func MakeConfig() map[string]any {
 										"lit": "info",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"seed",
+									"{id}",
+									"info",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"seed": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"seed",
-									"{id}",
-									"info",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "seed",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

@@ -31,15 +31,13 @@ require_once 'lorempicsum_sdk.php';
 $client = new LoremPicsumSDK();
 ```
 
-### 3. Load a seed
-
-Seed is nested under height, so provide the `height`.
+### 3. Load a getrandomimage
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the Seed record (throws on error).
-    $seed = $client->Seed()->load(["height" => 1, "seed" => "example_seed", "width" => 1]);
-    print_r($seed->data_get());
+    // load() returns the ENTITY — call data_get() for the GetRandomImage record (throws on error).
+    $getrandomimage = $client->GetRandomImage()->load(["height" => 1, "width" => 1]);
+    print_r($getrandomimage->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

@@ -33,14 +33,12 @@ local sdk = require("lorem-picsum_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a seed
-
-Seed is nested under height, so provide the `height`.
+### 3. Load a getrandomimage
 
 ```lua
-local seed, err = client:Seed():load({ height = 1, seed = "example_seed", width = 1 })
+local getrandomimage, err = client:GetRandomImage():load({ height = 1, width = 1 })
 if err then error(err) end
-print(seed)
+print(getrandomimage)
 ```
 
 

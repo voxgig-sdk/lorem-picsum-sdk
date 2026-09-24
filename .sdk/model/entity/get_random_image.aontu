@@ -1,0 +1,108 @@
+# Entity: get_random_image
+
+main: kit: entity: get_random_image: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "width"
+      "height"
+    ]
+    sep: "/"
+  }
+
+  name: "get_random_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /{width}/{height}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "height"
+                or: "height"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "width"
+                or: "width"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "blur"
+                or: "blur"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "grayscale"
+                or: "grayscale"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "random"
+                or: "random"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{width}/{height}"
+          q: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "random"
+              "width"
+            ]
+          }
+          s: [
+            {
+              var: "width"
+            }
+            {
+              var: "height"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

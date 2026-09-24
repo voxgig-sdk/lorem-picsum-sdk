@@ -1,0 +1,115 @@
+# Entity: seed_info
+
+main: kit: entity: seed_info: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: true
+      sh: "Name of the image author"
+      t: "`$STRING`"
+    }
+    download_url: {
+      fo: "uri"
+      h: "Download Url"
+      n: "download_url"
+      r: true
+      sh: "URL to download the image from Picsum"
+      t: "`$STRING`"
+    }
+    height: {
+      h: "Height"
+      n: "height"
+      r: true
+      sh: "Original height of the image in pixels"
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the image"
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "URL to the original image on Unsplash"
+      t: "`$STRING`"
+    }
+    width: {
+      h: "Width"
+      n: "width"
+      r: true
+      sh: "Original width of the image in pixels"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "seed_info"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /seed/{seed}/info"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "seed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/seed/{seed}/info"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              seed: "id"
+            }
+          }
+          s: [
+            {
+              lit: "seed"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "info"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

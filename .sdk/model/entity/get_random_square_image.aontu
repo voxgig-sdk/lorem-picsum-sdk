@@ -1,0 +1,89 @@
+# Entity: get_random_square_image
+
+main: kit: entity: get_random_square_image: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "get_random_square_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /{size}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "size"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "blur"
+                or: "blur"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "grayscale"
+                or: "grayscale"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{size}"
+          q: {
+            exist: [
+              "blur"
+              "grayscale"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              size: "id"
+            }
+          }
+          s: [
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

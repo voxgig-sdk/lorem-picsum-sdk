@@ -1,0 +1,33 @@
+# BasicIdnFlow
+
+main: kit: flow: BasicIdnFlow:
+{
+  entity: "idn",
+  kind: "basic",
+  name: "BasicIdnFlow",
+  step: [
+    {
+      i: {
+        ref: "idn_ref01",
+        srcdatavar: "idn_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "idn01",
+        width: "width01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-idn_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIdnFlow"
+}

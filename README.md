@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -123,14 +123,9 @@ import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum-sdk'
 
 const client = new LoremPicsumSDK()
 
-
-// Load a specific seed (returns a Seed)
-const seed = await client.Seed().load({
-  height: 1,
-  seed: 'example_seed',
-  width: 1,
-})
-console.log(seed)
+// Load getrandomimage data (returns a GetRandomImage)
+const getrandomimage = await client.GetRandomImage().load()
+console.log(getrandomimage)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -220,15 +215,12 @@ import sdk "github.com/voxgig-sdk/lorem-picsum-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific seed
-seed, err := client.Seed(nil).Load(
-    map[string]any{"height": 1, "seed": "example_seed", "width": 1}, nil,
-)
+// Load getrandomimage data
+getRandomImage, err := client.GetRandomImage(nil).Load(map[string]any{"height": 1, "width": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(seed)
+fmt.Println(getRandomImage)
 ```
 
 ### Ruby

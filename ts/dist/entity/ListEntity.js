@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListEntity = void 0;
 const LoremPicsumEntityBase_1 = require("../LoremPicsumEntityBase");
-// TODO: needs Entity superclass
 class ListEntity extends LoremPicsumEntityBase_1.LoremPicsumEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

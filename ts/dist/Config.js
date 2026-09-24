@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -122,6 +115,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -141,44 +135,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "height",
-                                        "orig": "height",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "width",
-                                        "orig": "width",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "random",
-                                        "orig": "random",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/{width}/{height}",
@@ -190,6 +146,53 @@ class Config {
                                     "var": "height"
                                 }
                             ],
+                            "parts": [
+                                "{width}",
+                                "{height}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "height",
+                                        "orig": "height",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "width",
+                                        "orig": "width",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "random",
+                                        "orig": "random",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
@@ -198,15 +201,7 @@ class Config {
                                     "random",
                                     "width"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "{width}",
-                                "{height}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -219,6 +214,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -233,58 +229,58 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "size",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/{size}",
-                            "rename": {
-                                "param": {
-                                    "size": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "size": "id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "size",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
                                     "grayscale",
                                     "id"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -302,38 +298,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "height",
-                                        "orig": "height",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "width",
-                                        "orig": "width",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/{width}/{height}.jpg",
@@ -345,6 +309,47 @@ class Config {
                                     "lit": "{height}.jpg"
                                 }
                             ],
+                            "parts": [
+                                "{width}",
+                                "{height}.jpg"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "height",
+                                        "orig": "height",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "width",
+                                        "orig": "width",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
@@ -352,15 +357,7 @@ class Config {
                                     "height",
                                     "width"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "{width}",
-                                "{height}.jpg"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -378,38 +375,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "height",
-                                        "orig": "height",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "width",
-                                        "orig": "width",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/{width}/{height}.webp",
@@ -421,6 +386,47 @@ class Config {
                                     "lit": "{height}.webp"
                                 }
                             ],
+                            "parts": [
+                                "{width}",
+                                "{height}.webp"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "height",
+                                        "orig": "height",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "width",
+                                        "orig": "width",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
@@ -428,15 +434,7 @@ class Config {
                                     "height",
                                     "width"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "{width}",
-                                "{height}.webp"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -449,41 +447,47 @@ class Config {
             "fields": [
                 {
                     "name": "author",
+                    "title": "Author",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the image author",
-                    "type": "`$STRING`"
+                    "short": "Name of the image author"
                 },
                 {
-                    "format": "uri",
                     "name": "download_url",
+                    "title": "Download Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to download the image from Picsum",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "height",
+                    "title": "Height",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original height of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original height of the image in pixels"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Unique identifier for the image",
-                    "type": "`$STRING`"
+                    "short": "Unique identifier for the image"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
+                    "title": "Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to the original image on Unsplash",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "width",
+                    "title": "Width",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original width of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original width of the image in pixels"
                 }
             ],
             "id": {
@@ -497,17 +501,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/id/{id}/info",
@@ -522,20 +515,32 @@ class Config {
                                     "lit": "info"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "id",
                                 "{id}",
                                 "info"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -548,6 +553,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -568,45 +574,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "height",
-                                        "orig": "height",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "width",
-                                        "orig": "width",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/id/{id}/{width}/{height}",
@@ -624,6 +591,56 @@ class Config {
                                     "var": "height"
                                 }
                             ],
+                            "parts": [
+                                "id",
+                                "{id}",
+                                "{width}",
+                                "{height}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "height",
+                                        "orig": "height",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "width",
+                                        "orig": "width",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
@@ -632,17 +649,7 @@ class Config {
                                     "id",
                                     "width"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "id",
-                                "{id}",
-                                "{width}",
-                                "{height}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -655,41 +662,47 @@ class Config {
             "fields": [
                 {
                     "name": "author",
+                    "title": "Author",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the image author",
-                    "type": "`$STRING`"
+                    "short": "Name of the image author"
                 },
                 {
-                    "format": "uri",
                     "name": "download_url",
+                    "title": "Download Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to download the image from Picsum",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "height",
+                    "title": "Height",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original height of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original height of the image in pixels"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Unique identifier for the image",
-                    "type": "`$STRING`"
+                    "short": "Unique identifier for the image"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
+                    "title": "Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to the original image on Unsplash",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "width",
+                    "title": "Width",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original width of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original width of the image in pixels"
                 }
             ],
             "id": {
@@ -703,24 +716,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 30,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/v2/list",
@@ -732,20 +727,39 @@ class Config {
                                     "lit": "list"
                                 }
                             ],
+                            "parts": [
+                                "v2",
+                                "list"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 30
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "limit",
                                     "page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "v2",
-                                "list"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -758,6 +772,7 @@ class Config {
             "fields": [
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 }
             ],
@@ -778,45 +793,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "height",
-                                        "orig": "height",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "seed",
-                                        "orig": "seed",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "param",
-                                        "name": "width",
-                                        "orig": "width",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "blur",
-                                        "orig": "blur",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "grayscale",
-                                        "orig": "grayscale",
-                                        "type": "`$BOOLEAN`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/seed/{seed}/{width}/{height}",
@@ -834,6 +810,56 @@ class Config {
                                     "var": "height"
                                 }
                             ],
+                            "parts": [
+                                "seed",
+                                "{seed}",
+                                "{width}",
+                                "{height}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "height",
+                                        "orig": "height",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "seed",
+                                        "orig": "seed",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "width",
+                                        "orig": "width",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "blur",
+                                        "orig": "blur",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "grayscale",
+                                        "orig": "grayscale",
+                                        "type": "`$BOOLEAN`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "blur",
@@ -842,68 +868,60 @@ class Config {
                                     "seed",
                                     "width"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "seed",
-                                "{seed}",
-                                "{width}",
-                                "{height}"
-                            ]
+                            }
                         }
                     ]
                 }
             },
             "relations": {
-                "ancestors": [
-                    [
-                        "seed"
-                    ]
-                ]
+                "ancestors": []
             }
         },
         "seed_info": {
             "fields": [
                 {
                     "name": "author",
+                    "title": "Author",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Name of the image author",
-                    "type": "`$STRING`"
+                    "short": "Name of the image author"
                 },
                 {
-                    "format": "uri",
                     "name": "download_url",
+                    "title": "Download Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to download the image from Picsum",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "height",
+                    "title": "Height",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original height of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original height of the image in pixels"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Unique identifier for the image",
-                    "type": "`$STRING`"
+                    "short": "Unique identifier for the image"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
+                    "title": "Url",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "URL to the original image on Unsplash",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "width",
+                    "title": "Width",
+                    "type": "`$INTEGER`",
                     "req": true,
-                    "short": "Original width of the image in pixels",
-                    "type": "`$INTEGER`"
+                    "short": "Original width of the image in pixels"
                 }
             ],
             "id": {
@@ -917,25 +935,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "seed",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/seed/{seed}/info",
-                            "rename": {
-                                "param": {
-                                    "seed": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "seed"
@@ -947,20 +949,36 @@ class Config {
                                     "lit": "info"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "seed",
+                                "{id}",
+                                "info"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "seed": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "seed",
-                                "{id}",
-                                "info"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "seed",
+                                        "type": "`$STRING`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

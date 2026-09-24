@@ -36,15 +36,14 @@ from lorempicsum_sdk import LoremPicsumSDK
 client = LoremPicsumSDK()
 ```
 
-### 3. Load a seed
+### 3. Load a getrandomimage
 
-Seed is nested under height, so provide the `height`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    seed = client.Seed().load({"height": 1, "seed": "example_seed", "width": 1})
-    print(seed)
+    getrandomimage = client.GetRandomImage().load({"height": 1, "width": 1})
+    print(getrandomimage)
 except Exception as err:
     print(f"load failed: {err}")
 ```

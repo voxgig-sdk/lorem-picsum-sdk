@@ -1,0 +1,84 @@
+# Entity: height
+
+main: kit: entity: height: {
+
+  alias: field: {}
+
+  name: "height"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /{width}/{height}.jpg"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "height"
+                or: "height"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "width"
+                or: "width"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "blur"
+                or: "blur"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "grayscale"
+                or: "grayscale"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{width}/{height}.jpg"
+          q: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "width"
+            ]
+          }
+          s: [
+            {
+              var: "width"
+            }
+            {
+              lit: "{height}.jpg"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

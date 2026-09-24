@@ -30,15 +30,13 @@ require_relative "LoremPicsum_sdk"
 client = LoremPicsumSDK.new
 ```
 
-### 3. Load a seed
-
-Seed is nested under height, so provide the `height`.
+### 3. Load a getrandomimage
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Seed record (raises on error).
-  seed = client.Seed.load({ "height" => 1, "seed" => "example_seed", "width" => 1 })
-  puts seed
+  # load returns the ENTITY — call data_get for the GetRandomImage record (raises on error).
+  getrandomimage = client.GetRandomImage.load({ "height" => 1, "width" => 1 })
+  puts getrandomimage
 rescue => err
   warn "load failed: #{err}"
 end

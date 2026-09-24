@@ -121,6 +121,7 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -140,44 +141,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'width',
-                        'orig' => 'width',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'random',
-                        'orig' => 'random',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}',
@@ -189,6 +152,53 @@ class LoremPicsumConfig
                       'var' => 'height',
                     ],
                   ],
+                  'parts' => [
+                    '{width}',
+                    '{height}',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'width',
+                        'orig' => 'width',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'random',
+                        'orig' => 'random',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'blur',
@@ -197,14 +207,6 @@ class LoremPicsumConfig
                       'random',
                       'width',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    '{width}',
-                    '{height}',
                   ],
                 ],
               ],
@@ -218,6 +220,7 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -232,42 +235,49 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'size',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{size}',
+                  'segments' => [
+                    [
+                      'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    '{id}',
+                  ],
                   'rename' => [
                     'param' => [
                       'size' => 'id',
                     ],
                   ],
-                  'segments' => [
-                    [
-                      'var' => 'id',
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'size',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
                     ],
                   ],
                   'select' => [
@@ -276,13 +286,6 @@ class LoremPicsumConfig
                       'grayscale',
                       'id',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    '{id}',
                   ],
                 ],
               ],
@@ -301,38 +304,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'width',
-                        'orig' => 'width',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.jpg',
@@ -344,6 +315,47 @@ class LoremPicsumConfig
                       'lit' => '{height}.jpg',
                     ],
                   ],
+                  'parts' => [
+                    '{width}',
+                    '{height}.jpg',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'width',
+                        'orig' => 'width',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'blur',
@@ -351,14 +363,6 @@ class LoremPicsumConfig
                       'height',
                       'width',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    '{width}',
-                    '{height}.jpg',
                   ],
                 ],
               ],
@@ -377,38 +381,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'width',
-                        'orig' => 'width',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{width}/{height}.webp',
@@ -420,6 +392,47 @@ class LoremPicsumConfig
                       'lit' => '{height}.webp',
                     ],
                   ],
+                  'parts' => [
+                    '{width}',
+                    '{height}.webp',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'width',
+                        'orig' => 'width',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'blur',
@@ -427,14 +440,6 @@ class LoremPicsumConfig
                       'height',
                       'width',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    '{width}',
-                    '{height}.webp',
                   ],
                 ],
               ],
@@ -448,41 +453,47 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'author',
+              'title' => 'Author',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Name of the image author',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'download_url',
+              'title' => 'Download Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'height',
+              'title' => 'Height',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original height of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Unique identifier for the image',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'url',
+              'title' => 'Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'width',
+              'title' => 'Width',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original width of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
           ],
           'id' => [
@@ -496,17 +507,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/info',
@@ -521,19 +521,31 @@ class LoremPicsumConfig
                       'lit' => 'info',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'id',
                     '{id}',
                     'info',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -547,6 +559,7 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -567,45 +580,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'width',
-                        'orig' => 'width',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/id/{id}/{width}/{height}',
@@ -623,6 +597,56 @@ class LoremPicsumConfig
                       'var' => 'height',
                     ],
                   ],
+                  'parts' => [
+                    'id',
+                    '{id}',
+                    '{width}',
+                    '{height}',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'width',
+                        'orig' => 'width',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'blur',
@@ -631,16 +655,6 @@ class LoremPicsumConfig
                       'id',
                       'width',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'id',
-                    '{id}',
-                    '{width}',
-                    '{height}',
                   ],
                 ],
               ],
@@ -654,41 +668,47 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'author',
+              'title' => 'Author',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Name of the image author',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'download_url',
+              'title' => 'Download Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'height',
+              'title' => 'Height',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original height of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Unique identifier for the image',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'url',
+              'title' => 'Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'width',
+              'title' => 'Width',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original width of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
           ],
           'id' => [
@@ -702,24 +722,6 @@ class LoremPicsumConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 30,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v2/list',
@@ -731,19 +733,38 @@ class LoremPicsumConfig
                       'lit' => 'list',
                     ],
                   ],
+                  'parts' => [
+                    'v2',
+                    'list',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 30,
+                      ],
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'limit',
                       'page',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'v2',
-                    'list',
                   ],
                 ],
               ],
@@ -757,6 +778,7 @@ class LoremPicsumConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -777,45 +799,6 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'height',
-                        'orig' => 'height',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'seed',
-                        'orig' => 'seed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'width',
-                        'orig' => 'width',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'blur',
-                        'orig' => 'blur',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'grayscale',
-                        'orig' => 'grayscale',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/{width}/{height}',
@@ -833,6 +816,56 @@ class LoremPicsumConfig
                       'var' => 'height',
                     ],
                   ],
+                  'parts' => [
+                    'seed',
+                    '{seed}',
+                    '{width}',
+                    '{height}',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'height',
+                        'orig' => 'height',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'seed',
+                        'orig' => 'seed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'width',
+                        'orig' => 'width',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'blur',
+                        'orig' => 'blur',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'grayscale',
+                        'orig' => 'grayscale',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'blur',
@@ -842,67 +875,59 @@ class LoremPicsumConfig
                       'width',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'seed',
-                    '{seed}',
-                    '{width}',
-                    '{height}',
-                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'seed',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'seed_info' => [
           'fields' => [
             [
               'name' => 'author',
+              'title' => 'Author',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Name of the image author',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'download_url',
+              'title' => 'Download Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to download the image from Picsum',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'height',
+              'title' => 'Height',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original height of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Unique identifier for the image',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'uri',
               'name' => 'url',
+              'title' => 'Url',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'URL to the original image on Unsplash',
-              'type' => '`$STRING`',
+              'format' => 'uri',
             ],
             [
               'name' => 'width',
+              'title' => 'Width',
+              'type' => '`$INTEGER`',
               'req' => true,
               'short' => 'Original width of the image in pixels',
-              'type' => '`$INTEGER`',
             ],
           ],
           'id' => [
@@ -916,25 +941,9 @@ class LoremPicsumConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'seed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seed/{seed}/info',
-                  'rename' => [
-                    'param' => [
-                      'seed' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'seed',
@@ -946,19 +955,35 @@ class LoremPicsumConfig
                       'lit' => 'info',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'seed',
+                    '{id}',
+                    'info',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'seed' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'seed',
-                    '{id}',
-                    'info',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'seed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],

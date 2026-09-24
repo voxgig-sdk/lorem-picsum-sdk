@@ -1,0 +1,115 @@
+# Entity: idn
+
+main: kit: entity: idn: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "id"
+      "width"
+      "height"
+    ]
+    sep: "/"
+  }
+
+  name: "idn"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /id/{id}/{width}/{height}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "height"
+                or: "height"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "width"
+                or: "width"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "blur"
+                or: "blur"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "grayscale"
+                or: "grayscale"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/id/{id}/{width}/{height}"
+          q: {
+            exist: [
+              "blur"
+              "grayscale"
+              "height"
+              "id"
+              "width"
+            ]
+          }
+          s: [
+            {
+              lit: "id"
+            }
+            {
+              var: "id"
+            }
+            {
+              var: "width"
+            }
+            {
+              var: "height"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

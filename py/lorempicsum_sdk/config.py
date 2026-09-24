@@ -124,6 +124,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -143,44 +144,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "height",
-                      "orig": "height",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "width",
-                      "orig": "width",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "random",
-                      "orig": "random",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}",
@@ -192,6 +155,53 @@ def make_config():
                     "var": "height",
                   },
                 ],
+                "parts": [
+                  "{width}",
+                  "{height}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "random",
+                      "orig": "random",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -201,14 +211,6 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "{width}",
-                  "{height}",
-                ],
               },
             ],
           },
@@ -221,6 +223,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -235,44 +238,51 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "size",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{size}",
-                "rename": {
-                  "param": {
-                    "size": "id",
-                  },
-                },
                 "segments": [
                   {
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "size": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "size",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -280,13 +290,6 @@ def make_config():
                     "id",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "{id}",
-                ],
               },
             ],
           },
@@ -304,38 +307,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "height",
-                      "orig": "height",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "width",
-                      "orig": "width",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}.jpg",
@@ -347,6 +318,47 @@ def make_config():
                     "lit": "{height}.jpg",
                   },
                 ],
+                "parts": [
+                  "{width}",
+                  "{height}.jpg",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -355,14 +367,6 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "{width}",
-                  "{height}.jpg",
-                ],
               },
             ],
           },
@@ -380,38 +384,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "height",
-                      "orig": "height",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "width",
-                      "orig": "width",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{width}/{height}.webp",
@@ -423,6 +395,47 @@ def make_config():
                     "lit": "{height}.webp",
                   },
                 ],
+                "parts": [
+                  "{width}",
+                  "{height}.webp",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -431,14 +444,6 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "{width}",
-                  "{height}.webp",
-                ],
               },
             ],
           },
@@ -451,41 +456,47 @@ def make_config():
         "fields": [
           {
             "name": "author",
+            "title": "Author",
+            "type": "`$STRING`",
             "req": True,
             "short": "Name of the image author",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "download_url",
+            "title": "Download Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to download the image from Picsum",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "height",
+            "title": "Height",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original height of the image in pixels",
-            "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
             "req": True,
             "short": "Unique identifier for the image",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to the original image on Unsplash",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "width",
+            "title": "Width",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original width of the image in pixels",
-            "type": "`$INTEGER`",
           },
         ],
         "id": {
@@ -499,17 +510,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/id/{id}/info",
@@ -524,20 +524,32 @@ def make_config():
                     "lit": "info",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "id",
                   "{id}",
                   "info",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },
@@ -550,6 +562,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -570,45 +583,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "height",
-                      "orig": "height",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "id",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "width",
-                      "orig": "width",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/id/{id}/{width}/{height}",
@@ -626,6 +600,56 @@ def make_config():
                     "var": "height",
                   },
                 ],
+                "parts": [
+                  "id",
+                  "{id}",
+                  "{width}",
+                  "{height}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -635,16 +659,6 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "id",
-                  "{id}",
-                  "{width}",
-                  "{height}",
-                ],
               },
             ],
           },
@@ -657,41 +671,47 @@ def make_config():
         "fields": [
           {
             "name": "author",
+            "title": "Author",
+            "type": "`$STRING`",
             "req": True,
             "short": "Name of the image author",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "download_url",
+            "title": "Download Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to download the image from Picsum",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "height",
+            "title": "Height",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original height of the image in pixels",
-            "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
             "req": True,
             "short": "Unique identifier for the image",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to the original image on Unsplash",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "width",
+            "title": "Width",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original width of the image in pixels",
-            "type": "`$INTEGER`",
           },
         ],
         "id": {
@@ -705,24 +725,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": 30,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "page",
-                      "orig": "page",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v2/list",
@@ -734,20 +736,39 @@ def make_config():
                     "lit": "list",
                   },
                 ],
+                "parts": [
+                  "v2",
+                  "list",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 30,
+                    },
+                    {
+                      "name": "page",
+                      "orig": "page",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "limit",
                     "page",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "v2",
-                  "list",
-                ],
               },
             ],
           },
@@ -760,6 +781,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
         ],
@@ -780,45 +802,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "height",
-                      "orig": "height",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "seed",
-                      "orig": "seed",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "kind": "param",
-                      "name": "width",
-                      "orig": "width",
-                      "reqd": True,
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "blur",
-                      "orig": "blur",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "grayscale",
-                      "orig": "grayscale",
-                      "type": "`$BOOLEAN`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seed/{seed}/{width}/{height}",
@@ -836,6 +819,56 @@ def make_config():
                     "var": "height",
                   },
                 ],
+                "parts": [
+                  "seed",
+                  "{seed}",
+                  "{width}",
+                  "{height}",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "height",
+                      "orig": "height",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "seed",
+                      "orig": "seed",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "width",
+                      "orig": "width",
+                      "type": "`$INTEGER`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "blur",
+                      "orig": "blur",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "grayscale",
+                      "orig": "grayscale",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "blur",
@@ -845,67 +878,59 @@ def make_config():
                     "width",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "seed",
-                  "{seed}",
-                  "{width}",
-                  "{height}",
-                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "seed",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "seed_info": {
         "fields": [
           {
             "name": "author",
+            "title": "Author",
+            "type": "`$STRING`",
             "req": True,
             "short": "Name of the image author",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "download_url",
+            "title": "Download Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to download the image from Picsum",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "height",
+            "title": "Height",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original height of the image in pixels",
-            "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
             "req": True,
             "short": "Unique identifier for the image",
-            "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
+            "type": "`$STRING`",
             "req": True,
             "short": "URL to the original image on Unsplash",
-            "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "width",
+            "title": "Width",
+            "type": "`$INTEGER`",
             "req": True,
             "short": "Original width of the image in pixels",
-            "type": "`$INTEGER`",
           },
         ],
         "id": {
@@ -919,25 +944,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "seed",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seed/{seed}/info",
-                "rename": {
-                  "param": {
-                    "seed": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "seed",
@@ -949,20 +958,36 @@ def make_config():
                     "lit": "info",
                   },
                 ],
-                "select": {
-                  "exist": [
-                    "id",
-                  ],
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "seed",
                   "{id}",
                   "info",
                 ],
+                "rename": {
+                  "param": {
+                    "seed": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "seed",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
               },
             ],
           },

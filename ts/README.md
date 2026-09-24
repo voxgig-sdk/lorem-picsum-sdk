@@ -33,19 +33,14 @@ import { LoremPicsumSDK } from '@voxgig-sdk/lorem-picsum-sdk'
 const client = new LoremPicsumSDK()
 ```
 
-### 3. Load a seed
+### 3. Load a getrandomimage
 
-Seed is nested under height, so provide the `height`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const seed = await client.Seed().load({
-    height: 1,
-    seed: 'example_seed',
-    width: 1,
-  })
-  console.log(seed)
+  const getrandomimage = await client.GetRandomImage().load({ height: 1, width: 1 })
+  console.log(getrandomimage)
 } catch (err) {
   console.error('load failed:', err)
 }

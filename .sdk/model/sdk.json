@@ -24,20 +24,87 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_random_image": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id",
@@ -54,71 +121,62 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{width}/{height}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "height",
+                        "or": "height",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "width",
+                        "or": "width",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "random",
-                        "orig": "random",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "random",
+                        "or": "random",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{width}/{height}",
-                    "json": "{\"operationId\":\"getRandomImage\",\"parameters\":[{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Random parameter to prevent caching\",\"in\":\"query\",\"name\":\"random\",\"required\":false,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\",\"headers\":{\"Picsum-ID\":{\"description\":\"ID of the returned image\",\"schema\":{\"type\":\"string\"}}}}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{width}/{height}",
-                  "segments": [
-                    {
-                      "var": "width"
-                    },
-                    {
-                      "var": "height"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{width}/{height}",
+                  "q": {
                     "exist": [
                       "blur",
                       "grayscale",
@@ -127,7 +185,16 @@
                       "width"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "var": "width"
+                    },
+                    {
+                      "var": "height"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -144,14 +211,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -163,64 +231,63 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{size}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "size",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "size",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{size}",
-                    "json": "{\"operationId\":\"getRandomSquareImage\",\"parameters\":[{\"description\":\"Size of the square image in pixels\",\"in\":\"path\",\"name\":\"size\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{size}",
-                  "rename": {
-                    "param": {
-                      "size": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{size}",
+                  "q": {
                     "exist": [
                       "blur",
                       "grayscale",
                       "id"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "size": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -237,7 +304,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "height",
           "op": {
             "load": {
@@ -245,63 +312,54 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{width}/{height}.jpg",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "height",
+                        "or": "height",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "width",
+                        "or": "width",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{width}/{height}.jpg",
-                    "json": "{\"operationId\":\"getRandomImageJpeg\",\"parameters\":[{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{width}/{height}.jpg",
-                  "segments": [
-                    {
-                      "var": "width"
-                    },
-                    {
-                      "lit": "{height}.jpg"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{width}/{height}.jpg",
+                  "q": {
                     "exist": [
                       "blur",
                       "grayscale",
@@ -309,7 +367,16 @@
                       "width"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "var": "width"
+                    },
+                    {
+                      "lit": "{height}.jpg"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -326,7 +393,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "heightwebp",
           "op": {
             "load": {
@@ -334,63 +401,54 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{width}/{height}.webp",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "height",
+                        "or": "height",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "width",
+                        "or": "width",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{width}/{height}.webp",
-                    "json": "{\"operationId\":\"getRandomImageWebp\",\"parameters\":[{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/webp\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{width}/{height}.webp",
-                  "segments": [
-                    {
-                      "var": "width"
-                    },
-                    {
-                      "lit": "{height}.webp"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{width}/{height}.webp",
+                  "q": {
                     "exist": [
                       "blur",
                       "grayscale",
@@ -398,7 +456,16 @@
                       "width"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "var": "width"
+                    },
+                    {
+                      "lit": "{height}.webp"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -415,52 +482,58 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "author",
-              "req": true,
-              "short": "Name of the image author",
-              "type": "`$STRING`"
+          "fields": {
+            "author": {
+              "a": true,
+              "h": "Author",
+              "n": "author",
+              "r": true,
+              "sh": "Name of the image author",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "download_url",
-              "req": true,
-              "short": "URL to download the image from Picsum",
-              "type": "`$STRING`"
+            "download_url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Download Url",
+              "n": "download_url",
+              "r": true,
+              "sh": "URL to download the image from Picsum",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "height",
-              "req": true,
-              "short": "Original height of the image in pixels",
-              "type": "`$INTEGER`"
+            "height": {
+              "a": true,
+              "h": "Height",
+              "n": "height",
+              "r": true,
+              "sh": "Original height of the image in pixels",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the image",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier for the image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "URL to the original image on Unsplash",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "URL to the original image on Unsplash",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "width",
-              "req": true,
-              "short": "Original width of the image in pixels",
-              "type": "`$INTEGER`"
+            "width": {
+              "a": true,
+              "h": "Width",
+              "n": "width",
+              "r": true,
+              "sh": "Original width of the image in pixels",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -472,29 +545,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /id/{id}/info",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /id/{id}/info",
-                    "json": "{\"operationId\":\"getImageInfoById\",\"parameters\":[{\"description\":\"ID of the image\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"author\":{\"description\":\"Name of the image author\",\"type\":\"string\"},\"download_url\":{\"description\":\"URL to download the image from Picsum\",\"format\":\"uri\",\"type\":\"string\"},\"height\":{\"description\":\"Original height of the image in pixels\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the image\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the original image on Unsplash\",\"format\":\"uri\",\"type\":\"string\"},\"width\":{\"description\":\"Original width of the image in pixels\",\"type\":\"integer\"}},\"required\":[\"id\",\"author\",\"width\",\"height\",\"url\",\"download_url\"],\"type\":\"object\"}}},\"description\":\"Image information retrieved successfully\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/id/{id}/info",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/id/{id}/info",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "id"
                     },
@@ -505,12 +583,7 @@
                       "lit": "info"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -527,14 +600,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id",
@@ -552,63 +626,72 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /id/{id}/{width}/{height}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "height",
+                        "or": "height",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "width",
+                        "or": "width",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /id/{id}/{width}/{height}",
-                    "json": "{\"operationId\":\"getSpecificImage\",\"parameters\":[{\"description\":\"ID of the specific image\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/id/{id}/{width}/{height}",
+                  "q": {
+                    "exist": [
+                      "blur",
+                      "grayscale",
+                      "height",
+                      "id",
+                      "width"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/id/{id}/{width}/{height}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "id"
                     },
@@ -622,16 +705,7 @@
                       "var": "height"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "blur",
-                      "grayscale",
-                      "height",
-                      "id",
-                      "width"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -648,52 +722,58 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "author",
-              "req": true,
-              "short": "Name of the image author",
-              "type": "`$STRING`"
+          "fields": {
+            "author": {
+              "a": true,
+              "h": "Author",
+              "n": "author",
+              "r": true,
+              "sh": "Name of the image author",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "download_url",
-              "req": true,
-              "short": "URL to download the image from Picsum",
-              "type": "`$STRING`"
+            "download_url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Download Url",
+              "n": "download_url",
+              "r": true,
+              "sh": "URL to download the image from Picsum",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "height",
-              "req": true,
-              "short": "Original height of the image in pixels",
-              "type": "`$INTEGER`"
+            "height": {
+              "a": true,
+              "h": "Height",
+              "n": "height",
+              "r": true,
+              "sh": "Original height of the image in pixels",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the image",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier for the image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "URL to the original image on Unsplash",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "URL to the original image on Unsplash",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "width",
-              "req": true,
-              "short": "Original width of the image in pixels",
-              "type": "`$INTEGER`"
+            "width": {
+              "a": true,
+              "h": "Width",
+              "n": "width",
+              "r": true,
+              "sh": "Original width of the image in pixels",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -705,39 +785,45 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/list",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 30,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 30,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 1,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /v2/list",
-                    "json": "{\"operationId\":\"listImages\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":30,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"author\":{\"description\":\"Name of the image author\",\"type\":\"string\"},\"download_url\":{\"description\":\"URL to download the image from Picsum\",\"format\":\"uri\",\"type\":\"string\"},\"height\":{\"description\":\"Original height of the image in pixels\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the image\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the original image on Unsplash\",\"format\":\"uri\",\"type\":\"string\"},\"width\":{\"description\":\"Original width of the image in pixels\",\"type\":\"integer\"}},\"required\":[\"id\",\"author\",\"width\",\"height\",\"url\",\"download_url\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"List of images retrieved successfully\",\"headers\":{\"Link\":{\"description\":\"Pagination links for next/previous pages\",\"schema\":{\"type\":\"string\"}}}}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/list",
+                  "q": {
+                    "exist": [
+                      "limit",
+                      "page"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/v2/list",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "v2"
                     },
@@ -745,13 +831,7 @@
                       "lit": "list"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "limit",
-                      "page"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -768,14 +848,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id",
@@ -793,63 +874,72 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /seed/{seed}/{width}/{height}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "height",
+                        "or": "height",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "seed",
-                        "orig": "seed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "seed",
+                        "or": "seed",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "width",
+                        "or": "width",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "blur",
-                        "orig": "blur",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "blur",
+                        "or": "blur",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "grayscale",
-                        "orig": "grayscale",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "grayscale",
+                        "or": "grayscale",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /seed/{seed}/{width}/{height}",
-                    "json": "{\"operationId\":\"getSeededImage\",\"parameters\":[{\"description\":\"Seed value for deterministic random image selection\",\"in\":\"path\",\"name\":\"seed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Width of the image in pixels\",\"in\":\"path\",\"name\":\"width\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Height of the image in pixels\",\"in\":\"path\",\"name\":\"height\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Convert image to grayscale\",\"in\":\"query\",\"name\":\"grayscale\",\"required\":false,\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Apply blur effect (1-10)\",\"in\":\"query\",\"name\":\"blur\",\"required\":false,\"schema\":{\"maximum\":10,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Image successfully retrieved\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/seed/{seed}/{width}/{height}",
+                  "q": {
+                    "exist": [
+                      "blur",
+                      "grayscale",
+                      "height",
+                      "seed",
+                      "width"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/seed/{seed}/{width}/{height}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "seed"
                     },
@@ -863,16 +953,7 @@
                       "var": "height"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "blur",
-                      "grayscale",
-                      "height",
-                      "seed",
-                      "width"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -881,11 +962,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "seed"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "seed_info": {
@@ -893,52 +970,58 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "author",
-              "req": true,
-              "short": "Name of the image author",
-              "type": "`$STRING`"
+          "fields": {
+            "author": {
+              "a": true,
+              "h": "Author",
+              "n": "author",
+              "r": true,
+              "sh": "Name of the image author",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "download_url",
-              "req": true,
-              "short": "URL to download the image from Picsum",
-              "type": "`$STRING`"
+            "download_url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Download Url",
+              "n": "download_url",
+              "r": true,
+              "sh": "URL to download the image from Picsum",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "height",
-              "req": true,
-              "short": "Original height of the image in pixels",
-              "type": "`$INTEGER`"
+            "height": {
+              "a": true,
+              "h": "Height",
+              "n": "height",
+              "r": true,
+              "sh": "Original height of the image in pixels",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the image",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier for the image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "URL to the original image on Unsplash",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "URL to the original image on Unsplash",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "width",
-              "req": true,
-              "short": "Original width of the image in pixels",
-              "type": "`$INTEGER`"
+            "width": {
+              "a": true,
+              "h": "Width",
+              "n": "width",
+              "r": true,
+              "sh": "Original width of the image in pixels",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -950,34 +1033,38 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /seed/{seed}/info",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "seed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "seed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /seed/{seed}/info",
-                    "json": "{\"operationId\":\"getImageInfoBySeed\",\"parameters\":[{\"description\":\"Seed value for deterministic image selection\",\"in\":\"path\",\"name\":\"seed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"author\":{\"description\":\"Name of the image author\",\"type\":\"string\"},\"download_url\":{\"description\":\"URL to download the image from Picsum\",\"format\":\"uri\",\"type\":\"string\"},\"height\":{\"description\":\"Original height of the image in pixels\",\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the image\",\"type\":\"string\"},\"url\":{\"description\":\"URL to the original image on Unsplash\",\"format\":\"uri\",\"type\":\"string\"},\"width\":{\"description\":\"Original width of the image in pixels\",\"type\":\"integer\"}},\"required\":[\"id\",\"author\",\"width\",\"height\",\"url\",\"download_url\"],\"type\":\"object\"}}},\"description\":\"Image information retrieved successfully\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/seed/{seed}/info",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/seed/{seed}/info",
-                  "rename": {
+                  "r": {
                     "param": {
                       "seed": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "seed"
                     },
@@ -988,12 +1075,7 @@
                       "lit": "info"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1422,20 +1504,20 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_random_image_ref01",
                 "srcdatavar": "get_random_image_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "get_random_image01",
                 "width": "width01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1455,19 +1537,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_random_square_image_ref01",
                 "srcdatavar": "get_random_square_image_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "get_random_square_image01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1487,20 +1569,20 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "height_ref01",
                 "srcdatavar": "height_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "height": "height01",
                 "id": "height01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1520,20 +1602,20 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "heightwebp_ref01",
                 "srcdatavar": "heightwebp_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "height": "height01",
                 "id": "heightwebp01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1553,19 +1635,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "id_info_ref01",
                 "srcdatavar": "id_info_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "id_info01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1585,20 +1667,20 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "idn_ref01",
                 "srcdatavar": "idn_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "idn01",
                 "width": "width01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1618,13 +1700,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1644,21 +1726,21 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "seed_ref01",
                 "srcdatavar": "seed_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "seed01",
                 "seed": "seed01",
                 "width": "width01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1678,19 +1760,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "seed_info_ref01",
                 "srcdatavar": "seed_info_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "seed_info01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

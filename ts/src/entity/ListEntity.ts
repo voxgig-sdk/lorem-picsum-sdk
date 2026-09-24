@@ -19,7 +19,6 @@ import type {
   ListListMatch,
 } from '../LoremPicsumTypes'
 
-// TODO: needs Entity superclass
 class ListEntity extends LoremPicsumEntityBase<List> {
 
   constructor(client: LoremPicsumSDK, entopts: any) {
